@@ -21,8 +21,15 @@ class Vector:
     def __ne__(self, other):
         return not self.__eq__(other)
 
-        # Returns a tuple with the point corresponding to the vector
+     #  Returns Y property of vector
+    def getY(self):
+        return self.y
 
+    #   returns x property of vector
+    def getX(self):
+        return self.x
+
+    # Returns a tuple with the point corresponding to the vector
     def getP(self):
         return (self.x, self.y)
 
@@ -37,7 +44,7 @@ class Vector:
         return self
 
     def __add__(self, other):
-        return self.copy().add(other);
+        return self.copy().add(other)
 
     # Negates the vector (makes it point in the opposite direction)
     def negate(self):

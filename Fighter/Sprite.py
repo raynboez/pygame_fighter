@@ -3,6 +3,7 @@ try:
 except ImportError:
     import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
 
+
 class Sprite:
     def __init__(self, path, width, height, rows, columns, destination, scale):
         self.img = simplegui._load_local_image(path)
@@ -12,6 +13,11 @@ class Sprite:
         self.columns = columns
         self.rows = rows
         self.frameIndex = [0, 0]
+
+
+    def setDest(self, dest):
+        self.dest = dest
+
 
     def nextSprite(self):
         self.frameIndex[0] = (self.frameIndex[0] + 1) % self.columns

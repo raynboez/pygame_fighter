@@ -21,8 +21,8 @@ def draw(canvas):
 
 
 characterTest = Sprite("C:\\Users\\Ben\\Downloads\\sprites\\sprite.png", 1440, 1480, 5, 6, (250,250), 1)
-platform_top = Platform(CANVAS_WIDTH, 100, 10, 'Red')
-platform_bottom = Platform(CANVAS_WIDTH, 400, 10, 'Red')
+platform_top = Platform(CANVAS_WIDTH, 100, 10, 'Grey')
+platform_bottom = Platform(CANVAS_WIDTH, 400, 10, 'Grey')
 frame = simplegui.create_frame(NAME, CANVAS_WIDTH, CANVAS_HEIGHT)
 frame.set_draw_handler(draw)
 

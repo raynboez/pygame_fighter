@@ -26,3 +26,4 @@ TODO
 -menu.py (rework _init_.py)
 -SpriteSelect.py
 -user manual
+-Sprite files (Character sprites, fireball, background)

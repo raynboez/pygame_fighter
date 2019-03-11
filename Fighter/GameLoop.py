@@ -8,6 +8,7 @@ from Fighter.Character import Character
 from Fighter.Keyboard import Keyboard
 from Fighter.Interaction import Interaction
 from Fighter.Vector import Vector
+from Fighter.Wall import Wall
 
 CANVAS_WIDTH = 500
 CANVAS_HEIGHT = 500
@@ -20,51 +21,43 @@ def init():
 
 def draw(canvas):
     interactions.update()
-    for player in players:
-        player.draw(canvas)
+    player1.draw(canvas, player2)
+    player2.draw(canvas, player1)
     platform_top.draw(canvas)
     platform_bottom.draw(canvas)
-
+    walla.draw(canvas)
+    wallb.draw(canvas)
 
 
 
 
 
 kbd = Keyboard()
+
 player1Sprite = Sprite(".\\Sprites\\PlaceHolder.png", 180, 350, 7, 6, (100, 300), 1)##TODO
 player2Sprite = Sprite(".\\Sprites\\PlaceHolder.png", 180, 350, 7, 6, (400, 300), 1)##TODO
 player1 = Character(player1Sprite, Vector(100, 300), Vector(0,0), 1, 'right')
-player2 = Character(player2Sprite, Vector(400, 300), Vector(0,0),2, 'left')
+player2 = Character(player2Sprite, Vector(400, 300), Vector(0,0), 2, 'left')
 platform_top = Platform(CANVAS_WIDTH, 50, 10, 'Grey')
 platform_bottom = Platform(CANVAS_WIDTH, 400, 10, 'Grey')
-
-players = [player1, player2]
+walla = Wall(CANVAS_WIDTH, CANVAS_HEIGHT, 10, 'Red')
+wallb = Wall(0, CANVAS_HEIGHT, 10, 'Red')
 interactions = Interaction(kbd)
 interactions.addCharacter(player1)
 interactions.addCharacter(player2)
-interactions.addPlatform(platform_top)
 interactions.addPlatform(platform_bottom)
+interactions.addWall(walla)
+interactions.addWall(wallb)
 
 frame = simplegui.create_frame(NAME, CANVAS_WIDTH, CANVAS_HEIGHT)
 frame.set_draw_handler(draw)
-# frame.set_keydown_handler(kbd.keydown)#todo
-# frame.set_keyup_handler(kbd.keyup)#todo
-
+frame.set_keydown_handler(kbd.key_down)
+frame.set_keyup_handler(kbd.key_up)
 #TODO
-#keyboard stuff
-#   2 keyboards - 1 for wasd, one for arrow keys?
-#   left, right, up, down, attack, fire
-#
-#resources
-#   generic class, used for lives, health, energy
-#
-#
-#
-#sprites
-#
 #platform interactions
-#   gravity
-#   jumping
+#   #   jumping - stop acceleration
+#   double jump
+#   edge of screen
 #
 #hitboxes
 #   seperate hurtbox and hitbox

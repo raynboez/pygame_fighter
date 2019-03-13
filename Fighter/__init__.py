@@ -5,6 +5,11 @@ try:
 except ImportError:
     import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
 
+############################################################
+#
+#   run this class to play the game
+#
+############################################################
 
 def main():
     GameLoop.init()

@@ -1,20 +1,29 @@
 class Resource:
-    def __init__(self, num, max):
+    def __init__(self, num, maximum):
+        #current stored value
         self.value = num
+        #initial value (0 for energy, 100 for health etc
         self.origin = num
-        self.max = max
+        #maximum possible value
+        self.max = maximum
 
+    #decrease resource with limits
     def remove(self, num):
         self.value-=num
+        if self.value < 0:
+            self.value = 0
 
+    #increase resource with limits
     def add(self,num):
         self.value+=num
-        if(self.value > self.max):
+        if self.value > self.max:
             self.value = self.max
 
+    #reset resource to original value
     def restore(self):
         self.value = self.origin
 
+    #can be used later to draw health bars, energy bars etc
     def draw(self, canvas, player):
        pass
        # current_percent = ( self.value / self.max ) * 100

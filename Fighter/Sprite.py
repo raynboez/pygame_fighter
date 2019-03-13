@@ -5,6 +5,8 @@ except ImportError:
 
 
 class Sprite:
+
+    #initialises sprite from local path, with spritesheet height and width, number of rows and columns, destination and size
     def __init__(self, path, width, height, rows, columns, destination, scale):
         self.img = simplegui._load_local_image(path)
         self.spriteDim = [(width / columns), height / rows]
@@ -14,16 +16,17 @@ class Sprite:
         self.rows = rows
         self.frameIndex = [0, 0]
 
-
+    #sets destination of sprite (used in character class to update position
     def setDest(self, dest):
         self.dest = dest
 
-
+    #moves to nextSprite
     def nextSprite(self):
         self.frameIndex[0] = (self.frameIndex[0] + 1) % self.columns
         if self.frameIndex[0] == 0:
             self.frameIndex[1] = (self.frameIndex[1] + 1) % self.rows
 
+    #draws sprite on canvas
     def draw(self, canvas):
         canvas.draw_image(self.img,
                                    (self.spriteDim[0] * self.frameIndex[0] + self.spriteDim[0] / 2,
@@ -33,6 +36,7 @@ class Sprite:
                                     self.scale
                                    )
 
+    #draws sprite and cycles to next
     def update(self, canvas):
         self.draw(canvas)
         self.nextSprite()

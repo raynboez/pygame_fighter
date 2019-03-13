@@ -61,6 +61,8 @@ interactions.addWall(wallb)
 
 #sets bounds for frame and sets handlers
 frame = simplegui.create_frame(NAME, CANVAS_WIDTH, CANVAS_HEIGHT)
+frame.set_canvas_background('rgba(0, 200, 200, 0.3)')
+
 frame.set_draw_handler(draw)
 frame.set_keydown_handler(kbd.key_down)
 frame.set_keyup_handler(kbd.key_up)

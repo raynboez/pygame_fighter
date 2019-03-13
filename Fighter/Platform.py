@@ -1,5 +1,5 @@
 class Platform:
-    #initialise platform with y-placement, width and colour
+    #initialise platform with length, y-placement, width and colour
     def __init__(self, canvas_width, desired_height, line_width, colour):
         self.width = canvas_width
         self.y_pos = desired_height
@@ -15,6 +15,10 @@ class Platform:
     #checks if a character is touching a platform
     def touch(self, character):
         return (character.feet >= self.edge_top)
+
+        #########################################################################
+        #Implement multiple smaller platforms above? must have hitboxes for edge#
+        #########################################################################
         # hit_bottom = (character.head <= self.edge_bottom)
         # if hit_top:
         #     return True

@@ -5,6 +5,8 @@ except ImportError:
 
 
 class Keyboard:
+
+    #uses boolean arrays for inputs - [0] is for p1, [1] is for p2
     def __init__(self):
         self.right = [False,False]
         self.left = [False,False]
@@ -12,21 +14,33 @@ class Keyboard:
         self.down = [False,False]
         self.attack = [False,False]
         self.fire = [False,False]
+        #binds [0]-[5] are p1 bindings, [6]-[11] are p2 bindings
+
         self.key_binds = ['w','a','s','d','q','e','i','j','k','l','u','o']
 
+    #key down handler, sets booleans on keypress
     def key_down(self, key):
+        #player 1
         if key == simplegui.KEY_MAP[self.key_binds[3]]:
+            #if 'd', go right
             self.right[0] = True
         if key == simplegui.KEY_MAP[self.key_binds[1]]:
+            #if 'a', go left
             self.left[0] = True
         if key == simplegui.KEY_MAP[self.key_binds[0]]:
+            #if 'w', jump
             self.up[0] = True
         if key == simplegui.KEY_MAP[self.key_binds[2]]:
+            #if 's', block
             self.down[0] = True
         if key == simplegui.KEY_MAP[self.key_binds[5]]:
+            #if 'e', attack
             self.attack[0] = True
         if key == simplegui.KEY_MAP[self.key_binds[4]]:
+            #if 'q', fire
             self.fire[0] = True
+
+        ##repeated for player 2
         if key == simplegui.KEY_MAP[self.key_binds[9]]:
             self.right[1] = True
         if key == simplegui.KEY_MAP[self.key_binds[7]]:
@@ -40,7 +54,9 @@ class Keyboard:
         if key == simplegui.KEY_MAP[self.key_binds[10]]:
             self.fire[1] = True
 
+    #key up handler, same principle as key_down
     def key_up(self, key):
+        #player 1
         if key == simplegui.KEY_MAP[self.key_binds[3]]:
             self.right[0] = False
         if key == simplegui.KEY_MAP[self.key_binds[1]]:
@@ -53,6 +69,7 @@ class Keyboard:
             self.attack[0] = False
         if key == simplegui.KEY_MAP[self.key_binds[4]]:
             self.fire[0] = False
+        #player 2
         if key == simplegui.KEY_MAP[self.key_binds[9]]:
             self.right[1] = False
         if key == simplegui.KEY_MAP[self.key_binds[7]]:

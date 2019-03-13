@@ -21,11 +21,11 @@ class Vector:
     def __ne__(self, other):
         return not self.__eq__(other)
 
-     #  Returns Y property of vector
+     #  Returns Y component of vector
     def getY(self):
         return self.y
 
-    #   returns x property of vector
+    #   returns x component of vector
     def getX(self):
         return self.x
 

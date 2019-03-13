@@ -197,9 +197,6 @@ class Character:
                            1,
                            'Blue')
 
-        self.energy.draw(canvas)
-
-        #Pass it character number
-
-
+        self.energy.draw(canvas, self.p_number, 'Yellow')
+        self.health.draw(canvas, self.p_number, 'Blue')
 

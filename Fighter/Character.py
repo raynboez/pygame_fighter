@@ -11,7 +11,8 @@ class Character:
         self.p_number = player_number
 
         ##these numbers need balancing
-        self.energy = Resource(0, 20)#TODO
+        self.energy = Resource(0, 100)#TODO
+        self.energycounter = 0
         self.health = Resource(100, 100)#TODO
         self.lives = Resource(3, 3)#TODO
 
@@ -168,7 +169,11 @@ class Character:
         self.jumpTime = 0
 
     def update(self):
-        self.energy.add(1)
+
+        if(self.energycounter % 5 == 0):
+            self.energy.add(1)
+        self.energycounter+=1
+
         if self.jumping and self.jumpTime < 5: #jumptime used to calculate height
             self.vel.add(Vector(0,-.6))
             self.jumpTime += 1
@@ -192,4 +197,6 @@ class Character:
                            1,
                            'Blue')
 
+        self.energy.draw(canvas, self.p_number, 'Yellow')
+        self.health.draw(canvas, self.p_number, 'Blue')
 

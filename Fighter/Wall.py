@@ -16,6 +16,4 @@ class Wall:
         if character.right_edge > self.lEdge and character.right_edge < self.rEdge:
             return 'right'
 
-    #draws wall
-    def draw(self, canvas):
-        canvas.draw_line((self.x, 0), (self.x, self.y), self.line_width, self.colour )
+   

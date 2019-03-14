@@ -30,8 +30,7 @@ def draw(canvas):
     #draws platforms (platform_top has no interaction state)
     platform_top.draw(canvas)
     platform_bottom.draw(canvas)
-    walla.draw(canvas)
-    wallb.draw(canvas)
+
 
 
 

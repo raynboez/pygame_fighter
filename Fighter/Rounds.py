@@ -3,15 +3,15 @@ try:
 except ImportError:
         import SimpleGUICS2Pygame as simplegui
 
-from Fighter.Resources import Resources
+from Fighter import Resource
 from Fighter import Vector
+from Fighter import Spritelives
 
 
 class Rounds:
     player1_start = Vector() #TODO
     player2_start = Vector()
     text_pos = 150,100
-    player.lives
 
     def __init__(self, player1, player2):
         global player1_start, player2_start
@@ -26,10 +26,11 @@ class Rounds:
         if (self.gameend == True):
             canvas.draw_text(text, text_pos, 12, 'Blue')
 
-    def lifedraw(self, canvas, player.lives):
-        if (player == player1):
+    def lifedraw(self, canvas, player):
+        if (player == 1):
+            Spritelives() ## get the method here
             canvas.draw_image(image, center_source, width_height_source, center_dest, width_height_dest)
-        else:
+        if (player ==2):
             canvas.draw_image(image, center_source, width_height_source, center_dest, width_height_dest)
 
 

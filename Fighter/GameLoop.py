@@ -30,6 +30,7 @@ def draw(canvas):
     platform_bottom.draw(canvas)
     walla.draw(canvas)
     wallb.draw(canvas)
+    #background.draw(canvas)
 
 
 

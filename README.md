@@ -1,13 +1,5 @@
 # pygame_fighter
 
-Create sprites, tie to moves
-  - Ben and Toby
-  
-Resource and round management
-  - Chris and Tayma
-  
-Sprite select
-  - Jed
 
 COMPLETED THINGS
 -Interaction.py 
@@ -20,6 +12,7 @@ COMPLETED THINGS
 -Fireball.py
 
 TODO
+rounds
  -Sprite.py - needs animation frame data
  -menu.py (rework _init_.py and encompass gameloop)
 -SpriteSelect.py

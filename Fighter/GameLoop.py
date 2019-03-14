@@ -9,6 +9,7 @@ from Fighter.Keyboard import Keyboard
 from Fighter.Interaction import Interaction
 from Fighter.Vector import Vector
 from Fighter.Wall import Wall
+from Fighter.Background import Background
 
 CANVAS_WIDTH = 500
 CANVAS_HEIGHT = 500
@@ -21,6 +22,7 @@ def init():
 #main draw handler, updates all interactions and then draws objects on frame
 def draw(canvas):
     interactions.update()
+    background.draw(canvas)
     #fireball drawing done in character draw
     player1.draw(canvas, player2)
     player2.draw(canvas, player1)
@@ -30,10 +32,10 @@ def draw(canvas):
     platform_bottom.draw(canvas)
     walla.draw(canvas)
     wallb.draw(canvas)
-    #background.draw(canvas)
 
 
 
+background = Background()
 
 #initialises a keyboard
 kbd = Keyboard()

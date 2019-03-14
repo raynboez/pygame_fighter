@@ -10,20 +10,18 @@ Sprite select
   - Jed
 
 COMPLETED THINGS
--Sprite.py (maybe)
 -Interaction.py 
 -Vector.py
 -Setup.py
-
-IN PROGRESS
 -Character.py
 -GameLoop.py
 -Resource.py
 -Platform.py
--Fireball.py (untested)
+-Fireball.py
 
 TODO
--menu.py (rework _init_.py)
+ -Sprite.py - needs animation frame data
+ -menu.py (rework _init_.py and encompass gameloop)
 -SpriteSelect.py
 -user manual
 -Sprite files (Character sprites, fireball, background)

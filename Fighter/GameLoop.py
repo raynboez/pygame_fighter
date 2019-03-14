@@ -10,6 +10,7 @@ from Fighter.Interaction import Interaction
 from Fighter.Vector import Vector
 from Fighter.Wall import Wall
 from Fighter.Background import Background
+from Fighter.Spritelives import Spritelives
 
 CANVAS_WIDTH = 500
 CANVAS_HEIGHT = 500
@@ -28,13 +29,14 @@ def draw(canvas):
     player2.draw(canvas, player1)
 
     #draws platforms (platform_top has no interaction state)
-    platform_top.draw(canvas)
+    #qplatform_top.draw(canvas)
     platform_bottom.draw(canvas)
     walla.draw(canvas)
     wallb.draw(canvas)
+    lifebar.draw(canvas)
 
 
-
+lifebar = Spritelives((100, 200), 2)
 background = Background()
 
 #initialises a keyboard

@@ -197,6 +197,6 @@ class Character:
                            1,
                            'Blue')
 
-        self.energy.draw(canvas, self.p_number, 'Yellow')
+        self.energy.draw(canvas, self.p_number, 'Red')
         self.health.draw(canvas, self.p_number, 'Blue')
 

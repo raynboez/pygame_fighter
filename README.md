@@ -31,3 +31,5 @@ TODO
 -SpriteSelect.py
 -user manual
 -Sprite files (Character sprites, fireball, background)
+-Change sprite images location to an image hosting site
+- adjust sprite class to get images from hosting site

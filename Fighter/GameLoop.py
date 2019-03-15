@@ -10,23 +10,43 @@ from Fighter.Interaction import Interaction
 from Fighter.Vector import Vector
 from Fighter.Wall import Wall
 from Fighter.Background import Background
-from Fighter.Spritelives import Spritelives
+from Fighter import Master
+from Fighter.Rounds import Rounds
 
 CANVAS_WIDTH = 500
 CANVAS_HEIGHT = 500
 NAME = 'PLACEHOLDER NAME'
+player1Sprite = Sprite(".\\Sprites\\PlaceHolder.png", 180, 350, 7, 6, (100, 300), 1)  ##TODO
+player2Sprite = Sprite(".\\Sprites\\PlaceHolder.png", 180, 350, 7, 6, (400, 300), 1)  ##TODO
+player1 = Character(player1Sprite, Vector(100, 300), Vector(0, 0), 1, 'right')
+player2 = Character(player2Sprite, Vector(400, 300), Vector(0, 0), 2, 'left')
+round = Rounds(5, player1, player2)
 
 #when GameLoop is called by a class, init starts the frame
 def init():
-    frame.start()
+    print("setting draw handlers")
+    Master.frame.set_draw_handler(draw)
+    Master.frame.set_canvas_background('rgba(0, 200, 200, 0.3)')
+
+    Master.frame.set_keydown_handler(kbd.key_down)
+    Master.frame.set_keyup_handler(kbd.key_up)
+
+    #display main menu
+    #
+    print("starting round")
+    round.start()
+    Master.frame.start()
+
 
 #main draw handler, updates all interactions and then draws objects on frame
 def draw(canvas):
-    interactions.update()
+
+    interactions.update(round)
     background.draw(canvas)
     #fireball drawing done in character draw
     player1.draw(canvas, player2)
     player2.draw(canvas, player1)
+
 
     #draws platforms (platform_top has no interaction state)
     #qplatform_top.draw(canvas)
@@ -40,12 +60,10 @@ background = Background()
 kbd = Keyboard()
 
 #spritesheets will go here
-player1Sprite = Sprite(".\\Sprites\\PlaceHolder.png", 180, 350, 7, 6, (100, 300), 1)##TODO
-player2Sprite = Sprite(".\\Sprites\\PlaceHolder.png", 180, 350, 7, 6, (400, 300), 1)##TODO
-
 #creating the characters - created above platform, then fall to platform
-player1 = Character(player1Sprite, Vector(100, 300), Vector(0,0), 1, 'right')
-player2 = Character(player2Sprite, Vector(400, 300), Vector(0,0), 2, 'left')
+
+
+
 
 #creates platforms and walls
 platform_top = Platform(CANVAS_WIDTH, 50, 10, 'Grey')
@@ -62,12 +80,6 @@ interactions.addWall(walla)
 interactions.addWall(wallb)
 
 #sets bounds for frame and sets handlers
-frame = simplegui.create_frame(NAME, CANVAS_WIDTH, CANVAS_HEIGHT)
-frame.set_canvas_background('rgba(0, 200, 200, 0.3)')
-
-frame.set_draw_handler(draw)
-frame.set_keydown_handler(kbd.key_down)
-frame.set_keyup_handler(kbd.key_up)
 
 
 #TODO

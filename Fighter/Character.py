@@ -175,7 +175,6 @@ class Character:
         self.jumpTime = 0
 
     def update(self):
-        print(self.punch_ready)
         if(self.energycounter % 5 == 0):
             self.energy.add(1)
         self.energycounter+=1
@@ -209,8 +208,8 @@ class Character:
                            (self.sprite.spriteDim[0] /2),
                            1,
                            'Blue')
-        self.energy.draw(canvas, self.p_number, 'Red')
-        self.health.draw(canvas, self.p_number, 'Blue')
+        self.energy.draw(canvas, self.p_number, 'Blue')
+        self.health.draw(canvas, self.p_number, 'Red')
 
         #Pass it character number
 

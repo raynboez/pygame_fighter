@@ -29,7 +29,7 @@ def draw(canvas):
     player2.draw(canvas, player1)
 
     #draws platforms (platform_top has no interaction state)
-    #qplatform_top.draw(canvas)
+    platform_top.draw(canvas)
     platform_bottom.draw(canvas)
     walla.draw(canvas)
     wallb.draw(canvas)

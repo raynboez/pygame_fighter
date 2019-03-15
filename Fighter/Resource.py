@@ -25,18 +25,14 @@ class Resource:
     #can be used later to draw health bars, energy bars etc
 
     def draw(self, canvas, playernumber, colour):
-        if(colour == 'Yellow'):
-            if (playernumber == 1):
-                canvas.draw_line((10, 450), (self.value*2+10, 450), 5, colour)
-                print(self.value)
-            if(playernumber == 2):
-                canvas.draw_line((500-10, 450), (500-(self.value*2+10), 450), 5, colour)
-                print(self.value)
-
         if(colour == 'Blue'):
             if (playernumber == 1):
+                canvas.draw_line((10, 450), (self.value*2+10, 450), 5, colour)
+            if(playernumber == 2):
+                canvas.draw_line((500-10, 450), (500-(self.value*2+10), 450), 5, colour)
+
+        if(colour == 'Red'):
+            if (playernumber == 1):
                 canvas.draw_line((10, 460), (self.value*2+10, 460), 5, colour)
-                print(self.value)
             if(playernumber == 2):
                 canvas.draw_line((500-10, 460), (500-(self.value*2+10), 460), 5, colour)
-                print(self.value)

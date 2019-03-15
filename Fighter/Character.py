@@ -24,6 +24,9 @@ class Character:
         self.jumping = False
         self.jumpTime = 0
         self.fireball_ready = True
+        self.punch_cooldown = 0
+        self.punch_cooldown_max = 30
+        self.punch_ready = True
 
         #creates a fireball object bound to this character
         self.fireBall = Fireball(self, self.facing)
@@ -92,8 +95,6 @@ class Character:
     def check_hit(self, other):
         xcoord = other.x
         ycoord = other.y
-        #print(xcoord)
-        #print(ycoord)
         if self.left_edge <= xcoord:
             if xcoord <= self.right_edge:
                 if self.head <= ycoord:
@@ -106,18 +107,23 @@ class Character:
 
     #attack method
     def punch(self, other):
-        if self.jumping:
-            #use jump_kick method instead
-            self.jump_kick(other)
-        else:
-            if self.facing == 'left':
-                #punch left (change distance - currently 5 pixels
-                fist = Vector(self.left_edge - 5, self.pos.getY())
+        if self.punch_ready:
+            self.punch_ready = False
+            self.punch_cooldown = self.punch_cooldown_max
+            if self.jumping:
+                #use jump_kick method instead
+                self.jump_kick(other)
             else:
-                #punch right
-                fist = Vector(self.right_edge + 5, self.pos.getY())
-            if other.check_hit(fist):
-                other.hit(10)
+                if self.facing == 'left':
+                    #punch left (change distance - currently 5 pixels
+                    fist = Vector(self.left_edge - 5, self.pos.getY())
+                else:
+                    #punch right
+                    fist = Vector(self.right_edge + 5, self.pos.getY())
+                if other.check_hit(fist):
+                    other.hit(10)
+
+
 
     #attack when jumping
     def jump_kick(self, other):
@@ -169,10 +175,16 @@ class Character:
         self.jumpTime = 0
 
     def update(self):
-
         if(self.energycounter % 5 == 0):
             self.energy.add(1)
         self.energycounter+=1
+        if not self.punch_ready:
+            if self.punch_cooldown == 0:
+                self.punch_ready = True
+            else:
+                self.punch_cooldown-= 1
+
+
 
         if self.jumping and self.jumpTime < 5: #jumptime used to calculate height
             self.vel.add(Vector(0,-.6))
@@ -196,7 +208,6 @@ class Character:
                            (self.sprite.spriteDim[0] /2),
                            1,
                            'Blue')
-
-        self.energy.draw(canvas, self.p_number, 'Yellow')
-        self.health.draw(canvas, self.p_number, 'Blue')
+        self.energy.draw(canvas, self.p_number, 'Blue')
+        self.health.draw(canvas, self.p_number, 'Red')
 

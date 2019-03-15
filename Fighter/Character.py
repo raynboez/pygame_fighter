@@ -1,6 +1,7 @@
 from Fighter.Vector import Vector
 from Fighter.Resource import Resource
 from Fighter.Fireball import Fireball
+from Fighter.Spritelives import Spritelives
 
 GRAVITY = Vector(0, 0.4)
 class Character:
@@ -9,12 +10,15 @@ class Character:
         self.pos = start_position
         self.vel = vel
         self.p_number = player_number
-
         ##these numbers need balancing
         self.energy = Resource(0, 100)#TODO
         self.energycounter = 0
         self.health = Resource(100, 100)#TODO
         self.lives = Resource(3, 3)#TODO
+        lifespritex = 350
+        if self.p_number == 1:
+            lifespritex = 150
+        self.lifeSprite = Spritelives((lifespritex, 485), self.lives.value)
 
         #used in calculations for punches and fireballs
         self.facing = facing
@@ -210,4 +214,5 @@ class Character:
                            'Blue')
         self.energy.draw(canvas, self.p_number, 'Blue')
         self.health.draw(canvas, self.p_number, 'Red')
+        self.lifeSprite.draw(canvas)
 

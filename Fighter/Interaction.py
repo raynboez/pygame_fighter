@@ -1,6 +1,5 @@
 from Fighter.Vector import Vector
 
-
 class Interaction:
     #initialises interaction class with 3 arrays (so the objects can be addressed iteratively) and a keyboard
     def __init__(self, keyboard):
@@ -50,7 +49,7 @@ class Interaction:
 
 
 
-    def update(self):
+    def update(self, round):
         #updates the movements for both caharacter
         self.movements(self.characters[0], self.characters[1], 0)
         self.movements(self.characters[1], self.characters[0], 1)
@@ -73,8 +72,12 @@ class Interaction:
                     #stops falling on collision with platform
                     character.stop_fall()
                 else:
-                    #falls
+                    #fall
                     character.fall()
-
-
+                if character.pos.getY() > platform.edge_top:
+                    character.pos = Vector(character.pos.getX(),
+                                           platform.edge_top - (character.sprite.spriteDim[1] / 2))
+        for character in self.characters:
+            if character.dead:
+                round.over(character)
 

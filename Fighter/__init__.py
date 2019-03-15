@@ -1,5 +1,4 @@
-from Fighter.Platform import Platform
-from Fighter import GameLoop
+from Fighter import Master
 try:
     import simplegui
 except ImportError:
@@ -11,8 +10,10 @@ except ImportError:
 #
 ############################################################
 
+
 def main():
-    GameLoop.init()
+    print("running master")
+    Master.runGame()
 
 
 if __name__ == '__main__':

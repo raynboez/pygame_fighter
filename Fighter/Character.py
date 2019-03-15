@@ -13,13 +13,14 @@ class Character:
         self.startpos = start_position
         self.startvel = vel
         self.newLife()
-
+        self.dead = False
         self.p_number = player_number
         ##these numbers need balancing
-        lifespritex = 350
+        self.lives = Resource(3,3)
+        self.lifespritex = 350
         if self.p_number == 1:
-            lifespritex = 150
-        self.lifeSprite = Spritelives((lifespritex, 485), self.lives.value)
+            self.lifespritex = 150
+        self.lifeSprite = Spritelives((self.lifespritex, 485), self.lives.value)
         #used in calculations for punches and fireballs
         self.facing = facing
 
@@ -41,9 +42,6 @@ class Character:
         self.left_edge = self.getLeftEdge()
         self.right_edge = self.getRightEdge()
 
-
-    def setLives(self, lives):
-        self.lives = Resource(lives, lives)
 
     #These methods define the bounds of the hurtbox, uses dimensions of sprite, subject to change
     def update_boundaries(self):
@@ -89,7 +87,8 @@ class Character:
     #method to kill character (needs to be extended to incorporate round system
     def die(self):
         self.lives.remove(1)
-        Rounds.over()
+
+        self.dead = True
 
     def newLife(self):
         self.energy = Resource(0, 100)#TODO
@@ -97,6 +96,7 @@ class Character:
         self.health = Resource(100, 100)#TODO
         self.pos = self.startpos
         self.vel = self.startvel
+        self.dead = False
 
     #checks whether self is hit by other
     def check_hit(self, other):

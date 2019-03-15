@@ -11,6 +11,7 @@ frame = simplegui.create_frame("NAME", 500, 500)
 def runGame():
     #menu()
     #SpriteSelect()
+    print("running gameloop")
     gameLoop()
 
 

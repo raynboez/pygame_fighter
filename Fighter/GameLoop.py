@@ -31,12 +31,9 @@ def draw(canvas):
     #draws platforms (platform_top has no interaction state)
     #qplatform_top.draw(canvas)
     platform_bottom.draw(canvas)
-    walla.draw(canvas)
-    wallb.draw(canvas)
-    lifebar.draw(canvas)
 
 
-lifebar = Spritelives((100, 200), 2)
+
 background = Background()
 
 #initialises a keyboard

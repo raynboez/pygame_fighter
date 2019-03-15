@@ -17,14 +17,3 @@ class Spritelives:
     def draw(self, canvas):
          canvas.draw_image(self.image, ((self.center[0] * self.lives), self.center[1]), (self.window[0]*self.lives, self.window[1]), self.pos, (self.window[0]*self.lives, self.window[1]))
 
-
-sprite1 = Spritelives((100, 200), 3)
-
-
-def draw(canvas):
-    sprite1.draw(canvas)
-
-frame = simplegui.create_frame("Lives", 500, 500)
-#frame.set_canvas_background('#0000ff')
-frame.set_draw_handler(draw)
-frame.start()

@@ -4,7 +4,8 @@ Create sprites, tie to moves
   - Ben and Toby
   
 Resource and round management
-  - Chris and Tayma
+  - Chris and Tayma (also background)
+ 
   
 Sprite select
   - Jed
@@ -14,6 +15,7 @@ COMPLETED THINGS
 -Interaction.py 
 -Vector.py
 -Setup.py
+-Spritelives.py
 
 IN PROGRESS
 -Character.py
@@ -21,6 +23,8 @@ IN PROGRESS
 -Resource.py
 -Platform.py
 -Fireball.py (untested)
+-Rounds.py
+-Background.py
 
 TODO
 -menu.py (rework _init_.py)

@@ -16,6 +16,10 @@ class Spritelives:
         self.center = [self.window[0]/2, self.window[1]/2]
         self.lives = lives
 
+    def update(self, lives, canvas):
+        self.lives = lives
+        self.draw(canvas)
+
     def draw(self, canvas):
          canvas.draw_image(self.image, ((self.center[0] * self.lives), self.center[1]), (self.window[0]*self.lives, self.window[1]), self.pos, (self.window[0]*self.lives, self.window[1]))
 

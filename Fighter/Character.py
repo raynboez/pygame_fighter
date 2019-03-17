@@ -203,6 +203,7 @@ class Character:
     def draw(self, canvas, enemy):
         self.fireBall.update(canvas, enemy)
         self.update()
+        self.lifeSprite.update(self.lives.value, canvas)
         #moves sprite
         self.sprite.setDest(self.pos.getP())
         self.sprite.update(canvas)
@@ -213,7 +214,7 @@ class Character:
                            'Blue')
         self.energy.draw(canvas, self.p_number, 'Blue')
         self.health.draw(canvas, self.p_number, 'Red')
-        self.lifeSprite.draw(canvas)
+
 
         #Pass it character number
 

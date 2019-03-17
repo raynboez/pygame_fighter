@@ -8,7 +8,7 @@ class Sprite:
 
     #initialises sprite from local path, with spritesheet height and width, number of rows and columns, destination and size
     def __init__(self, path, width, height, rows, columns, destination, scale):
-        self.img = simplegui._load_local_image(path)
+        self.img = simplegui.load_image(path)
         self.spriteDim = [(width / columns), height / rows]
         self.dest = destination
         self.scale = (self.spriteDim[0] * scale, self.spriteDim[1] * scale)

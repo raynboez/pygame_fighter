@@ -191,13 +191,9 @@ class Character:
             else:
                 self.punch_cooldown-= 1
 
-
-
         if self.jumping and self.jumpTime < 5: #jumptime used to calculate height
-            self.vel.add(Vector(0,-.6))
+            self.vel.add(Vector(0,-.5))
             self.jumpTime += 1
-        elif not self.jumping and self.jumpTime >= 5: #makes sure there is no y movement if not jumping
-            self.vel = Vector(self.vel.getX(), 0)
 
         #moves self and updates boundaries based on movement
         self.move()

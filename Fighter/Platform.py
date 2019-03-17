@@ -5,8 +5,8 @@ class Platform:
         self.y_pos = desired_height
         self.colour = colour
         self.line_width = line_width
-        self.edge_top = desired_height - line_width
-        self.edge_bottom = desired_height + line_width
+        self.edge_top = desired_height - (line_width / 2) + 1
+        self.edge_bottom = desired_height + (line_width / 2) - 1
 
     #draw line on canvas
     def draw(self, canvas):

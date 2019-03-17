@@ -74,7 +74,9 @@ class Interaction:
                 else:
                     #fall
                     character.fall()
-                if character.pos.getY() > platform.edge_top:
+                #make sure no character goes under platform
+                if (character.pos.getY() + character.sprite.spriteDim[1] / 2) > platform.edge_top:
+
                     character.pos = Vector(character.pos.getX(),
                                            platform.edge_top - (character.sprite.spriteDim[1] / 2))
         for character in self.characters:

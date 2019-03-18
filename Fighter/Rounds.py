@@ -12,7 +12,6 @@ class Rounds:
         self.maxrounds = maxrounds
 
     def start(self):
-        print("round")
         self.roundNum = 1
 
     def over(self, character):

@@ -24,7 +24,6 @@ round = Rounds(5, player1, player2)
 
 #when GameLoop is called by a class, init starts the frame
 def init():
-    print("setting draw handlers")
     Master.frame.set_draw_handler(draw)
     Master.frame.set_canvas_background('rgba(0, 200, 200, 0.3)')
 
@@ -33,7 +32,6 @@ def init():
 
     #display main menu
     #
-    print("starting round")
     round.start()
     Master.frame.start()
 

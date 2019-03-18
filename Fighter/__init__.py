@@ -12,7 +12,6 @@ except ImportError:
 
 
 def main():
-    print("running master")
     Master.runGame()
 
 

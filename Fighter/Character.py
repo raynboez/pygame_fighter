@@ -2,16 +2,26 @@ from Fighter.Vector import Vector
 from Fighter.Resource import Resource
 from Fighter.Fireball import Fireball
 from Fighter.Spritelives import Spritelives
-from Fighter import Rounds
 
 GRAVITY = Vector(0, 0.4)
 
+##################################
+# Sprite states needed (and where state change occurs):
+#   -IDLE       ---default
+#   -WALKING    ---move & not jumping (boolean check?)
+#   -JUMPING    --- jump
+#   -PUNCH      --- punch
+#   -JUMP KICK  --- jumpkick
+#   -FIRE PROJECTILE    ---fire
+#   -HIT    ---CHECKHIT
+#   -DEATH  ---die
+##################################
 
 class Character:
-    def __init__(self, sprite, start_position, vel, player_number, facing):
+    def __init__(self, sprite, start_position, player_number, facing):
         self.sprite = sprite
         self.startpos = start_position
-        self.startvel = vel
+        self.startvel = Vector()
         self.newLife()
         self.dead = False
         self.p_number = player_number
@@ -182,7 +192,7 @@ class Character:
         self.jumpTime = 0
 
     def update(self):
-        if(self.energycounter % 5 == 0):
+        if(self.energycounter % 5 == 0): #increases energy at a steady rate - can be adjusted
             self.energy.add(1)
         self.energycounter+=1
         if not self.punch_ready:
@@ -207,7 +217,7 @@ class Character:
         #moves sprite
         self.sprite.setDest(self.pos.getP())
         self.sprite.update(canvas)
-        #circle used as placeholder marker
+        #circle used as placeholder marker - to be removed
         canvas.draw_circle(self.pos.getP(),
                            (self.sprite.spriteDim[0] /2),
                            1,

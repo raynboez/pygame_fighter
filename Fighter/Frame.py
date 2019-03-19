@@ -2,7 +2,7 @@ try:
     import simplegui
 except ImportError:
     import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
-from Fighter.Keyboard import Keyboard
+
 class Frame:
 
     def __init__(self, NAME, CANVAS_WIDTH, CANVAS_HEIGHT):

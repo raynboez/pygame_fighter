@@ -17,9 +17,9 @@ CANVAS_WIDTH = 500
 CANVAS_HEIGHT = 500
 
 player1Sprite = Sprite("https://i.ibb.co/vqQr5QQ/Place-Holder.png", 180, 350, 7, 6, (100, 300), 1)  ##TODO
-player2Sprite = Sprite("https://i.ibb.co/vqQr5QQ/Place-Holder.png", 180, 350, 7, 6, (400, 300), 1)  ##TODO
-player1 = Character(player1Sprite, Vector(100, 300), Vector(0, 0), 1, 'right')
-player2 = Character(player2Sprite, Vector(400, 300), Vector(0, 0), 2, 'left')
+player2Sprite = Sprite("https://i.ibb.co/vqQr5QQ/Place-Holder.png", 180, 350, 7, 6, (400, 300), 1)  ##Get Sprite sheets
+player1 = Character(player1Sprite, Vector(100, 300), 1, 'right')
+player2 = Character(player2Sprite, Vector(400, 300), 2, 'left')
 round = Rounds(player1, player2)
 
 #when GameLoop is called by a class, init starts the frame
@@ -41,28 +41,15 @@ def draw(canvas):
 
     interactions.update(round)
     background.draw(canvas)
-    #fireball drawing done in character draw
-    player1.draw(canvas, player2)
+    player1.draw(canvas, player2)   #fireball drawing done in character draw
     player2.draw(canvas, player1)
-
-
-    #draws platforms
     platform_bottom.draw(canvas)
-
-
-
-background = Background()
 
 #initialises a keyboard
 kbd = Keyboard()
 
-#spritesheets will go here
-#creating the characters - created above platform, then fall to platform
-
-
-
-
-#creates platforms and walls
+#creates arena with background
+background = Background()
 platform_bottom = Platform(CANVAS_WIDTH, 400, 10, 'Grey')
 walla = Wall(CANVAS_WIDTH, CANVAS_HEIGHT, 10, 'Red')
 wallb = Wall(0, CANVAS_HEIGHT, 10, 'Red')
@@ -75,25 +62,15 @@ interactions.addPlatform(platform_bottom)
 interactions.addWall(walla)
 interactions.addWall(wallb)
 
-#sets bounds for frame and sets handlers
 
-
-#TODO
-#platform interactions
-#   #   jumping - stop acceleration
-#   double jump
-#   edge of screen
+#TODO list
 #
 #hitboxes
-#   seperate hurtbox and hitbox
+#   adjust punch and kick hitbox
 #
 #player collisions
-#   players not drawn over each other
+#   players not drawn over each other?
 #
-#punch cooldown
-#   timer based(can only punch once every half second)
-#   timer starts when punch thrown
-#   need to set up game timer
 #
 #knockback on punch?
 #   player being hit moves back a little
@@ -101,3 +78,4 @@ interactions.addWall(wallb)
 #knockback on kick
 #   player being kicked moves back more
 #   player doing kicking recoils
+#

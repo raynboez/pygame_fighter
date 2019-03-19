@@ -2,14 +2,14 @@ from Fighter.Sprite import Sprite
 from Fighter.Vector import Vector
 class Fireball:
     #initialises fireball with a player and a direction
-    #if fireball is not being fired, it is stored off canvas
+    #if fireball is not being fired, it is stored off canvas (-100,-100)
 
     def __init__(self, player, direction):
         self.character = player
         self.stoppedPos = Vector(-100, -100) #off canvas
         self.pos = self.stoppedPos
         self.direction = direction
-        self.sprite = self.set_sprite() # gets correct sprite
+        #self.sprite = self.set_sprite() # gets correct sprite
         self.vel = Vector()
 
     #sets velocity depending on direction
@@ -27,7 +27,8 @@ class Fireball:
     #fires a fireball from a position
     def shoot(self, starting, direction):
         self.pos = starting
-        self.vel = self.setvel(direction, 10)
+        self.direction = direction
+        self.vel = self.setvel(self.direction, 10)
         self.character.fireball_ready = False
 
     #stops fireball once a limit is reached

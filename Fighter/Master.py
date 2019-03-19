@@ -4,11 +4,12 @@ except ImportError:
     import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
 
 from Fighter import GameLoop
+from Fighter.Frame import Frame
 
-
-frame = simplegui.create_frame("NAME", 500, 500)
+masterframe = Frame("Name", 500, 500)
 
 def runGame():
+
     #menu()
     #SpriteSelect()
     gameLoop()

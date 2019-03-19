@@ -24,16 +24,16 @@ round = Rounds(5, player1, player2)
 
 #when GameLoop is called by a class, init starts the frame
 def init():
-    Master.frame.set_draw_handler(draw)
-    Master.frame.set_canvas_background('rgba(0, 200, 200, 0.3)')
+    Master.masterframe.setDrawHandler(draw)
+    #Master.masterframe.set_canvas_background('rgba(0, 200, 200, 0.3)')
 
-    Master.frame.set_keydown_handler(kbd.key_down)
-    Master.frame.set_keyup_handler(kbd.key_up)
+    Master.masterframe.setKeydownHandler(kbd)
+    Master.masterframe.setKeyupHandler(kbd)
 
     #display main menu
     #
     round.start()
-    Master.frame.start()
+    Master.masterframe.start()
 
 
 #main draw handler, updates all interactions and then draws objects on frame

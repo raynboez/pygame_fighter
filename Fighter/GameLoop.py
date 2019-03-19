@@ -46,8 +46,7 @@ def draw(canvas):
     player2.draw(canvas, player1)
 
 
-    #draws platforms (platform_top has no interaction state)
-    platform_top.draw(canvas)
+    #draws platforms
     platform_bottom.draw(canvas)
 
 
@@ -64,7 +63,6 @@ kbd = Keyboard()
 
 
 #creates platforms and walls
-platform_top = Platform(CANVAS_WIDTH, 50, 10, 'Grey')
 platform_bottom = Platform(CANVAS_WIDTH, 400, 10, 'Grey')
 walla = Wall(CANVAS_WIDTH, CANVAS_HEIGHT, 10, 'Red')
 wallb = Wall(0, CANVAS_HEIGHT, 10, 'Red')

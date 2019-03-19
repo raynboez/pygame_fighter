@@ -47,7 +47,7 @@ class Fireball:
 
     #draws the sprite on the canvas
     def draw(self, canvas):
-        #self.sprite.update(canvas)
+        #self.sprite.update(canvas, self.pos.getP())
         #currently we have no sprite for this, circle used as placeholder
         #simple spritesheet needed, 4 frames to cycle through
         canvas.draw_circle(

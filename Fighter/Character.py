@@ -215,8 +215,8 @@ class Character:
         self.update()
         self.lifeSprite.update(self.lives.value, canvas)
         #moves sprite
-        self.sprite.setDest(self.pos.getP())
-        self.sprite.update(canvas)
+        #self.sprite.setDest(self.pos.getP())
+        self.sprite.update(canvas, self.pos.getP())
         #circle used as placeholder marker - to be removed
         canvas.draw_circle(self.pos.getP(),
                            (self.sprite.spriteDim[0] /2),

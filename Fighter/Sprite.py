@@ -37,6 +37,7 @@ class Sprite:
                                    )
 
     #draws sprite and cycles to next
-    def update(self, canvas):
+    def update(self, canvas, position):
+        self.setDest(position)
         self.draw(canvas)
         self.nextSprite()

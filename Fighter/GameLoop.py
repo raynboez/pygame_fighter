@@ -15,12 +15,12 @@ from Fighter.Rounds import Rounds
 
 CANVAS_WIDTH = 500
 CANVAS_HEIGHT = 500
-NAME = 'PLACEHOLDER NAME'
+
 player1Sprite = Sprite("https://i.ibb.co/vqQr5QQ/Place-Holder.png", 180, 350, 7, 6, (100, 300), 1)  ##TODO
 player2Sprite = Sprite("https://i.ibb.co/vqQr5QQ/Place-Holder.png", 180, 350, 7, 6, (400, 300), 1)  ##TODO
 player1 = Character(player1Sprite, Vector(100, 300), Vector(0, 0), 1, 'right')
 player2 = Character(player2Sprite, Vector(400, 300), Vector(0, 0), 2, 'left')
-round = Rounds(5, player1, player2)
+round = Rounds(player1, player2)
 
 #when GameLoop is called by a class, init starts the frame
 def init():

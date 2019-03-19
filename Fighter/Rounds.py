@@ -6,10 +6,10 @@ except ImportError:
 
 class Rounds:
 
-    def __init__(self, maxrounds, player1, player2):
+    def __init__(self, player1, player2):
         self.player1 = player1
         self.player2 = player2
-        self.maxrounds = maxrounds
+        #self.maxrounds = maxrounds
 
     def start(self):
         self.roundNum = 1

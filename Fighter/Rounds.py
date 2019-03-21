@@ -12,7 +12,7 @@ class Rounds:
         self.player1 = player1
         self.player2 = player2
         #self.maxrounds = maxrounds
-
+        self.gameEnded = False
     def start(self):
         self.roundNum = 1
 
@@ -32,7 +32,8 @@ class Rounds:
         self.player1.newLife()
         self.player2.newLife()
 
-    def end(self, character):#canvas, text):
+    def end(self, character):
+        self.gameEnded = True
         #print(character.p_number + " has died")
         #canvas.draw_text(text + "has won!", text_pos, 12, 'Blue')
-        quit(1)  #return to main menu
+        #return to main menu

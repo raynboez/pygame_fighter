@@ -43,9 +43,10 @@ def draw(canvas):
     background.draw(canvas)
     player1.draw(canvas, player2)   #fireball drawing done in character draw
     player2.draw(canvas, player1)
-
     platform_bottom.draw(canvas)
-
+    if round.gameEnded:
+        #Master.menu()
+        quit(1)
 #initialises a keyboard
 kbd = Keyboard()
 
@@ -66,17 +67,6 @@ interactions.addWall(wallb)
 
 #TODO list
 #
-#hitboxes
-#   adjust punch and kick hitbox
-#
 #player collisions
 #   players not drawn over each other?
-#
-#
-#knockback on punch?
-#   player being hit moves back a little
-#
-#knockback on kick
-#   player being kicked moves back more
-#   player doing kicking recoils
 #

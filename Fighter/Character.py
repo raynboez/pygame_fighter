@@ -112,9 +112,10 @@ class Character:
 
     #method to kill character (needs to be extended to incorporate round system
     def die(self):
-        self.lives.remove(1)
-        self.setState("die")
-        self.dead = True
+        if not self.dead:
+            self.lives.remove(1)
+            self.setState("die")
+            self.dead = True
 
     def newLife(self):
         self.energy = Resource(0, 100)#TODO

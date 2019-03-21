@@ -11,7 +11,6 @@ masterframe = Frame("Name", 500, 500)
 
 def runGame():
     #menu()
-    #SpriteSelect()
     gameLoop()
 
 #adjust these classes when menu and spriteselect are created - can be used to hand over selections

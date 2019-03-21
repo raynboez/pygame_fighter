@@ -17,6 +17,18 @@ GRAVITY = Vector(0, 0.4)
 #   -DEATH  ---die
 ##################################
 
+states = {
+    "idle" : "interruptable",
+    "walk" : "interruptable",
+    "punch" : "non",
+    "jump"  : "interruptable",
+    "kick"  : "interruptable",
+    "fire" : "non",
+    "hit" : "non",
+    "block" : "non",
+    "die" : "non"
+}
+
 class Character:
     def __init__(self, sprite, start_position, player_number, facing):
         self.sprite = sprite
@@ -33,15 +45,16 @@ class Character:
         self.lifeSprite = Spritelives((self.lifespritex, 485), self.lives.value)
         #used in calculations for punches and fireballs
         self.facing = facing
-
+        self.currentState = "idle"
         #used as states
         self.block = False
         self.jumping = False
         self.jumpTime = 0
         self.fireball_ready = True
         self.punch_cooldown = 0
-        self.punch_cooldown_max = 30
+        self.punch_cooldown_max = 20
         self.punch_ready = True
+        self.stateTimer = 0
 
         #creates a fireball object bound to this character
         self.fireBall = Fireball(self, self.facing)
@@ -61,16 +74,16 @@ class Character:
         self.right_edge = self.getRightEdge()
 
     def getHead(self):
-        return (self.pos.getY() - (self.sprite.spriteDim[1] / 2))
+        return (self.pos.getY() - (self.sprite.scaling * (self.sprite.spriteDim[1] / 2)))
 
     def getFeet(self):
-        return (self.pos.getY() + (self.sprite.spriteDim[1] / 2))
+        return (self.pos.getY() + (self.sprite.scaling * (self.sprite.spriteDim[1] / 2)))
 
     def getLeftEdge(self):
-        return (self.pos.getX() - (self.sprite.spriteDim[0] / 2))
+        return (self.pos.getX() - (self.sprite.scaling * (self.sprite.spriteDim[0] / 2)))
 
     def getRightEdge(self):
-        return (self.pos.getX() + (self.sprite.spriteDim[0] / 2))
+        return (self.pos.getX() + (self.sprite.scaling * (self.sprite.spriteDim[0] / 2)))
 
 
 
@@ -78,11 +91,14 @@ class Character:
     def setfacing(self, other):
         if self.pos.x < other.pos.x:
             self.facing = 'right'
+            self.sprite.setFacing(self.facing)
         else:
             self.facing = 'left'
+        self.sprite.setFacing(self.facing)
 
     #calculates damage when hit, blocking halves the damage
     def hit(self, damage):
+        self.setState("hit")
         if(self.block):
             damage = damage / 2
         self.health.remove(damage)
@@ -97,7 +113,7 @@ class Character:
     #method to kill character (needs to be extended to incorporate round system
     def die(self):
         self.lives.remove(1)
-
+        self.setState("die")
         self.dead = True
 
     def newLife(self):
@@ -112,11 +128,12 @@ class Character:
     def check_hit(self, other):
         xcoord = other.x
         ycoord = other.y
-        if self.left_edge <= xcoord:
-            if xcoord <= self.right_edge:
+        if self.left_edge + 15 <= xcoord:
+            if xcoord <= self.right_edge - 15:
                 if self.head <= ycoord:
                     if ycoord <= self.feet:
                         #character hit
+                        self.setState("hit")
                         return True
         else:
             #missed
@@ -131,12 +148,13 @@ class Character:
                 #use jump_kick method instead
                 self.jump_kick(other)
             else:
+                self.setState("punch")
                 if self.facing == 'left':
                     #punch left (change distance - currently 5 pixels
-                    fist = Vector(self.left_edge - 5, self.pos.getY())
+                    fist = Vector(self.left_edge, self.pos.getY())
                 else:
                     #punch right
-                    fist = Vector(self.right_edge + 5, self.pos.getY())
+                    fist = Vector(self.right_edge, self.pos.getY())
                 if other.check_hit(fist):
                     other.hit(10)
 
@@ -144,14 +162,15 @@ class Character:
 
     #attack when jumping
     def jump_kick(self, other):
+        self.setState("kick")
         if(self.facing == 'left'):
             #kick left (currently 10 pixels
-            leg = Vector(self.left_edge - 10, self.pos.getY())
+            leg = Vector(self.left_edge, self.pos.getY())
         else:
             #kick right
-            leg = Vector(self.right_edge + 10, self.pos.getY())
+            leg = Vector(self.right_edge, self.pos.getY())
         if other.check_hit(leg):
-            other.hit(15)
+                other.hit(15)
 
     #blocking
     def blocking(self):
@@ -164,6 +183,7 @@ class Character:
     def fire(self,other):
         if self.fireball_ready: #if a fireball is not already flying
             if self.energy.value > (self.energy.max / 4) : #if character has enough energy
+                self.setState("fire")
                 self.fireBall.shoot(self.pos, self.facing) # fire a fireball
                 self.energy.remove(self.energy.max /4) # remove energy
 
@@ -178,11 +198,7 @@ class Character:
 
     #sees if character can jump (possibly redundant, could be incorporated into interaction class
     def attemptJump(self):
-        if self.jumping:
-           #print("jumping")
-            pass
-        else:
-            #print("attempted jump")
+        if not self.jumping:
             self.jump()
 
     #makes character jump
@@ -202,12 +218,14 @@ class Character:
                 self.punch_cooldown-= 1
 
         if self.jumping and self.jumpTime < 5: #jumptime used to calculate height
+            self.setState("jump")
             self.vel.add(Vector(0,-.5))
             self.jumpTime += 1
 
         #moves self and updates boundaries based on movement
         self.move()
         self.update_boundaries()
+        self.stateTimer += 1
 
     #draw function
     def draw(self, canvas, enemy):
@@ -218,11 +236,17 @@ class Character:
         #self.sprite.setDest(self.pos.getP())
         self.sprite.update(canvas, self.pos.getP())
         #circle used as placeholder marker - to be removed
-        canvas.draw_circle(self.pos.getP(),
-                           (self.sprite.spriteDim[0] /2),
-                           1,
-                           'Blue')
         self.energy.draw(canvas, self.p_number, 'Blue')
         self.health.draw(canvas, self.p_number, 'Red')
+
+    def setState(self, state):
+        global states
+        if self.dead:
+            self.sprite.changeState("die")
+            self.currentState = "die"
+        elif states[self.currentState] == "interruptable" or self.stateTimer > 20:
+            self.stateTimer = 0
+            self.sprite.changeState(state)
+            self.currentState = state
 
 

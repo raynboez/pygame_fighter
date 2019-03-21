@@ -9,6 +9,9 @@ class Wall:
         self.lEdge = xpos - (width / 2)
         self.rEdge = xpos + (width / 2)
 
+    def draw(self, canvas):
+        canvas.draw_line((self.x, 0),(self.x, self.y), self.line_width, self.colour)
+
     #checks if a character is colliding with a wall
     def touch(self, character):
         if character.left_edge > self.lEdge and character.left_edge < self.rEdge:

@@ -16,8 +16,8 @@ from Fighter.Rounds import Rounds
 CANVAS_WIDTH = 500
 CANVAS_HEIGHT = 500
 
-player1Sprite = Sprite("https://i.ibb.co/vqQr5QQ/Place-Holder.png", 180, 350, 7, 6, (100, 300), 1)  ##TODO
-player2Sprite = Sprite("https://i.ibb.co/vqQr5QQ/Place-Holder.png", 180, 350, 7, 6, (400, 300), 1)  ##Get Sprite sheets
+player1Sprite = Sprite("https://i.ibb.co/vB3Q4QG/fullsheet.png", 210, 52, 2, 14, (100, 300), 4, "idle", "left")  ##TODO
+player2Sprite = Sprite("https://i.ibb.co/vB3Q4QG/fullsheet.png", 210, 52, 2, 14, (400, 300), 4, "idle", "right")  ##Get Sprite sheets
 player1 = Character(player1Sprite, Vector(100, 300), 1, 'right')
 player2 = Character(player2Sprite, Vector(400, 300), 2, 'left')
 round = Rounds(player1, player2)
@@ -43,6 +43,8 @@ def draw(canvas):
     background.draw(canvas)
     player1.draw(canvas, player2)   #fireball drawing done in character draw
     player2.draw(canvas, player1)
+    walla.draw(canvas)
+    wallb.draw(canvas)
     platform_bottom.draw(canvas)
 
 #initialises a keyboard
@@ -51,8 +53,8 @@ kbd = Keyboard()
 #creates arena with background
 background = Background()
 platform_bottom = Platform(CANVAS_WIDTH, 400, 10, 'Grey')
-walla = Wall(CANVAS_WIDTH, CANVAS_HEIGHT, 10, 'Red')
-wallb = Wall(0, CANVAS_HEIGHT, 10, 'Red')
+walla = Wall(CANVAS_WIDTH, CANVAS_HEIGHT, 2, 'Red')
+wallb = Wall(0, CANVAS_HEIGHT, 2, 'Red')
 
 #creates interaction class and adds the objects
 interactions = Interaction(kbd)

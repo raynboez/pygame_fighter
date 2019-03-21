@@ -30,8 +30,10 @@ class Interaction:
             # x velocity can only be changed when not jumping (no midair direction changes)
             if self.keyboard.left[bool] and not character.jumping:
                 character.vel = Vector(-1, character.vel.getY())
+                character.setState("walk")
             if self.keyboard.right[bool] and not character.jumping:
                 character.vel = Vector(1, character.vel.getY())
+                character.setState("walk")
             # no double jumping
             if self.keyboard.up[bool] and not character.jumping:
                 character.attemptJump()
@@ -41,9 +43,12 @@ class Interaction:
             # fires a fireball if the character is on the ground
             if self.keyboard.fire[bool] and not character.jumping:
                 character.fire(other)
+            if self.keyboard.idle[bool] and not character.jumping:
+                character.setState("idle")
         #can block if not jumping
         if self.keyboard.down[bool] and not character.jumping:
             character.blocking()
+            character.setState("block")
         character.move()
         character.setfacing(other)
 
@@ -59,9 +64,9 @@ class Interaction:
             for character in self.characters:
                 #moves characters out of walls if collision occurs
                 if wall.touch(character) == 'right':
-                    character.pos = Vector(wall.lEdge - (character.sprite.spriteDim[0] / 2), character.pos.getY())
+                    character.pos = Vector(wall.lEdge - (character.sprite.scaling * character.sprite.spriteDim[0] / 2), character.pos.getY())
                 elif wall.touch(character) == 'left':
-                    character.pos = Vector(wall.rEdge + (character.sprite.spriteDim[0] / 2), character.pos.getY())
+                    character.pos = Vector(wall.rEdge + (character.sprite.scaling * character.sprite.spriteDim[0] / 2), character.pos.getY())
                 else:
                     pass
 

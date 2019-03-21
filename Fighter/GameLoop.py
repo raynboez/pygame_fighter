@@ -16,8 +16,8 @@ from Fighter.Rounds import Rounds
 CANVAS_WIDTH = 500
 CANVAS_HEIGHT = 500
 
-player1Sprite = Sprite("https://i.ibb.co/vB3Q4QG/fullsheet.png", 210, 52, 2, 14, (100, 300), 4, "idle", "left")  ##TODO
-player2Sprite = Sprite("https://i.ibb.co/vB3Q4QG/fullsheet.png", 210, 52, 2, 14, (400, 300), 4, "idle", "right")  ##Get Sprite sheets
+player1Sprite = Sprite("https://i.ibb.co/M7Ff2wx/redsheet.png", 210, 52, 2, 14, (100, 300), 4, "idle", "left")  ##TODO
+player2Sprite = Sprite("https://i.ibb.co/2hv9qcq/bluesheet.png", 210, 52, 2, 14, (400, 300), 4, "idle", "right")  ##Get Sprite sheets
 player1 = Character(player1Sprite, Vector(100, 300), 1, 'right')
 player2 = Character(player2Sprite, Vector(400, 300), 2, 'left')
 round = Rounds(player1, player2)
@@ -70,3 +70,19 @@ interactions.addWall(wallb)
 #player collisions
 #   players not drawn over each other?
 #
+#SPRITESHEET URLS
+#
+#https://i.ibb.co/vB3Q4QG/fullsheet.png
+#   BASE
+
+#https://i.ibb.co/CbMDdVC/yellowsheet.png
+#   YELLOW
+
+#https://i.ibb.co/M7Ff2wx/redsheet.png
+#   RED
+
+#https://i.ibb.co/2hv9qcq/bluesheet.png
+#   BLUE
+
+#https://i.ibb.co/K2616MG/greensheet.png
+#   GREEN

@@ -14,6 +14,7 @@ class Keyboard:
         self.down = [False,False]
         self.attack = [False,False]
         self.fire = [False,False]
+        self.idle = [False, False]
         #binds [0]-[5] are p1 bindings, [6]-[11] are p2 bindings
 
         self.key_binds = ['w','a','s','d','q','e','i','j','k','l','u','o']
@@ -53,6 +54,8 @@ class Keyboard:
             self.attack[1] = True
         if key == simplegui.KEY_MAP[self.key_binds[10]]:
             self.fire[1] = True
+        self.checkIdle(0)
+        self.checkIdle(1)
 
     #key up handler, same principle as key_down
     def key_up(self, key):
@@ -82,3 +85,11 @@ class Keyboard:
             self.attack[1] = False
         if key == simplegui.KEY_MAP[self.key_binds[10]]:
             self.fire[1] = False
+        self.checkIdle(0)
+        self.checkIdle(1)
+
+    def checkIdle(self,b):
+        if any([self.right[b], self.left[b], self.up[b], self.down[b], self.attack[b], self.fire[b]]):
+            self.idle[b] = False
+        else:
+            self.idle[b] = True

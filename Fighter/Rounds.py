@@ -3,6 +3,8 @@ try:
 except ImportError:
         import SimpleGUICS2Pygame as simplegui
 
+timer = 0
+delay = 60
 
 class Rounds:
 
@@ -15,12 +17,16 @@ class Rounds:
         self.roundNum = 1
 
     def over(self, character):
+        global timer, delay
         if (self.player1.lives.value == 0) or (self.player2.lives.value == 0):
             self.end(character)
         else:
-            self.roundNum += 1
-            self.nextRound()
-
+            if timer == delay:
+                self.roundNum += 1
+                timer = 0
+                self.nextRound()
+            else:
+                timer+=1
 
     def nextRound(self):
         self.player1.newLife()

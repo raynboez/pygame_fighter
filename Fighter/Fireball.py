@@ -40,9 +40,9 @@ class Fireball:
     #sets fireball sprite
     def set_sprite(self):
         if self.character.p_number == '1':
-            img = Sprite(".\\Sprites\\PlaceHolder.png", 180, 350, 7, 6, (400, 300), 1)
+            img = Sprite(".\\Sprites\\PlaceHolder.png", 180, 350, 7, 6, (400, 300), 1, "Fireball")
         else:
-            img = Sprite(".\\Sprites\\PlaceHolder.png", 180, 350, 7, 6, (400, 300), 1)
+            img = Sprite(".\\Sprites\\PlaceHolder.png", 180, 350, 7, 6, (400, 300), 1, "Fireball")
         return img
 
     #draws the sprite on the canvas

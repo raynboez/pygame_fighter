@@ -21,16 +21,18 @@ states = {
 class Sprite:
 
     #initialises sprite from local path, with spritesheet height and width, number of rows and columns, destination and size
-    def __init__(self, path, width, height, rows, columns, destination, scale, state):
+    def __init__(self, path, width, height, rows, columns, destination, scale, state, facing):
         self.img = simplegui.load_image(path)
         self.spriteDim = [(width / columns), height / rows]
         self.dest = destination
+        self.scaling = scale
         self.scale = (self.spriteDim[0] * scale, self.spriteDim[1] * scale)
         self.columns = columns
         self.rows = rows
         self.frameIndex = [0, 0]
         self.currentState = states[state]
         self.timer = 0
+        self.facing = facing
 
     #sets destination of sprite (used in character class to update position
     def setDest(self, dest):
@@ -39,9 +41,18 @@ class Sprite:
     def changeState(self, state):
         self.currentState = states[state]
 
+    def setFacing(self, direction):
+        self.facing = direction
+
+    def updateDirection(self):
+        if self.facing == 'left':
+            self.frameIndex[1] = 1
+        else:
+            self.frameIndex[1] = 0
+
     #moves to nextSprite
     def nextSprite(self):
-        self.frameIndex[0] = (self.frameIndex[0] + 1) % self.columns
+        self.frameIndex[0] = self.currentState[0] + (self.frameIndex[0] + 1) % self.currentState[1]
 
 
     #draws sprite on canvas
@@ -56,8 +67,9 @@ class Sprite:
 
     #draws sprite and cycles to next
     def update(self, canvas, position):
+        self.updateDirection()
         self.setDest(position)
         self.draw(canvas)
-        if self.timer % 6 == 0:
+        if self.timer % 10 == 0:
             self.nextSprite()
         self.timer += 1

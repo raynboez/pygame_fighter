@@ -67,8 +67,6 @@ class Interaction:
                     character.pos = Vector(wall.lEdge - (character.sprite.scaling * character.sprite.spriteDim[0] / 2), character.pos.getY())
                 elif wall.touch(character) == 'left':
                     character.pos = Vector(wall.rEdge + (character.sprite.scaling * character.sprite.spriteDim[0] / 2), character.pos.getY())
-                else:
-                    pass
 
         #checks for platform collisions
         for platform in self.platforms:
@@ -81,9 +79,9 @@ class Interaction:
                     character.fall()
                 #make sure no character goes under platform
                 if (character.pos.getY() + (character.sprite.scaling * character.sprite.spriteDim[1] / 2)) - 4 > platform.edge_top:
-
                     character.pos = Vector(character.pos.getX(),
                                            platform.edge_top - (character.sprite.scaling * character.sprite.spriteDim[1] / 2) - 4)
+
         for character in self.characters:
             if character.dead:
                 round.over(character)

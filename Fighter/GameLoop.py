@@ -43,8 +43,7 @@ def draw(canvas):
     background.draw(canvas)
     player1.draw(canvas, player2)   #fireball drawing done in character draw
     player2.draw(canvas, player1)
-    walla.draw(canvas)
-    wallb.draw(canvas)
+
     platform_bottom.draw(canvas)
 
 #initialises a keyboard

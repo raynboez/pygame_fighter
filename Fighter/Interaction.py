@@ -80,10 +80,10 @@ class Interaction:
                     #fall
                     character.fall()
                 #make sure no character goes under platform
-                if (character.pos.getY() + character.sprite.spriteDim[1] / 2) > platform.edge_top:
+                if (character.pos.getY() + (character.sprite.scaling * character.sprite.spriteDim[1] / 2)) - 4 > platform.edge_top:
 
                     character.pos = Vector(character.pos.getX(),
-                                           platform.edge_top - (character.sprite.spriteDim[1] / 2))
+                                           platform.edge_top - (character.sprite.scaling * character.sprite.spriteDim[1] / 2) - 4)
         for character in self.characters:
             if character.dead:
                 round.over(character)

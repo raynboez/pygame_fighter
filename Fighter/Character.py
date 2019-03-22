@@ -86,6 +86,8 @@ class Character:
         return (self.pos.getX() + (self.sprite.scaling * (self.sprite.spriteDim[0] / 2)))
 
 
+    def setSprite(self, sprite):
+        self.sprite = sprite
 
     #Defines direction that the character faces
     def setfacing(self, other):

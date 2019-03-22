@@ -43,6 +43,8 @@ def init(sp1, sp2):
 
     player1Sprite = Sprite(sprites[SPRITE1], 210, 52, 2, 14, (100, 300), 4, "idle", "left")  ##TODO
     player2Sprite = Sprite(sprites[SPRITE2], 210, 52, 2, 14, (400, 300), 4, "idle", "right")
+    player1.setSprite(player1Sprite)
+    player2.setSprite(player2Sprite)
     #display main menu
     #
     round.start()
@@ -60,6 +62,7 @@ def draw(canvas):
     if round.gameEnded:
         #Master.menu()
         quit(1)
+
 #initialises a keyboard
 kbd = Keyboard()
 

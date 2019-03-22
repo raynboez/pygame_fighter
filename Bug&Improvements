@@ -4,6 +4,6 @@ You can jump off of the screen- notbug feature
 Improvements/ things we can add:
 -Can't really see fireballs
 -AI - Toby will try this
--Scalable resolution
--Pixlate sprites to lower loading times
+-Scalable resolution - not happening, too much tied to static canvas resolution
+-Pixlate sprites to lower loading times - uhhh what
 

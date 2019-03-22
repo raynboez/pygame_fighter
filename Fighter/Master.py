@@ -22,4 +22,4 @@ def spriteSelect():
     pass
 
 def gameLoop():
-    GameLoop.init()
+    GameLoop.init("Green", "Yellow")

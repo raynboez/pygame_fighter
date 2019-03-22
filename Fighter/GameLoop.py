@@ -16,20 +16,33 @@ from Fighter.Rounds import Rounds
 CANVAS_WIDTH = 500
 CANVAS_HEIGHT = 500
 
-player1Sprite = Sprite("https://i.ibb.co/M7Ff2wx/redsheet.png", 210, 52, 2, 14, (100, 300), 4, "idle", "left")  ##TODO
-player2Sprite = Sprite("https://i.ibb.co/2hv9qcq/bluesheet.png", 210, 52, 2, 14, (400, 300), 4, "idle", "right")  ##Get Sprite sheets
+sprites = {
+    "Red" : "https://i.ibb.co/M7Ff2wx/redsheet.png",
+    "Blue" : "https://i.ibb.co/2hv9qcq/bluesheet.png",
+    "Green" : "https://i.ibb.co/K2616MG/greensheet.png",
+    "Yellow" : "https://i.ibb.co/CbMDdVC/yellowsheet.png"
+}
+SPRITE1 = "Red"
+SPRITE2 = "Blue"
+player1Sprite = Sprite(sprites[SPRITE1], 210, 52, 2, 14, (100, 300), 4, "idle", "left")  ##TODO
+player2Sprite = Sprite(sprites[SPRITE2], 210, 52, 2, 14, (400, 300), 4, "idle", "right")  ##Get Sprite sheets
 player1 = Character(player1Sprite, Vector(100, 300), 1, 'right')
 player2 = Character(player2Sprite, Vector(400, 300), 2, 'left')
 round = Rounds(player1, player2)
 
 #when GameLoop is called by a class, init starts the frame
-def init():
+def init(sp1, sp2):
+    global SPRITE1, SPRITE2
+    SPRITE1 = sp1
+    SPRITE2 = sp2
     Master.masterframe.setDrawHandler(draw)
     #Master.masterframe.set_canvas_background('rgba(0, 200, 200, 0.3)')
 
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeyupHandler(kbd)
 
+    player1Sprite = Sprite(sprites[SPRITE1], 210, 52, 2, 14, (100, 300), 4, "idle", "left")  ##TODO
+    player2Sprite = Sprite(sprites[SPRITE2], 210, 52, 2, 14, (400, 300), 4, "idle", "right")
     #display main menu
     #
     round.start()

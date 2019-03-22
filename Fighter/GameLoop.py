@@ -58,7 +58,7 @@ def draw(canvas):
     background.draw(canvas)
     player1.draw(canvas, player2)   #fireball drawing done in character draw
     player2.draw(canvas, player1)
-    platform_bottom.draw(canvas)
+    #platform_bottom.draw(canvas)
     if round.gameEnded:
         #Master.menu()
         quit(1)

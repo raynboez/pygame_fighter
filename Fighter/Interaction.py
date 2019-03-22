@@ -25,32 +25,34 @@ class Interaction:
     #   -   used to split keyboard inputs
     def movements(self,character, other, bool):
         #movements that are only available when not blocking
-        if not self.keyboard.down[bool]:
-            character.not_blocking()
-            # x velocity can only be changed when not jumping (no midair direction changes)
-            if self.keyboard.left[bool] and not character.jumping:
-                character.vel = Vector(-1, character.vel.getY())
-                character.setState("walk")
-            if self.keyboard.right[bool] and not character.jumping:
-                character.vel = Vector(1, character.vel.getY())
-                character.setState("walk")
-            # no double jumping
-            if self.keyboard.up[bool] and not character.jumping:
-                character.attemptJump()
-            # can attack if jumping (attack becomes jump kick
-            if self.keyboard.attack[bool]:
-                character.punch(other)
-            # fires a fireball if the character is on the ground
-            if self.keyboard.fire[bool] and not character.jumping:
-                character.fire(other)
-            if self.keyboard.idle[bool] and not character.jumping:
-                character.setState("idle")
-        #can block if not jumping
-        if self.keyboard.down[bool] and not character.jumping:
-            character.blocking()
-            character.setState("block")
-        character.move()
-        character.setfacing(other)
+        if not character.dead:
+            if not self.keyboard.down[bool]:
+                character.not_blocking()
+                # x velocity can only be changed when not jumping (no midair direction changes)
+                if self.keyboard.left[bool] and not character.jumping:
+                    character.vel = Vector(-1, character.vel.getY())
+                    character.setState("walk")
+                if self.keyboard.right[bool] and not character.jumping:
+                    character.vel = Vector(1, character.vel.getY())
+                    character.setState("walk")
+                # no double jumping
+                if self.keyboard.up[bool] and not character.jumping:
+                    character.attemptJump()
+                # can attack if jumping (attack becomes jump kick
+                if self.keyboard.attack[bool]:
+                    character.punch(other)
+                # fires a fireball if the character is on the ground
+                if self.keyboard.fire[bool] and not character.jumping:
+                    character.fire(other)
+                if self.keyboard.idle[bool] and not character.jumping:
+                    character.setState("idle")
+            #can block if not jumping
+            if self.keyboard.down[bool] and not character.jumping:
+                character.blocking()
+                character.setState("block")
+            character.move()
+            character.setfacing(other)
+
 
 
 

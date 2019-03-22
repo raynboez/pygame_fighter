@@ -75,8 +75,8 @@ kbd = Keyboard()
 #creates arena with background
 background = Background()
 platform_bottom = Platform(CANVAS_WIDTH, 400, 10, 'Grey')
-walla = Wall(CANVAS_WIDTH, CANVAS_HEIGHT, 2, 'Red')
-wallb = Wall(0, CANVAS_HEIGHT, 2, 'Red')
+walla = Wall(CANVAS_WIDTH + 10, CANVAS_HEIGHT, 10, 'Red')
+wallb = Wall(-10, CANVAS_HEIGHT, 10, 'Red')
 
 #creates interaction class and adds the objects
 interactions = Interaction(kbd)

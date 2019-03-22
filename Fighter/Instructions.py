@@ -35,7 +35,7 @@ def instructions(canvas):
 def draw(canvas):
     instructions(canvas)
     if kbd.next:
-        Master.gameLoop("Yellow", "Blue")
+        Master.gameLoop("Red", "Blue")
 
 kbd = InstructionsKeyboard()
 

@@ -93,3 +93,15 @@ class Keyboard:
             self.idle[b] = False
         else:
             self.idle[b] = True
+
+
+class InstructionsKeyboard:
+
+    def __init__(self):
+        self.next = False
+
+    def key_down(self, key):
+        self.next = True
+
+    def key_up(self, key):
+        self.next = False

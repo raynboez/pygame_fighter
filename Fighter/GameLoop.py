@@ -48,7 +48,7 @@ def init(sp1, sp2):
     #display main menu
     #
     round.start()
-    Master.masterframe.start()
+
 
 
 #main draw handler, updates all interactions and then draws objects on frame

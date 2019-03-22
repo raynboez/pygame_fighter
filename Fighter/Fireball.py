@@ -1,8 +1,23 @@
 from Fighter.Sprite import Sprite
 from Fighter.Vector import Vector
+
+sprites = {
+    "Red": "https://i.ibb.co/fFDh4Fq/full-fireball-red.png",
+    "Green": "https://i.ibb.co/3pY8Bwh/full-fireball-green.png",
+    "Blue": "https://i.ibb.co/8c3T7t5/full-fireball-blue.png",
+    "Yellow": "https://i.ibb.co/sFMx6rF/full-fireball-yellow.png"
+}
+
+
 class Fireball:
     #initialises fireball with a player and a direction
     #if fireball is not being fired, it is stored off canvas (-100,-100)
+    sprites = {
+        "Red" : "https://i.ibb.co/fFDh4Fq/full-fireball-red.png",
+        "Green" : "https://i.ibb.co/3pY8Bwh/full-fireball-green.png",
+        "Blue" : "https://i.ibb.co/8c3T7t5/full-fireball-blue.png",
+        "Yellow" : "https://i.ibb.co/sFMx6rF/full-fireball-yellow.png"
+    }
 
     def __init__(self, player, direction):
         self.character = player
@@ -11,6 +26,7 @@ class Fireball:
         self.direction = direction
         #self.sprite = self.set_sprite() # gets correct sprite
         self.vel = Vector()
+        self.sprite = self.set_sprite("Red")
 
     #sets velocity depending on direction
     def setvel(self, direction, x=0):
@@ -38,24 +54,26 @@ class Fireball:
         self.character.fireball_ready = True
 
     #sets fireball sprite
-    def set_sprite(self):
-        if self.character.p_number == '1':
-            img = Sprite(".\\Sprites\\PlaceHolder.png", 180, 350, 7, 6, (400, 300), 1, "Fireball")
-        else:
-            img = Sprite(".\\Sprites\\PlaceHolder.png", 180, 350, 7, 6, (400, 300), 1, "Fireball")
-        return img
+    def set_sprite(self, colour):
+        self.sprite = Sprite(sprites[colour], 120, 40, 2, 4, self.pos, 1, "fireball", self.direction)
+
+    def setFacing(self, facing):
+        self.direction = facing
+        self.sprite.setFacing(self.direction)
+        self.sprite.updateDirection()
+
 
     #draws the sprite on the canvas
     def draw(self, canvas):
-        #self.sprite.update(canvas, self.pos.getP())
-        #currently we have no sprite for this, circle used as placeholder
-        #simple spritesheet needed, 4 frames to cycle through
-        canvas.draw_circle(
-                            self.pos.getP(),
-                            10,
-                            1,
-                            'Red'
-        )
+        self.sprite.update(canvas, self.pos.getP())
+        # #currently we have no sprite for this, circle used as placeholder
+        # #simple spritesheet needed, 4 frames to cycle through
+        # canvas.draw_circle(
+        #                     self.pos.getP(),
+        #                     10,
+        #                     1,
+        #                     'Red'
+        # )
 
     #looping method
     def update(self, canvas, enemy):

@@ -33,7 +33,7 @@ def init():
     #display main menu
     #
     round.start()
-    Master.masterframe.start()
+
 
 
 #main draw handler, updates all interactions and then draws objects on frame

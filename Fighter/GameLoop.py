@@ -53,7 +53,7 @@ def init(sp1, sp2):
 
 #main draw handler, updates all interactions and then draws objects on frame
 def draw(canvas):
-
+    round.startTimer +=1
     interactions.update(round)
     background.draw(canvas)
     player1.draw(canvas, player2)   #fireball drawing done in character draw
@@ -61,7 +61,13 @@ def draw(canvas):
     #platform_bottom.draw(canvas)
     if round.gameEnded:
         #Master.menu()
-        quit(1)
+
+        if round.startTimer < round.endTime + 180:
+            round.drawend(canvas)
+        else:
+            quit(1)
+    if round.startTimer < 180:
+        round.draw(canvas)
 
 #initialises a keyboard
 kbd = Keyboard()

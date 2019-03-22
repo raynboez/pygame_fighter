@@ -43,8 +43,8 @@ def init(sp1, sp2):
 
     player1Sprite = Sprite(sprites[SPRITE1], 210, 52, 2, 14, (100, 300), 4, "idle", "left")  ##TODO
     player2Sprite = Sprite(sprites[SPRITE2], 210, 52, 2, 14, (400, 300), 4, "idle", "right")
-    player1.setSprite(player1Sprite)
-    player2.setSprite(player2Sprite)
+    player1.setSprite(player1Sprite, SPRITE1)
+    player2.setSprite(player2Sprite, SPRITE2)
     #display main menu
     #
     round.start()
@@ -55,7 +55,7 @@ def init(sp1, sp2):
 def draw(canvas):
     round.startTimer +=1
     interactions.update(round)
-    background.draw(canvas)
+    #background.draw(canvas)
     player1.draw(canvas, player2)   #fireball drawing done in character draw
     player2.draw(canvas, player1)
     #platform_bottom.draw(canvas)

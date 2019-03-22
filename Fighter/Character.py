@@ -86,8 +86,9 @@ class Character:
         return (self.pos.getX() + (self.sprite.scaling * (self.sprite.spriteDim[0] / 2)))
 
 
-    def setSprite(self, sprite):
+    def setSprite(self, sprite, fireballcolour):
         self.sprite = sprite
+        self.fireBall.set_sprite(fireballcolour)
 
     #Defines direction that the character faces
     def setfacing(self, other):
@@ -97,6 +98,7 @@ class Character:
         else:
             self.facing = 'left'
         self.sprite.setFacing(self.facing)
+        self.fireBall.setFacing(self.facing)
 
     #calculates damage when hit, blocking halves the damage
     def hit(self, damage):

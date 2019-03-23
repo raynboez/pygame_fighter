@@ -73,3 +73,37 @@ class Sprite:
         if self.timer % 10 == 0:
             self.nextSprite()
         self.timer += 1
+
+
+class StaticSprite:
+
+    def __init__(self, path, width, height,destination, scale):
+        self.img = simplegui.load_image(path)
+        self.spriteDim = [width, height]
+        self.dest = destination
+        self.scaling = scale
+        self.scale = (self.spriteDim[0] * scale, self.spriteDim[1] * scale)
+        self.columns = 1
+        self.rows = 1
+        self.frameIndex = [0, 0]
+        self.timer = 0
+
+    # sets destination of sprite (used in character class to update position
+    def setDest(self, dest):
+        self.dest = dest
+
+    # draws sprite on canvas
+    def draw(self, canvas):
+        canvas.draw_image(self.img,
+                          (self.spriteDim[0] * self.frameIndex[0] + self.spriteDim[0] / 2,
+                           self.spriteDim[1] * self.frameIndex[1] + self.spriteDim[1] / 2),
+                          (self.spriteDim[0], self.spriteDim[1]),
+                          self.dest,
+                          self.scale
+                          )
+
+    # draws sprite and cycles to next
+    def update(self, canvas, position):
+        self.setDest(position)
+        self.draw(canvas)
+        self.timer += 1

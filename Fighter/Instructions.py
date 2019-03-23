@@ -5,7 +5,6 @@ def init():
     Master.masterframe.setDrawHandler(draw)
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeydownHandler(kbd)
-    Master.masterframe.start()
 
 def instructions(canvas):
     canvas.draw_text("HOW TO PLAY", (50, 50), 25, "White")

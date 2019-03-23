@@ -60,11 +60,10 @@ def draw(canvas):
     player2.draw(canvas, player1)
     #platform_bottom.draw(canvas)
     if round.gameEnded:
-        #Master.menu()
-
         if round.startTimer < round.endTime + 180:
             round.drawend(canvas)
         else:
+            #enter main menu
             quit(1)
     if round.startTimer < 180:
         round.draw(canvas)

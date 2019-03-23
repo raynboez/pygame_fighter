@@ -6,13 +6,17 @@ except ImportError:
 from Fighter import GameLoop
 from Fighter import Instructions
 from Fighter.Frame import Frame
-
+from Fighter import SplashScreen
 #frame used throughout Game
 masterframe = Frame("Name", 500, 500)
 
 def runGame():
     #menu()
-    instructions()
+    #instructions()
+    splashScreen()
+
+def splashScreen():
+    SplashScreen.init()
 
 #adjust these classes when menu and spriteselect are created - can be used to hand over selections
 def menu():

@@ -4,7 +4,6 @@ from Fighter.Keyboard import InstructionsKeyboard
 def init():
     Master.masterframe.setDrawHandler(draw)
     Master.masterframe.setKeydownHandler(kbd)
-    Master.masterframe.setKeydownHandler(kbd)
 
 def instructions(canvas):
     canvas.draw_text("HOW TO PLAY", (50, 50), 25, "White")
@@ -34,7 +33,7 @@ def instructions(canvas):
 def draw(canvas):
     instructions(canvas)
     if kbd.next:
-        Master.gameLoop("Red", "Blue")
+        Master.MainMenu
 
 kbd = InstructionsKeyboard()
 

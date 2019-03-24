@@ -7,12 +7,11 @@ from Fighter import GameLoop
 from Fighter import Instructions
 from Fighter.Frame import Frame
 from Fighter import SplashScreen
+from Fighter import MainMenu
 #frame used throughout Game
-masterframe = Frame("Name", 500, 500)
+masterframe = Frame("Name", 500, 500)#encapsulates simplegui.create_frame
 
 def runGame():
-    #menu()
-    #instructions()
     splashScreen()
 
 def splashScreen():
@@ -20,8 +19,8 @@ def splashScreen():
 
 #adjust these classes when menu and spriteselect are created - can be used to hand over selections
 def menu():
-    #MainMenu.init()
-    pass
+    MainMenu.init()
+    #pass
 
 def instructions():
     Instructions.init()

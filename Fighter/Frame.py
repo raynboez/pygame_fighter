@@ -17,5 +17,9 @@ class Frame:
     def setKeyupHandler(self, kbd):
         self.frame.set_keyup_handler(kbd.key_up)
 
+    def setMouseHandler(self, handler):
+        self.frame.set_mouseclick_handler(handler)
+
     def start(self):
         self.frame.start()
+

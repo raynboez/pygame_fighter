@@ -1,10 +1,22 @@
-class MainMenu:
+from Fighter import Master
+from Fighter.Keyboard import InstructionsKeyboard
 
-    def __init__(self):
-        pass
+try:
+    import simplegui
+except ImportError:
+    import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
 
-    def draw(canvas, text):
-        pass
+image = simplegui.load_image("https://i.ibb.co/TqyhqKk/IMG-20190322-WA0000.jpg")
+img_size = (500, 500)
 
-    def music(self):
-        pass
+def init():
+    Master.masterframe.setDrawHandler(draw)
+    #Master.masterframe.setKeydownHandler(kbd)
+    Master.masterframe.start()
+
+def draw(canvas):
+    canvas.draw_image(image, (img_size[0] // 2, img_size[1] // 2), img_size, (250, 250),
+                      (500, 500))
+
+def music():
+    pass

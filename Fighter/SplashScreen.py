@@ -6,6 +6,8 @@ except:
 from Fighter import Master
 from Fighter.Keyboard import InstructionsKeyboard
 from Fighter.Sprite import StaticSprite
+from Fighter.Mouse import Mouse
+
 
 kbd = InstructionsKeyboard()
 timer = 0
@@ -14,6 +16,7 @@ def init():
     Master.masterframe.setDrawHandler(draw)
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeyupHandler(kbd)
+    Master.masterframe.setMouseHandler(Mouse.handler)
     Master.masterframe.start()
 def draw(canvas):
     updateText(canvas)
@@ -27,7 +30,7 @@ def draw(canvas):
     if timer > 210:
         canvas.draw_text("Press any button to start!", (50, 450), 40, "White")
         if kbd.next:
-            Master.instructions()
+            Master.menu()
     timer +=1
 
 

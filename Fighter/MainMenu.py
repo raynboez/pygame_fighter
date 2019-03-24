@@ -16,7 +16,6 @@ def init():
     Mouse.screen = "menu"
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeyupHandler(kbd)
-    Master.masterframe.start()
 
 def draw(canvas):
     canvas.draw_image(image, (img_size[0] // 2, img_size[1] // 2), img_size, (250, 250),

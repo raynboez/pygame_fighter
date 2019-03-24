@@ -5,12 +5,13 @@ Improvements/ things we can add:
     -Pixlate sprites to lower loading times 
         - uhhh what
             -By lowering the resolution of images in the game and upscaling we can lower loading time(I think)
-            
+
 Bugs:
     -(Fixed- in names instance)Can't press the same menu button twice
         -instructions then exit instructions then enter instructions again doesn't work
             -this is because the keyboard stores that it read next and instantly exits, to prove this try addin a print to the instructions init
                 -fixed with kbd.key_up(next)
+        -Ben forgot to set the keyup handler in the class init but this works too
 
 Possible Useless code:
     -Master.mostOfIt: Is most of it just to so you don't need to import things? -t

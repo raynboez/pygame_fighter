@@ -41,8 +41,6 @@ def updateText(canvas):
     #    print(timer)
     if(wars.dest[0] > 250):
         wars.setDest((wars.dest[0] - 15, wars.dest[1]))
-    else:
-        print(timer)
     road.draw(canvas)
     wars.draw(canvas)
 

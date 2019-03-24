@@ -3,19 +3,7 @@ from Fighter.Resource import Resource
 from Fighter.Fireball import Fireball
 from Fighter.Spritelives import Spritelives
 
-GRAVITY = Vector(0, 0.4)
-
-##################################
-# Sprite states needed (and where state change occurs):
-#   -IDLE       ---default
-#   -WALKING    ---move & not jumping (boolean check?)
-#   -JUMPING    --- jump
-#   -PUNCH      --- punch
-#   -JUMP KICK  --- jumpkick
-#   -FIRE PROJECTILE    ---fire
-#   -HIT    ---CHECKHIT
-#   -DEATH  ---die
-##################################
+GRAVITY = Vector(0, 0.4) #Tuned to get jumps looking correct - dont touch
 
 states = {
     "idle" : "interruptable",
@@ -244,6 +232,7 @@ class Character:
         self.energy.draw(canvas, self.p_number, 'Blue')
         self.health.draw(canvas, self.p_number, 'Red')
 
+    #setting states for sprite
     def setState(self, state):
         global states
         if self.dead:

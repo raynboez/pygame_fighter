@@ -109,6 +109,9 @@ class Character:
             self.setState("die")
             self.dead = True
 
+    def distance(self, other):
+        return abs(self.pos.getX - other.pos.getX)
+
     def newLife(self):
         self.energy = Resource(0, 100)#TODO
         self.energycounter = 0

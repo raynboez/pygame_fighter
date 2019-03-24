@@ -11,6 +11,7 @@ image = simplegui.load_image("https://i.ibb.co/TqyhqKk/IMG-20190322-WA0000.jpg")
 img_size = (500, 500)
 kbd = MenuKeyboard()
 pointer = 2
+timer = 0
 
 def init():
     Master.masterframe.setDrawHandler(draw)
@@ -30,8 +31,29 @@ def quitgame():
     quit(0)
 
 def interaction(canvas):
-    global pointer
+    global pointer, timer
+    if timer > 4:
+        timer = 0
+        if kbd.up:
+            pointer -= 1
+        if kbd.down:
+            pointer += 1
+        if kbd.enter:
+            select()
+    else:
+        timer+=1
+    if pointer < 0:
+        pointer = 2
+    if pointer > 2:
+        pointer = 0
 
+def select():
+    if pointer == 0:
+        quitgame()
+    elif pointer == 1:
+        instructions()
+    elif pointer == 2:
+        playgame()
 
 
 def draw(canvas):

@@ -15,6 +15,17 @@ class Background:
         self.img_size = (626, 375) #option 3
 
     def draw(self, canvas):
+        #Display the background
         canvas.draw_image(self.image, (self.img_size[0]//2, self.img_size[1]//2), self.img_size, (250,250), (500,500))
+
+        #the buttons for the user so they can quit, read the instructions or restart the game during the game
+        canvas.draw_circle((30, 40), 20, 10, 'Red', 'Red')
+        canvas.draw_text("Exit", (15, 75), 13, "Black")
+
+        canvas.draw_circle((80, 40), 20, 10, 'Orange', 'Orange')
+        canvas.draw_text("Instructions", (40, 74), 13, "Black")
+
+        canvas.draw_circle((130, 40), 20, 10, 'Green', 'Green')
+        canvas.draw_text("Restart", (120, 74), 13, "Black")
 
 

@@ -41,7 +41,22 @@ class Mouse:
             Master.gameLoop('Yellow', 'Red')#todo change colors based on selection
 
     def gameMenuButtons(click):
-        pass
+        #Red, yel and green correspond to the position of the buttons displayed during the game
+            radius = 20
+            red = Vector(30, 40)
+            yel = Vector(80, 40)
+            gre = Vector(130, 40)
+
+            cenToClick = click.copy().subtract(red.copy())  # dist between centre of ball and click
+            if (cenToClick.length() <= radius):  # check click is in ball
+                quit(0)
+            cenToClick = click.copy().subtract(yel.copy())  # dist between centre of ball and click
+            if (cenToClick.length() <= radius):  # check click is in ball
+                Master.instructions()
+            cenToClick = click.copy().subtract(gre.copy())  # dist between centre of ball and click
+            if (cenToClick.length() <= radius):  # check click is in ball
+                # Master.gameLoop()
+                Master.gameLoop('Yellow', 'Red')  # todo change colors based on selection
         #exit to menu
         #pause
         #show instructions

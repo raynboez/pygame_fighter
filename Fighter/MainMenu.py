@@ -18,6 +18,8 @@ def init():
     Master.masterframe.setKeyupHandler(kbd)
 
 def draw(canvas):
+
+    #User has option to contol main menu using keyboard
     canvas.draw_image(image, (img_size[0] // 2, img_size[1] // 2), img_size, (250, 250),
                       (500, 500))
     if kbd.quit:

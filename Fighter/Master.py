@@ -8,6 +8,7 @@ from Fighter import Instructions
 from Fighter.Frame import Frame
 from Fighter import SplashScreen
 from Fighter import MainMenu
+from Fighter import MultiplayerOrNo
 
 
 #frame used throughout Game
@@ -23,6 +24,9 @@ def splashScreen():
 def menu():
     MainMenu.init()
     #pass
+
+def modeSelect():
+    MultiplayerOrNo.init()
 
 def instructions():
     Instructions.init()

@@ -57,7 +57,7 @@ class Interaction:
 
 
     def update(self, round):
-        #updates the movements for both caharacter
+        #updates the movements for both character
         self.movements(self.characters[0], self.characters[1], 0)
         self.movements(self.characters[1], self.characters[0], 1)
 

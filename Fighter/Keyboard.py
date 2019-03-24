@@ -105,3 +105,26 @@ class InstructionsKeyboard:
 
     def key_up(self, key):
         self.next = False
+
+class MenuKeyboard:
+    def __init__(self):
+        self.playgame = False
+        self.quit = False
+        self.instructions = False
+        self.key_binds = ['b', 'n', 'm']
+
+    def key_down(self, key):
+        if key == simplegui.KEY_MAP[self.key_binds[0]]:
+            self.quit = True
+        if key == simplegui.KEY_MAP[self.key_binds[1]]:
+            self.instructions = True
+        if key == simplegui.KEY_MAP[self.key_binds[2]]:
+            self.playgame = True
+
+    def key_up(self, key):
+        if key == simplegui.KEY_MAP[self.key_binds[0]]:
+            self.quit = False
+        if key == simplegui.KEY_MAP[self.key_binds[1]]:
+            self.instructions = False
+        if key == simplegui.KEY_MAP[self.key_binds[2]]:
+            self.playgame = False

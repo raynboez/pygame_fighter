@@ -5,9 +5,23 @@ except ImportError:
 from Fighter.Vector import Vector
 from Fighter import Master
 
+
 class Mouse:
 
     screen = "null"
+
+    def handler(position):
+        click = Vector(position[0], position[1])
+        if (Mouse.screen=="splash"):#case statements don't exist in python
+            Master.menu()
+        elif (Mouse.screen=="menu"):
+            Mouse.mainMenuButtons(click)
+        elif (Mouse.screen=="instructions"):
+            Master.menu()
+        elif (Mouse.screen=="game"):
+            Mouse.gameMenuButtons(click)
+
+#######define buttons onS-screen buttons below#####
 
     def mainMenuButtons(click):
         radius = 36
@@ -15,19 +29,20 @@ class Mouse:
         yel = Vector(243, 157)
         gre = Vector(243, 240)
 
-        cenToClick = click.copy().subtract(red)  # dist between centre of ball and click
+        cenToClick = click.copy().subtract(red.copy())  # dist between centre of ball and click
         if (cenToClick.length() <= radius):  # check click is in ball
-            pygame.quit()
-            # pass
-            # todo exit
-        cenToClick = click.copy().subtract(yel)  # dist between centre of ball and click
+            quit(0)
+        cenToClick = click.copy().subtract(yel.copy())  # dist between centre of ball and click
         if (cenToClick.length() <= radius):  # check click is in ball
+            print("yellow")
             Master.instructions()
-        cenToClick = click.copy().subtract(gre)  # dist between centre of ball and click
+        cenToClick = click.copy().subtract(gre.copy())  # dist between centre of ball and click
         if (cenToClick.length() <= radius):  # check click is in ball
             # Master.gameLoop()
             Master.gameLoop('Yellow', 'Red')#todo change colors based on selection
 
-    def handler(position):
-        click = Vector(position[0], position[1])
-        Mouse.mainMenuButtons(click)
+    def gameMenuButtons(click):
+        pass
+        #exit to menu
+        #pause
+        #show instructions

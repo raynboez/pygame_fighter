@@ -12,6 +12,7 @@ from Fighter.Wall import Wall
 from Fighter.Background import Background
 from Fighter import Master
 from Fighter.Rounds import Rounds
+from Fighter.Mouse import Mouse
 
 CANVAS_WIDTH = 500
 CANVAS_HEIGHT = 500
@@ -36,6 +37,7 @@ def init(sp1, sp2):
     SPRITE1 = sp1
     SPRITE2 = sp2
     Master.masterframe.setDrawHandler(draw)
+    Mouse.screen = "game"
     #Master.masterframe.set_canvas_background('rgba(0, 200, 200, 0.3)')
 
     Master.masterframe.setKeydownHandler(kbd)
@@ -64,7 +66,8 @@ def draw(canvas):
             round.drawend(canvas)
         else:
             #enter main menu
-            quit(1)
+            kbd.key_up(next)
+            Master.menu()
     if round.startTimer < 180:
         round.draw(canvas)
 

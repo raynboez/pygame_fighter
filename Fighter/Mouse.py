@@ -34,7 +34,6 @@ class Mouse:
             quit(0)
         cenToClick = click.copy().subtract(yel.copy())  # dist between centre of ball and click
         if (cenToClick.length() <= radius):  # check click is in ball
-            print("yellow")
             Master.instructions()
         cenToClick = click.copy().subtract(gre.copy())  # dist between centre of ball and click
         if (cenToClick.length() <= radius):  # check click is in ball

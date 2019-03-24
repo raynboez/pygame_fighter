@@ -7,7 +7,7 @@ Improvements/ things we can add:
             -By lowering the resolution of images in the game and upscaling we can lower loading time(I think)
             
 Bugs:
-    -Can't press the same menu button twice
+    -(Fixed- in names instance)Can't press the same menu button twice
         -instructions then exit instructions then enter instructions again doesn't work
             -this is because the keyboard stores that it read next and instantly exits, to prove this try addin a print to the instructions init
                 -fixed with kbd.key_up(next)

@@ -19,6 +19,9 @@ def init():
 def draw(canvas):
     canvas.draw_image(image, (img_size[0] // 2, img_size[1] // 2), img_size, (250, 250),
                       (500, 500))
+    canvas.draw_text("Exit", (363, 74), 20, "White")
+    canvas.draw_text("Instructions", (363, 157), 20, "White")
+    canvas.draw_text("Play", (363, 240), 20, "White")
 
 def music():
     pass

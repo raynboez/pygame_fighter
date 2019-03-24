@@ -32,6 +32,7 @@ def instructions(canvas):
     canvas.draw_text("O", (200, 240), 15, "White")
     canvas.draw_text("FIRE", (200, 260), 15, "White")
     canvas.draw_text("U", (200, 280), 15, "White")
+    canvas.draw_text("Press any key to exit", (160, 320), 15, "White")
 
 def draw(canvas):
     instructions(canvas)

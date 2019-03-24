@@ -14,6 +14,7 @@ timer = 0
 
 def init():
     Master.masterframe.setDrawHandler(draw)
+    Mouse.screen = "splash"
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeyupHandler(kbd)
     Master.masterframe.setMouseHandler(Mouse.handler)

@@ -1,5 +1,6 @@
 from Fighter import Master
 from Fighter.Keyboard import InstructionsKeyboard
+from Fighter.Mouse import Mouse
 
 try:
     import simplegui
@@ -11,6 +12,7 @@ img_size = (500, 500)
 
 def init():
     Master.masterframe.setDrawHandler(draw)
+    Mouse.screen = "menu"
     #Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.start()
 

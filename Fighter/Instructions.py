@@ -1,8 +1,11 @@
 from Fighter import Master
 from Fighter.Keyboard import InstructionsKeyboard
+from Fighter.Mouse import Mouse
+
 
 def init():
     Master.masterframe.setDrawHandler(draw)
+    Mouse.screen = "instructions"
     Master.masterframe.setKeydownHandler(kbd)
 
 def instructions(canvas):
@@ -33,7 +36,8 @@ def instructions(canvas):
 def draw(canvas):
     instructions(canvas)
     if kbd.next:
-        Master.MainMenu
+        kbd.key_up(next)
+        Master.menu()
 
 kbd = InstructionsKeyboard()
 

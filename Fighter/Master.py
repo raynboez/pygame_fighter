@@ -8,6 +8,8 @@ from Fighter import Instructions
 from Fighter.Frame import Frame
 from Fighter import SplashScreen
 from Fighter import MainMenu
+
+
 #frame used throughout Game
 masterframe = Frame("Name", 500, 500)#encapsulates simplegui.create_frame
 

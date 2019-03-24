@@ -4,6 +4,8 @@ except ImportError:
     import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
 from Fighter.Vector import Vector
 from Fighter import Master
+from Fighter.Ai import Ai
+
 
 
 class Mouse:
@@ -20,6 +22,8 @@ class Mouse:
             Master.menu()
         elif (Mouse.screen=="game"):
             Mouse.gameMenuButtons(click)
+        elif (Mouse.screen=="MultOrNo"):
+            Mouse.multiplayer(click)
 
 #######define buttons onS-screen buttons below#####
 
@@ -38,10 +42,17 @@ class Mouse:
         cenToClick = click.copy().subtract(gre.copy())  # dist between centre of ball and click
         if (cenToClick.length() <= radius):  # check click is in ball
             # Master.gameLoop()
-            Master.gameLoop('Yellow', 'Red')#todo change colors based on selection
+            Master.modeSelect()
 
     def gameMenuButtons(click):
         pass
         #exit to menu
         #pause
         #show instructions
+
+    def multiplayer(click):
+        if (click.getX()<250):
+            Ai.leve1 = 0
+        else:
+            Ai.level = 1
+        Master.gameLoop('Yellow', 'Red')

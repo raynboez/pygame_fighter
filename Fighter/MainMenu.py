@@ -27,7 +27,7 @@ def draw(canvas):
         Master.instructions()
     if kbd.playgame:
         kbd.key_up(next)
-        Master.gameLoop('Yellow', 'Red')
+        Master.modeSelect()
 
     canvas.draw_text("Exit(b)", (363, 74), 20, "White")
     canvas.draw_text("Instructions(n)", (363, 157), 20, "White")

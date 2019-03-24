@@ -55,7 +55,7 @@ def init(sp1, sp2):
 def draw(canvas):
     round.startTimer +=1
     interactions.update(round)
-    #background.draw(canvas)
+    background.draw(canvas)
     player1.draw(canvas, player2)   #fireball drawing done in character draw
     player2.draw(canvas, player1)
     #platform_bottom.draw(canvas)

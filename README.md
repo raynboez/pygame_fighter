@@ -3,10 +3,10 @@
 Create sprites, tie to moves
   - Ben and Toby
   
-Resource and round management and background
+Rounds, spritelives and background
   - Tayma
   
-Main menu
+Main menu, Resource
   - Chris
  
   
@@ -23,9 +23,9 @@ COMPLETED THINGS
 -Resource.py
 -Platform.py
 -Fireball.py
+-Rounds.py
 
 In progress:
--Rounds.py
 -Background.py
 -Sprite.py (maybe)
 

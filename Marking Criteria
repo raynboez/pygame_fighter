@@ -12,7 +12,7 @@ Todo/requres improvement/to be more explicit:
   
 3 Additionalfeatures (40%) 
   –(Kinda) Sprites not controlled by the player colliding between them, following physics principles. 
-  –(Nope) Some of the sprites move with acceleration. 
+  –(Gravity) Some of the sprites move with acceleration. 
   –(Todo) Interesting story lines (e.g., multiple levels of increased difficulties). 
   –(Todo) Pursue and evade effects (e.g., sprites that “gravitate” towards or chase the player). 
 

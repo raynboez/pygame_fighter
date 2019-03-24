@@ -5,6 +5,11 @@ Improvements/ things we can add:
     -Pixlate sprites to lower loading times 
         - uhhh what
             -By lowering the resolution of images in the game and upscaling we can lower loading time(I think)
+            
+Bugs:
+    -Can't press the same menu button twice
+        -instructions then exit instructions then enter instructions again doesn't work
+      
 
 Possible Useless code:
     -Master.mostOfIt: Is most of it just to so you don't need to import things? -t

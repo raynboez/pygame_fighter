@@ -1,13 +1,16 @@
 
 Improvements/ things we can add:
--Can't really see fireballs
--AI - Toby will try this
--Scalable resolution - not happening, too much tied to static canvas resolution
--Pixlate sprites to lower loading times - uhhh what
+    -AI - Toby will try this
+    -Scalable resolution - not happening, too much tied to static canvas resolution
+    -Pixlate sprites to lower loading times 
+        - uhhh what
+            -By lowering the resolution of images in the game and upscaling we can lower loading time(I think)
+
+Possible Useless code:
+    -Master.mostOfIt: Is most of it just to so you don't need to import things? -t
 
 Currently working on:
     Sprite select
-    Main Menu
     Ways to make the background not kill the game
     Instructions
     Game flow (using the master class)

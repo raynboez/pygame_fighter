@@ -56,7 +56,7 @@ class Mouse:
             cenToClick = click.copy().subtract(gre.copy())  # dist between centre of ball and click
             if (cenToClick.length() <= radius):  # check click is in ball
                 # Master.gameLoop()
-                Master.gameLoop('Yellow', 'Red')  # todo change colors based on selection
+                Master.menu()  # todo change colors based on selection
         #exit to menu
         #pause
         #show instructions

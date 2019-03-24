@@ -229,7 +229,7 @@ class Character:
         #self.sprite.setDest(self.pos.getP())
         self.sprite.update(canvas, self.pos.getP())
         #circle used as placeholder marker - to be removed
-        self.energy.draw(canvas, self.p_number, 'Yellow')
+        self.energy.draw(canvas, self.p_number, 'Blue')
         self.health.draw(canvas, self.p_number, 'Red')
 
     #setting states for sprite

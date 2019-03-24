@@ -26,6 +26,6 @@ class Background:
         canvas.draw_text("Instructions", (40, 74), 13, "Black")
 
         canvas.draw_circle((130, 40), 20, 10, 'Green', 'Green')
-        canvas.draw_text("Restart", (120, 74), 13, "Black")
+        canvas.draw_text("Main Menu", (120, 74), 13, "Black")
 
 

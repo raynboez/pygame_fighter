@@ -19,6 +19,7 @@ def init():
     Master.masterframe.setKeyupHandler(kbd)
     Master.masterframe.setMouseHandler(Mouse.handler)
     Master.masterframe.start()
+
 def draw(canvas):
     updateText(canvas)
     global timer
@@ -38,7 +39,6 @@ def draw(canvas):
 def updateText(canvas):
     if(road.dest[0] < 250):
         road.setDest((road.dest[0] + 15, road.dest[1]))
-    #    print(timer)
     if(wars.dest[0] > 250):
         wars.setDest((wars.dest[0] - 15, wars.dest[1]))
     road.draw(canvas)

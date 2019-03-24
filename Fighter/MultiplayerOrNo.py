@@ -1,7 +1,6 @@
 from Fighter import Master
 from Fighter.Keyboard import MultiKeyboard
 from Fighter.Mouse import Mouse
-from Fighter.Ai import Ai
 
 try:
     import simplegui

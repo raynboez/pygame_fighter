@@ -43,8 +43,8 @@ class Keyboard:
         if key == simplegui.KEY_MAP[self.key_binds[4]]:
             #if 'q', fire
             self.fire[0] = True
-        print(Ai.leve1)
-        if (int(Ai.leve1) == 1 ):
+        print(Ai.level)
+        if (int(Ai.level) == 1 ):
             Ai.move(self)
         else:
             ##repeated for player 2
@@ -146,3 +146,38 @@ class MultiKeyboard:
         elif key == simplegui.KEY_MAP[self.key_binds[1]]:
             Ai.level = 1
         self.playgame = True
+
+
+class MenuKeyboard:
+
+    def __init__(self):
+        self.up = False
+        self.down = False
+        self.left = False
+        self.right = False
+        self.enter = False
+
+
+    def key_down(self, key):
+        if key == simplegui.KEY_MAP["w"]:
+            self.up = True
+        if key == simplegui.KEY_MAP["d"]:
+            self.right = True
+        if key == simplegui.KEY_MAP["a"]:
+            self.left = True
+        if key == simplegui.KEY_MAP["s"]:
+            self.down = True
+        if key == simplegui.KEY_MAP["e"]:
+            self.enter = True
+
+    def key_up(self, key):
+        if key == simplegui.KEY_MAP["w"]:
+            self.up = False
+        if key == simplegui.KEY_MAP["d"]:
+            self.right = False
+        if key == simplegui.KEY_MAP["a"]:
+            self.left = False
+        if key == simplegui.KEY_MAP["s"]:
+            self.down = False
+        if key == simplegui.KEY_MAP["e"]:
+            self.enter = False

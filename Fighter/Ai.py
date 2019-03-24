@@ -6,7 +6,7 @@ except ImportError:
 
 class Ai:#More an automaton, a real ai would be too slow
 
-    leve1 = 1
+    level = 1
 
     def move(keyboard):#Runs as soon as opponant moves
         Ai.lazyOpo(keyboard)

@@ -10,6 +10,7 @@ except ImportError:
 image = simplegui.load_image("https://i.ibb.co/TqyhqKk/IMG-20190322-WA0000.jpg")
 img_size = (500, 500)
 kbd = MenuKeyboard()
+pointer = 2
 
 def init():
     Master.masterframe.setDrawHandler(draw)
@@ -17,23 +18,29 @@ def init():
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeyupHandler(kbd)
 
-def draw(canvas):
+def playgame():
+    kbd.key_up(next)
+    Master.modeSelect()
 
+def instructions():
+    kbd.key_up(next)
+    Master.instructions()
+
+def quitgame():
+    quit(0)
+
+def interaction(canvas):
+    global pointer
+
+
+
+def draw(canvas):
     #User has option to contol main menu using keyboard
     canvas.draw_image(image, (img_size[0] // 2, img_size[1] // 2), img_size, (250, 250),
                       (500, 500))
-    if kbd.quit:
-        quit(0)
-    if kbd.instructions:
-        kbd.key_up(next)
-        Master.instructions()
-    if kbd.playgame:
-        kbd.key_up(next)
-        Master.modeSelect()
-
+    interaction(canvas)
     canvas.draw_text("Exit(b)", (363, 74), 20, "White")
     canvas.draw_text("Instructions(n)", (363, 157), 20, "White")
     canvas.draw_text("Play(m)", (363, 240), 20, "White")
+    canvas.draw_circle((246, 74 + (83 * pointer)), 45, 4, "Red")
 
-def music():
-    pass

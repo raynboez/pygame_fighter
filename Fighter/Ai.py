@@ -9,20 +9,21 @@ class Ai:#More an automaton, a real ai would be too slow
     leve1 = 1
 
     def move(keyboard):#Runs as soon as opponant moves
-        #Ai.lazyOpo(keyboard)
+        Ai.lazyOpo(keyboard)
 
-        if (keyboard.up[0]):#need to makes things false again
-            keyboard.fire[1] = True
-        elif (keyboard.down[0]):
-            keyboard.fire[1] = True
-        elif (keyboard.attack[0] and keyboard.up[0]):#flying kick
-            keyboard.down[1] = True
-        elif (keyboard.attack[0]):
-            keyboard.down[1] = True
-        elif (keyboard.fire[0]):
-            keyboard.up[1] = True
-        else:
-            keyboard.attack[1]= True
+        #
+        # if (keyboard.up[0]):#need to makes things false again
+        #     keyboard.fire[1] = True
+        # elif (keyboard.down[0]):
+        #     keyboard.fire[1] = True
+        # elif (keyboard.attack[0] and keyboard.up[0]):#flying kick
+        #     keyboard.down[1] = True
+        # elif (keyboard.attack[0]):
+        #     keyboard.down[1] = True
+        # elif (keyboard.fire[0]):
+        #     keyboard.up[1] = True
+        # else:
+        #     keyboard.attack[1]= True
 
         # Interaction.keyboard.right[1] = True
         # Interaction.keyboard.left[1] = True #

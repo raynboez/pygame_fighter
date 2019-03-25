@@ -50,6 +50,7 @@ def init(sp1, sp2):
     player2.setSprite(player2Sprite, SPRITE2)
     #display main menu
     #
+    round.reset()
     round.start()
 
 
@@ -65,9 +66,11 @@ def draw(canvas):
     if round.gameEnded:
         if round.startTimer < round.endTime + 180:
             round.drawend(canvas)
+
         else:
             #enter main menu
             kbd.key_up(next)
+            round.gameEnded = False
             Master.menu()
     if round.startTimer < 180:
         round.draw(canvas)

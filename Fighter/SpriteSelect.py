@@ -18,7 +18,6 @@ def init():
     Master.masterframe.setDrawHandler(drawSpriteSheet)
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeyupHandler(kbd)
-    Master.masterframe.setCanvasBackground("Navy")
 
 cursor1 = Cursor([125, 105], [125, 255], [250, 255], [250, 105], 'cyan')
 cursor1.addPos([250, 105], [250, 255], [375, 255], [375, 105], 0)

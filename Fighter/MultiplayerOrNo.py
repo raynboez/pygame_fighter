@@ -31,11 +31,13 @@ pointer = 0
 timer = 0
 
 def init():
+    global selected
     #Ai.leve1 = 0
     Master.masterframe.setDrawHandler(draw)
     Mouse.screen = "MultOrNo"
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeyupHandler(kbd)
+    selected = False
 
 def interaction():
     global pointer

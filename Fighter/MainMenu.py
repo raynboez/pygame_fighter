@@ -18,6 +18,8 @@ def init():
     Mouse.screen = "menu"
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeyupHandler(kbd)
+    Master.masterframe.setCanvasBackground("Navy")
+
 
 def playgame():
     kbd.key_up(next)
@@ -39,6 +41,7 @@ def interaction(canvas):
         if kbd.down:
             pointer += 1
         if kbd.enter:
+            kbd.enter = False
             select()
     else:
         timer+=1

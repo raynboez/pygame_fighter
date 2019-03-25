@@ -1,5 +1,5 @@
 #Jed Arno
-
+from Fighter.Mouse import Mouse
 try:
     import simplegui
 except ImportError:
@@ -15,6 +15,7 @@ from Fighter import Master
 kbd = Keyboard()
 
 def init():
+    Mouse.screen = "null"
     Master.masterframe.setDrawHandler(drawSpriteSheet)
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeyupHandler(kbd)

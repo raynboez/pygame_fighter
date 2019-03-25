@@ -20,9 +20,6 @@ sprites = {
 }
 
 selected = False
-#Todo add image for 1v1 and you vs cpu
-#image = simplegui.load_image("https://i.ibb.co/TqyhqKk/IMG-20190322-WA0000.jpg")
-#img_size = (500, 500)
 redsprite = Sprite(sprites["Red"], 210, 52, 2, 14, (100, 235), 4, "idle", "left")
 greensprite = Sprite(sprites["Green"], 210, 52, 2, 14, (200, 235), 4, "idle", "left")
 bluesprite = Sprite(sprites["Blue"], 210, 52, 2, 14, (400, 235), 4, "idle", "left")

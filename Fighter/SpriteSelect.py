@@ -43,8 +43,7 @@ selectedSprite1 = Sprite("https://i.ibb.co/p0QcQJg/lights.png", 30, 27, 1, 2, [1
 selectedSprite2 = Sprite("https://i.ibb.co/p0QcQJg/lights.png", 30, 27, 1, 2, [400, 100], 2, "off", "left")
 
 finalnames = [ "Red", "Blue", "Green", "Yellow"]
-#previewSprite1 = Sprite(sprites[cursor1.getSelection()], 210, 52, 2, 14, (50, 250), 8)
-#previewSprite2 = Sprite(sprites[cursor2.getSelection()], 210, 52, 2, 14, (450, 250), 8)
+
 def ready():
     if cursor1.getSelected() and cursor2.getSelected():
 

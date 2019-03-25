@@ -18,7 +18,6 @@ def runGame():
     splashScreen()
 
 def splashScreen():
-    print("yote")
     SplashScreen.init()
 
 #adjust these classes when menu and spriteselect are created - can be used to hand over selections

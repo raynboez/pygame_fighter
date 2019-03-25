@@ -5,19 +5,15 @@ sprites = {
     "Red": "https://i.ibb.co/fFDh4Fq/full-fireball-red.png",
     "Green": "https://i.ibb.co/3pY8Bwh/full-fireball-green.png",
     "Blue": "https://i.ibb.co/8c3T7t5/full-fireball-blue.png",
-    "Yellow": "https://i.ibb.co/sFMx6rF/full-fireball-yellow.png"
+    "Yellow": "https://i.ibb.co/sFMx6rF/full-fireball-yellow.png",
+    "Base" : "https://i.ibb.co/gWrSnR7/full-fireball-base.png"
 }
 
 
 class Fireball:
     #initialises fireball with a player and a direction
     #if fireball is not being fired, it is stored off canvas (-100,-100)
-    sprites = {
-        "Red" : "https://i.ibb.co/fFDh4Fq/full-fireball-red.png",
-        "Green" : "https://i.ibb.co/3pY8Bwh/full-fireball-green.png",
-        "Blue" : "https://i.ibb.co/8c3T7t5/full-fireball-blue.png",
-        "Yellow" : "https://i.ibb.co/sFMx6rF/full-fireball-yellow.png"
-    }
+
 
     def __init__(self, player, direction):
         self.character = player

@@ -74,6 +74,13 @@ class Sprite:
             self.nextSprite()
         self.timer += 1
 
+    def updateStatic(self, canvas):
+        self.updateDirection()
+        self.draw(canvas)
+        if self.timer % 10 == 0:
+            self.nextSprite()
+        self.timer += 1
+
 
 class StaticSprite:
 

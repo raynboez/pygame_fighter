@@ -12,62 +12,77 @@ from Fighter.Wall import Wall
 from Fighter.Background import Background
 from Fighter import Master
 from Fighter.Rounds import Rounds
+from Fighter.Mouse import Mouse
 
 CANVAS_WIDTH = 500
 CANVAS_HEIGHT = 500
 
-player1Sprite = Sprite("https://i.ibb.co/vqQr5QQ/Place-Holder.png", 180, 350, 7, 6, (100, 300), 1)  ##TODO
-player2Sprite = Sprite("https://i.ibb.co/vqQr5QQ/Place-Holder.png", 180, 350, 7, 6, (400, 300), 1)  ##TODO
-player1 = Character(player1Sprite, Vector(100, 300), Vector(0, 0), 1, 'right')
-player2 = Character(player2Sprite, Vector(400, 300), Vector(0, 0), 2, 'left')
+sprites = {
+    "Red" : "https://i.ibb.co/M7Ff2wx/redsheet.png",
+    "Blue" : "https://i.ibb.co/2hv9qcq/bluesheet.png",
+    "Green" : "https://i.ibb.co/K2616MG/greensheet.png",
+    "Yellow" : "https://i.ibb.co/CbMDdVC/yellowsheet.png",
+    "Base" : "https://i.ibb.co/6m5sd2h/fullsheet.png"
+}
+SPRITE1 = "Red"
+SPRITE2 = "Blue"
+player1Sprite = Sprite(sprites[SPRITE1], 210, 52, 2, 14, (100, 300), 4, "idle", "left")  ##TODO
+player2Sprite = Sprite(sprites[SPRITE2], 210, 52, 2, 14, (400, 300), 4, "idle", "right")  ##Get Sprite sheets
+player1 = Character(player1Sprite, Vector(100, 300), 1, 'right')
+player2 = Character(player2Sprite, Vector(400, 300), 2, 'left')
 round = Rounds(player1, player2)
 
 #when GameLoop is called by a class, init starts the frame
-def init():
+def init(sp1, sp2):
+    global SPRITE1, SPRITE2
+    SPRITE1 = sp1
+    SPRITE2 = sp2
     Master.masterframe.setDrawHandler(draw)
+    Mouse.screen = "game"
     #Master.masterframe.set_canvas_background('rgba(0, 200, 200, 0.3)')
 
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeyupHandler(kbd)
 
+    player1Sprite = Sprite(sprites[SPRITE1], 210, 52, 2, 14, (100, 300), 4, "idle", "left")  ##TODO
+    player2Sprite = Sprite(sprites[SPRITE2], 210, 52, 2, 14, (400, 300), 4, "idle", "right")
+    player1.setSprite(player1Sprite, SPRITE1)
+    player2.setSprite(player2Sprite, SPRITE2)
     #display main menu
     #
+    round.reset()
     round.start()
 
 
 
 #main draw handler, updates all interactions and then draws objects on frame
 def draw(canvas):
-
+    round.startTimer +=1
     interactions.update(round)
     background.draw(canvas)
-    #fireball drawing done in character draw
-    player1.draw(canvas, player2)
+    player1.draw(canvas, player2)   #fireball drawing done in character draw
     player2.draw(canvas, player1)
+    #platform_bottom.draw(canvas)
+    if round.gameEnded:
+        if round.startTimer < round.endTime + 180:
+            round.drawend(canvas)
 
-
-    #draws platforms (platform_top has no interaction state)
-    #qplatform_top.draw(canvas)
-    platform_bottom.draw(canvas)
-
-
-
-background = Background()
+        else:
+            #enter main menu
+            kbd.key_up(next)
+            round.gameEnded = False
+            Master.menu()
+    if round.startTimer < 180:
+        round.draw(canvas)
 
 #initialises a keyboard
 kbd = Keyboard()
 
-#spritesheets will go here
-#creating the characters - created above platform, then fall to platform
-
-
-
-
-#creates platforms and walls
-platform_top = Platform(CANVAS_WIDTH, 50, 10, 'Grey')
+#creates arena with background
+background = Background()
 platform_bottom = Platform(CANVAS_WIDTH, 400, 10, 'Grey')
-walla = Wall(CANVAS_WIDTH, CANVAS_HEIGHT, 10, 'Red')
-wallb = Wall(0, CANVAS_HEIGHT, 10, 'Red')
+walla = Wall(CANVAS_WIDTH + 10, CANVAS_HEIGHT, 10, 'Red')
+wallb = Wall(-10, CANVAS_HEIGHT, 10, 'Red')
 
 #creates interaction class and adds the objects
 interactions = Interaction(kbd)
@@ -77,29 +92,25 @@ interactions.addPlatform(platform_bottom)
 interactions.addWall(walla)
 interactions.addWall(wallb)
 
-#sets bounds for frame and sets handlers
 
-
-#TODO
-#platform interactions
-#   #   jumping - stop acceleration
-#   double jump
-#   edge of screen
-#
-#hitboxes
-#   seperate hurtbox and hitbox
+#TODO list
 #
 #player collisions
-#   players not drawn over each other
+#   players not drawn over each other?
 #
-#punch cooldown
-#   timer based(can only punch once every half second)
-#   timer starts when punch thrown
-#   need to set up game timer
+#SPRITESHEET URLS
 #
-#knockback on punch?
-#   player being hit moves back a little
-#
-#knockback on kick
-#   player being kicked moves back more
-#   player doing kicking recoils
+#https://i.ibb.co/vB3Q4QG/fullsheet.png
+#   BASE
+
+#https://i.ibb.co/CbMDdVC/yellowsheet.png
+#   YELLOW
+
+#https://i.ibb.co/M7Ff2wx/redsheet.png
+#   RED
+
+#https://i.ibb.co/2hv9qcq/bluesheet.png
+#   BLUE
+
+#https://i.ibb.co/K2616MG/greensheet.png
+#   GREEN

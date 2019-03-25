@@ -6,17 +6,22 @@ except:
 from Fighter import Master
 from Fighter.Keyboard import InstructionsKeyboard
 from Fighter.Sprite import StaticSprite
+from Fighter.Mouse import Mouse
+
 
 kbd = InstructionsKeyboard()
 timer = 0
-music = simplegui.load_sound('https://github.com/raynboez/pygame_fighter/blob/master/Fighter/music/Maz%20Nimra%20-%20Level%20One.ogg?raw=true')
 
 def init():
-    music.play()
+    Master.music.play(self.menu)
+    
     Master.masterframe.setDrawHandler(draw)
+    Mouse.screen = "splash"
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeyupHandler(kbd)
+    Master.masterframe.setMouseHandler(Mouse.handler)
     Master.masterframe.start()
+
 def draw(canvas):
     updateText(canvas)
     global timer
@@ -29,18 +34,15 @@ def draw(canvas):
     if timer > 210:
         canvas.draw_text("Press any button to start!", (50, 450), 40, "White")
         if kbd.next:
-            Master.instructions()
+            Master.menu()
     timer +=1
 
 
 def updateText(canvas):
     if(road.dest[0] < 250):
         road.setDest((road.dest[0] + 15, road.dest[1]))
-    #    print(timer)
     if(wars.dest[0] > 250):
         wars.setDest((wars.dest[0] - 15, wars.dest[1]))
-    else:
-        print(timer)
     road.draw(canvas)
     wars.draw(canvas)
 

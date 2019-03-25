@@ -16,6 +16,20 @@ class Rounds:
         #self.maxrounds = maxrounds
         self.gameEnded = False
         self.startTimer = 0
+
+    def reset(self):
+        self.player1.lives.restore()
+        self.player2.lives.restore()
+        self.player1.newLife()
+        self.player2.newLife()
+        global timer
+        self.roundNum = 0
+        self.startTimer = 0
+        timer = 0
+        self.GameEnded = False
+        self.setEnd = False
+
+
     def start(self):
         self.roundNum = 1
 

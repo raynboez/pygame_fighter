@@ -1,3 +1,5 @@
+from Fighter.Ai import Ai
+
 try:
     import simplegui
 except ImportError:
@@ -15,6 +17,7 @@ class Keyboard:
         self.attack = [False,False]
         self.fire = [False,False]
         self.idle = [False, False]
+        self.ai = True
         #binds [0]-[5] are p1 bindings, [6]-[11] are p2 bindings
 
         self.key_binds = ['w','a','s','d','q','e','i','j','k','l','u','o']
@@ -40,22 +43,25 @@ class Keyboard:
         if key == simplegui.KEY_MAP[self.key_binds[4]]:
             #if 'q', fire
             self.fire[0] = True
-
-        ##repeated for player 2
-        if key == simplegui.KEY_MAP[self.key_binds[9]]:
-            self.right[1] = True
-        if key == simplegui.KEY_MAP[self.key_binds[7]]:
-            self.left[1] = True
-        if key == simplegui.KEY_MAP[self.key_binds[6]]:
-            self.up[1] = True
-        if key == simplegui.KEY_MAP[self.key_binds[8]]:
-            self.down[1] = True
-        if key == simplegui.KEY_MAP[self.key_binds[11]]:
-            self.attack[1] = True
-        if key == simplegui.KEY_MAP[self.key_binds[10]]:
-            self.fire[1] = True
-        self.checkIdle(0)
-        self.checkIdle(1)
+        print(Ai.level)
+        if (int(Ai.level) == 1 ):
+            Ai.move(self)
+        else:
+            ##repeated for player 2
+            if key == simplegui.KEY_MAP[self.key_binds[9]]:
+                self.right[1] = True
+            if key == simplegui.KEY_MAP[self.key_binds[7]]:
+                self.left[1] = True
+            if key == simplegui.KEY_MAP[self.key_binds[6]]:
+                self.up[1] = True
+            if key == simplegui.KEY_MAP[self.key_binds[8]]:
+                self.down[1] = True
+            if key == simplegui.KEY_MAP[self.key_binds[11]]:
+                self.attack[1] = True
+            if key == simplegui.KEY_MAP[self.key_binds[10]]:
+                self.fire[1] = True
+            self.checkIdle(0)
+            self.checkIdle(1)
 
     #key up handler, same principle as key_down
     def key_up(self, key):
@@ -72,7 +78,7 @@ class Keyboard:
             self.attack[0] = False
         if key == simplegui.KEY_MAP[self.key_binds[4]]:
             self.fire[0] = False
-        #player 2
+
         if key == simplegui.KEY_MAP[self.key_binds[9]]:
             self.right[1] = False
         if key == simplegui.KEY_MAP[self.key_binds[7]]:
@@ -105,3 +111,73 @@ class InstructionsKeyboard:
 
     def key_up(self, key):
         self.next = False
+#
+# class MenuKeyboard:
+#     def __init__(self):
+#         self.playgame = False
+#         self.quit = False
+#         self.instructions = False
+#         self.key_binds = ['b', 'n', 'm', 'e', 'i', 'p','q']
+#
+#     def key_down(self, key):
+#         if ((key == simplegui.KEY_MAP[self.key_binds[0]]) or (key == simplegui.KEY_MAP[self.key_binds[3]]) or (key == simplegui.KEY_MAP[self.key_binds[6]])):
+#             self.quit = True
+#         if (key == simplegui.KEY_MAP[self.key_binds[1]] or key == simplegui.KEY_MAP[self.key_binds[4]]):
+#             self.instructions = True
+#         if (key == simplegui.KEY_MAP[self.key_binds[2]] or key == simplegui.KEY_MAP[self.key_binds[5]]):
+#             self.playgame = True
+#
+#     def key_up(self, key):
+#         if (key == simplegui.KEY_MAP[self.key_binds[0]] or key == simplegui.KEY_MAP[self.key_binds[3]] or key == simplegui.KEY_MAP[self.key_binds[6]]):
+#             self.quit = False
+#         if (key == simplegui.KEY_MAP[self.key_binds[1]] or key == simplegui.KEY_MAP[self.key_binds[4]]):
+#             self.instructions = False
+#         if (key == simplegui.KEY_MAP[self.key_binds[2]] or key == simplegui.KEY_MAP[self.key_binds[5]]):
+#             self.playgame = False
+
+class MultiKeyboard:
+    def __init__(self):
+        self.key_binds = ['p', 's']
+        self.playgame = False
+
+    def key_down(self, key):
+        if key == simplegui.KEY_MAP[self.key_binds[0]]:
+            Ai.level = 0
+        elif key == simplegui.KEY_MAP[self.key_binds[1]]:
+            Ai.level = 1
+        self.playgame = True
+
+
+class MenuKeyboard:
+
+    def __init__(self):
+        self.up = False
+        self.down = False
+        self.left = False
+        self.right = False
+        self.enter = False
+
+
+    def key_down(self, key):
+        if key == simplegui.KEY_MAP["w"]:
+            self.up = True
+        if key == simplegui.KEY_MAP["d"]:
+            self.right = True
+        if key == simplegui.KEY_MAP["a"]:
+            self.left = True
+        if key == simplegui.KEY_MAP["s"]:
+            self.down = True
+        if key == simplegui.KEY_MAP["e"]:
+            self.enter = True
+
+    def key_up(self, key):
+        if key == simplegui.KEY_MAP["w"]:
+            self.up = False
+        if key == simplegui.KEY_MAP["d"]:
+            self.right = False
+        if key == simplegui.KEY_MAP["a"]:
+            self.left = False
+        if key == simplegui.KEY_MAP["s"]:
+            self.down = False
+        if key == simplegui.KEY_MAP["e"]:
+            self.enter = False

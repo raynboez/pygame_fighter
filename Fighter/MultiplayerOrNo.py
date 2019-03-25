@@ -61,7 +61,7 @@ def select():
 
 def draw(canvas):
     canvas.draw_polygon([(0, 400), (0, 100), (500, 100), (500,400)], 5, "Grey", "Grey")
-    global selected
+    global selected, pointer
     aisprite.updateStatic(canvas)
 
     redsprite.updateStatic(canvas)

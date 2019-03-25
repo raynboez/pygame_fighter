@@ -15,18 +15,20 @@ class Mouse:
 
     def handler(position):
         click = Vector(position[0], position[1])
-        if (Mouse.screen=="splash"):#case statements don't exist in python
+        if Mouse.screen=="splash":#todo change to dict
             Master.menu()
-        elif (Mouse.screen=="menu"):
+        elif Mouse.screen=="menu":
             Mouse.mainMenuButtons(click)
-        elif (Mouse.screen=="instructions"):
+        elif Mouse.screen=="instructions":
             Master.menu()
-        elif (Mouse.screen=="game"):
+        elif Mouse.screen=="game":
             Mouse.gameMenuButtons(click)
-        elif (Mouse.screen=="MultOrNo"):
+        elif Mouse.screen=="MultOrNo":
             Mouse.multiplayer(click)
         elif Mouse.screen=="lvlSelect":
             Mouse.lvlSelect(click)
+        elif Mouse.screen=="spriteSelect":
+            Mouse.spriSel(click)
         else:
             pass
 
@@ -95,3 +97,7 @@ class Mouse:
             elif abs(click.getX() - (lvl4.copy().getX())) < 50:
                 Ai.level = 4
             Mouse.levelSel = True
+
+    def spriSel(click):
+        #no logical behaviour
+        pass

@@ -15,7 +15,7 @@ from Fighter import Master
 kbd = Keyboard(False)
 
 def init():
-    Mouse.screen = "null"
+    Mouse.screen = "spriteSelect"
     Master.masterframe.setDrawHandler(drawSpriteSheet)
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeyupHandler(kbd)

@@ -10,7 +10,7 @@ from Fighter import SplashScreen
 from Fighter import MainMenu
 from Fighter import MultiplayerOrNo
 from Fighter import SpriteSelect
-
+from Fighter.Music import Music
 #frame used throughout Game
 masterframe = Frame("Name", 500, 500)#encapsulates simplegui.create_frame
 

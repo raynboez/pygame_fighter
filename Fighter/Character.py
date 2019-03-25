@@ -13,7 +13,6 @@ states = {
     "kick"  : "interruptable",
     "fire" : "non",
     "hit" : "non",
-    "hit" : "non",
     "block" : "non",
     "die" : "non"
 }

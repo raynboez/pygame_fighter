@@ -1,3 +1,5 @@
+#Jed Arno
+from Fighter.Mouse import Mouse
 try:
     import simplegui
 except ImportError:
@@ -13,6 +15,7 @@ from Fighter import Master
 kbd = Keyboard()
 
 def init():
+    Mouse.screen = "null"
     Master.masterframe.setDrawHandler(drawSpriteSheet)
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeyupHandler(kbd)
@@ -31,10 +34,11 @@ player1 = Navigation(cursor1, kbd, 0)
 player2 = Navigation(cursor2, kbd, 1)
 
 selection = StaticSprite("https://i.ibb.co/wCnM7pP/fullscaled.png", 247, 322, [250, 255], 1)
-previewSprites = ["https://i.ibb.co/M7Ff2wx/redsheet.png",
-                  "https://i.ibb.co/2hv9qcq/bluesheet.png",
-                  "https://i.ibb.co/K2616MG/greensheet.png",
-                  "https://i.ibb.co/CbMDdVC/yellowsheet.png"]
+previewSprites = [ "https://i.ibb.co/M7Ff2wx/redsheet.png",
+
+    "https://i.ibb.co/2hv9qcq/bluesheet.png",
+    "https://i.ibb.co/K2616MG/greensheet.png",
+    "https://i.ibb.co/CbMDdVC/yellowsheet.png"]
 
 selectedSprite1 = Sprite("https://i.ibb.co/p0QcQJg/lights.png", 30, 27, 1, 2, [100, 100], 2, "on", "left")
 selectedSprite2 = Sprite("https://i.ibb.co/p0QcQJg/lights.png", 30, 27, 1, 2, [400, 100], 2, "off", "left")

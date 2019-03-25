@@ -1,5 +1,6 @@
 from Fighter.Interaction import Interaction
 from Fighter.Character import Character
+from random import randint
 try:
     import simplegui
 except ImportError:
@@ -12,7 +13,7 @@ class Ai:#More an automaton, a real ai would be too slow
 
     def move(self, keyboard):#Runs as soon as opponant moves
         self.distance = Character.distance(Interaction.characters[0], Interaction.characters[1])
-        #distance between chars on x axis, positive means cpu is to right of player
+        #distance between chars on x axis, positive means player is to right of cpu
         print(self.distance)
         self.levelSelect(self, keyboard)
 
@@ -38,7 +39,9 @@ class Ai:#More an automaton, a real ai would be too slow
 
 ###opponants sorted by difficulty(best to worst)####
 
-    def testIng(keyboard):
+    def testIng(keyboard):#fiesty fred
+
+        #if self.distance <
         if (keyboard.up[0]):  # need to makes things false again
             keyboard.fire[1] = True
         elif (keyboard.down[0]):
@@ -51,6 +54,12 @@ class Ai:#More an automaton, a real ai would be too slow
             keyboard.up[1] = True
         else:
             keyboard.attack[1] = True
+
+        # Interaction.keyboard.right[1] = True
+        # Interaction.keyboard.left[1] = True #
+        # Interaction.keyboard.up[1] = True#jump
+        # Interaction.keyboard.down[1] = True#block
+        # Interaction.keyboard.attack[1] = True
 
     def fanCFighter(keyboard):#does all the things well
         pass

@@ -20,12 +20,12 @@ class Background:
 
         #the buttons for the user so they can quit, read the instructions or restart the game during the game
         canvas.draw_circle((30, 40), 20, 10, 'Red', 'Red')
-        canvas.draw_text("Exit", (15, 75), 13, "Black")
+        canvas.draw_text("Exit", (15, 75), 13, "White")
 
         canvas.draw_circle((80, 40), 20, 10, 'Orange', 'Orange')
-        canvas.draw_text("Instructions", (40, 74), 13, "Black")
+        canvas.draw_text("Instructions", (40, 74), 13, "White")
 
         canvas.draw_circle((130, 40), 20, 10, 'Green', 'Green')
-        canvas.draw_text("Main Menu", (120, 74), 13, "Black")
+        canvas.draw_text("Main Menu", (120, 74), 13, "White")
 
 

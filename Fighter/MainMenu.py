@@ -72,8 +72,11 @@ def draw(canvas):
     else:
         canvas.draw_circle((246, 74), 40, 1, "Red", "Red")
     interaction(canvas)
-    canvas.draw_text("Exit(b)", (363, 74), 20, "White")
-    canvas.draw_text("Instructions(n)", (363, 157), 20, "White")
-    canvas.draw_text("Play(m)", (363, 240), 20, "White")
+    canvas.draw_text("Exit", (363, 74), 20, "White")
+    canvas.draw_text("Instructions ", (363, 157), 20, "White")
+    canvas.draw_text("Play", (363, 240), 20, "White")
+    canvas.draw_text("Up (w)", (50, 120), 20, "White")
+    canvas.draw_text("Down (s)", (50, 160), 20, "White")
+    canvas.draw_text("Enter (e)", (50, 200), 20, "White")
     #canvas.draw_circle((246, 74 + (83 * pointer)), 45, 4, "Red")
 

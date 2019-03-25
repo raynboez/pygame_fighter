@@ -12,6 +12,8 @@ class Mouse:
     screen = "null"
     multiNoSel = False
     levelSel = False
+    spriteSel = False
+    spriteSelection = [0,0]
 
     def handler(position):
         click = Vector(position[0], position[1])
@@ -78,9 +80,10 @@ class Mouse:
         if ((abs(click.getY()-235)) < 85):
             if abs(click.getX()-(multi.copy().getX())) < 60:
                 Ai.level = 0
+                Mouse.multiNoSel = True
             elif abs(click.getX()-(solo.copy().getX())) < 60:
                 Ai.level = 1
-            Mouse.multiNoSel = True
+                Mouse.multiNoSel = True
 
     def lvlSelect(click):
         lvl1 = Vector(100, 235)
@@ -90,14 +93,33 @@ class Mouse:
         if ((abs(click.getY() - 235)) < 85):
             if abs(click.getX() - (lvl1.copy().getX())) < 50:
                 Ai.level = 1
+                Mouse.levelSel = True
             elif abs(click.getX() - (lvl2.copy().getX())) < 50:
                 Ai.level = 2
+                Mouse.levelSel = True
             elif abs(click.getX() - (lvl3.copy().getX())) < 50:
                 Ai.level = 3
+                Mouse.levelSel = True
             elif abs(click.getX() - (lvl4.copy().getX())) < 50:
                 Ai.level = 4
-            Mouse.levelSel = True
+                Mouse.levelSel = True
 
-    def spriSel(click):
-        #no logical behaviour
-        pass
+    def spriSel(click):#ran our of time
+        red = Vector(187, 180)
+        green = Vector(313, 180)
+        blue = Vector(187, 260)
+        yell = Vector(313, 260)
+        if (abs(click.getY() - 180)) < 80:
+            if abs(click.getX() - (red.copy().getX())) < 62:
+                Mouse.spriteSel = True
+                Mouse.spriteSelection = [0,0]
+            elif abs(click.getX() - (green.copy().getX())) < 62:
+                Mouse.spriteSel = True
+                Mouse.spriteSelection = [1, 0]
+        elif(abs(click.getY() - 260)) < 80:
+            if abs(click.getX() - (blue.copy().getX())) < 62:
+                Mouse.spriteSel = True
+                Mouse.spriteSelection = [0, 1]
+            elif abs(click.getX() - (yell.copy().getX())) < 62:
+                Mouse.spriteSel = True
+                Mouse.spriteSelection = [1, 1]

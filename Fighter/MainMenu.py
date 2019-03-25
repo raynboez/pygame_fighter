@@ -83,5 +83,4 @@ def draw(canvas):
     canvas.draw_text("Exit(b)", (363, 74), 20, "White")
     canvas.draw_text("Instructions(n)", (363, 157), 20, "White")
     canvas.draw_text("Play(m)", (363, 240), 20, "White")
-    #canvas.draw_circle((246, 74 + (83 * pointer)), 45, 4, "Red")
 

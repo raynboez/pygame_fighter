@@ -36,13 +36,15 @@ def quitgame():
 
 def interaction(canvas):
     global pointer, timer
-    if timer > 4:
-        timer = 0
+    if timer > 7:
         if kbd.up:
+            timer = 0
             pointer -= 1
         if kbd.down:
+            timer = 0
             pointer += 1
         if kbd.enter:
+            timer = 0
             kbd.enter = False
             select()
     else:
@@ -67,8 +69,12 @@ def draw(canvas):
 
     canvas.draw_image(image, (img_size[0] // 2, img_size[1] // 2), img_size, (250, 250),
                       (500, 500))
+    canvas.draw_circle((246, 74), 40, 5, "Grey", "Grey")
+    canvas.draw_circle((246, 74 + 83), 40, 5, "Grey", "Grey")
+    canvas.draw_circle((246, 74 + (83*2)), 40, 5, "Grey", "Grey")
     if pointer == 2:
         canvas.draw_circle((246, 74 + (83 * 2)), 40, 1, "Green", "Green")
+
     elif pointer == 1:
         canvas.draw_circle((246, 74 + (83 * 1)), 40, 1, "Orange", "Orange")
     else:

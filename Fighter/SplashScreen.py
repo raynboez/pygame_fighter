@@ -9,8 +9,10 @@ from Fighter.Sprite import StaticSprite
 
 kbd = InstructionsKeyboard()
 timer = 0
+music = simplegui.load_sound('https://github.com/raynboez/pygame_fighter/blob/master/Fighter/music/Maz%20Nimra%20-%20Level%20One.ogg?raw=true')
 
 def init():
+    music.play()
     Master.masterframe.setDrawHandler(draw)
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeyupHandler(kbd)

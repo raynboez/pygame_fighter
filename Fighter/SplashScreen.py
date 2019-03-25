@@ -12,7 +12,9 @@ from Fighter.Mouse import Mouse
 kbd = InstructionsKeyboard()
 timer = 0
 
+music = simplegui.load_sound("https://raw.githubusercontent.com/raynboez/pygame_fighter/master/Fighter/music/Maz%20Nimra%20-%20Level%20One.ogg")
 def init():
+    music.play()
     Master.masterframe.setDrawHandler(draw)
     Mouse.screen = "splash"
     Master.masterframe.setKeydownHandler(kbd)

@@ -43,6 +43,7 @@ def init(sp1, sp2):
 
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeyupHandler(kbd)
+    Master.music.pause()
     Master.music.play("fight")
 
     player1Sprite = Sprite(sprites[SPRITE1], 210, 52, 2, 14, (100, 300), 4, "idle", "left")  ##TODO

@@ -1,9 +1,12 @@
 from Fighter.Vector import Vector
 
 class Interaction:
+
+    characters = []
+
     #initialises interaction class with 3 arrays (so the objects can be addressed iteratively) and a keyboard
     def __init__(self, keyboard):
-        self.characters = []
+        #self.characters = []
         self.platforms = []
         self.walls = []
         self.keyboard = keyboard

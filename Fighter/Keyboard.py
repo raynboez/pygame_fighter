@@ -1,5 +1,6 @@
+from Fighter.Interaction import Interaction#todo remove
+from Fighter.Character import Character#todo remoce
 from Fighter.Ai import Ai
-
 try:
     import simplegui
 except ImportError:
@@ -43,9 +44,13 @@ class Keyboard:
         if key == simplegui.KEY_MAP[self.key_binds[4]]:
             #if 'q', fire
             self.fire[0] = True
-        print(Ai.level)
+
+        distance = Character.distance(Interaction.characters[0], Interaction.characters[1])#todo remove
+        # distance between chars on x axis, positive means cpu is to right of player
+        print(distance)#todo remove
+        print(Ai.level)#todo remove
         if (int(Ai.level) >= 1 ):
-            Ai.move(Ai, self)
+            Ai.move(Ai)
         else:
             ##repeated for player 2
             if key == simplegui.KEY_MAP[self.key_binds[9]]:

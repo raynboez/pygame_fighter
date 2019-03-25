@@ -9,6 +9,8 @@ try:
 except ImportError:
     import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
 
+
+
 sprites = {
     "Red" : "https://i.ibb.co/M7Ff2wx/redsheet.png",
     "Blue" : "https://i.ibb.co/2hv9qcq/bluesheet.png",
@@ -18,6 +20,9 @@ sprites = {
 }
 
 selected = False
+#Todo add image for 1v1 and you vs cpu
+#image = simplegui.load_image("https://i.ibb.co/TqyhqKk/IMG-20190322-WA0000.jpg")
+#img_size = (500, 500)
 aisprite = Sprite(sprites["Base"], 210, 52, 2, 14, (350, 225), 4, "idle", "left")
 redsprite = Sprite(sprites["Red"], 210, 52, 2, 14, (135, 253), 2, "idle", "right")
 greensprite = Sprite(sprites["Green"], 210, 52, 2, 14, (135, 199), 2, "idle", "right")
@@ -31,11 +36,10 @@ def init():
     global selected
     #Ai.leve1 = 0
     Master.masterframe.setDrawHandler(draw)
-    Mouse.screen = "null"
+    Mouse.screen = "MultOrNo"
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeyupHandler(kbd)
     selected = False
-
 
 def interaction():
     global pointer
@@ -46,7 +50,6 @@ def interaction():
     if kbd.enter:
         select()
 
-
 def select():
     global selected
     if pointer == 1:
@@ -55,7 +58,6 @@ def select():
         Ai.level = 0
     kbd.enter = 0
     selected = True
-
 
 def draw(canvas):
     canvas.draw_polygon([(0, 400), (0, 100), (500, 100), (500,400)], 5, "Grey", "Grey")
@@ -68,6 +70,10 @@ def draw(canvas):
     yellowsprite.updateStatic(canvas)
 
     interaction()
+    if (Mouse.multiNoSel):
+        pointer = Ai.level
+        Mouse.multiNoSel = False
+        selected = True
     if selected and pointer == 1:
         Master.levelSelect()
     if selected and pointer == 0:

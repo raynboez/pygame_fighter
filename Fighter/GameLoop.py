@@ -1,3 +1,4 @@
+from Fighter.Ai import Ai
 try:
     import simplegui
 except ImportError:
@@ -93,7 +94,7 @@ interactions.addCharacter(player2)
 interactions.addPlatform(platform_bottom)
 interactions.addWall(walla)
 interactions.addWall(wallb)
-
+ai = Ai(kbd)
 
 #TODO list
 #

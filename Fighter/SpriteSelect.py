@@ -45,6 +45,9 @@ finalnames = [ "Red", "Green", "Blue", "Yellow"]
 #previewSprite2 = Sprite(sprites[cursor2.getSelection()], 210, 52, 2, 14, (450, 250), 8)
 def ready():
     if cursor1.getSelected() and cursor2.getSelected():
+
+        cursor1.deselect()
+        cursor2.deselect()
         return True
     else:
         return False
@@ -69,4 +72,5 @@ def drawSpriteSheet(canvas):
         Sprite(names[cursor2.previewSelection()],  400,  15, 2, 14, (450, 50), 4, "idle", "left").draw(canvas)
         
     if ready():
+
         Master.gameLoop(finalnames[cursor1.previewSelection()], finalnames[cursor2.previewSelection()])

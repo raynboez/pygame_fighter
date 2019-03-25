@@ -13,6 +13,8 @@ kbd = InstructionsKeyboard()
 timer = 0
 
 def init():
+    Master.music.play(self.menu)
+    
     Master.masterframe.setDrawHandler(draw)
     Mouse.screen = "splash"
     Master.masterframe.setKeydownHandler(kbd)

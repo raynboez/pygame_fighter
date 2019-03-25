@@ -44,8 +44,8 @@ class Keyboard:
             #if 'q', fire
             self.fire[0] = True
         print(Ai.level)
-        if (int(Ai.level) == 1 ):
-            Ai.move(self)
+        if (int(Ai.level) >= 1 ):
+            Ai.move(Ai, self)
         else:
             ##repeated for player 2
             if key == simplegui.KEY_MAP[self.key_binds[9]]:
@@ -79,18 +79,26 @@ class Keyboard:
         if key == simplegui.KEY_MAP[self.key_binds[4]]:
             self.fire[0] = False
 
-        if key == simplegui.KEY_MAP[self.key_binds[9]]:
+        if (int(Ai.level) >= 1 ):#stops ai getting stuck on a move
             self.right[1] = False
-        if key == simplegui.KEY_MAP[self.key_binds[7]]:
             self.left[1] = False
-        if key == simplegui.KEY_MAP[self.key_binds[6]]:
-            self.up[1] = False
-        if key == simplegui.KEY_MAP[self.key_binds[8]]:
-            self.down[1] = False
-        if key == simplegui.KEY_MAP[self.key_binds[11]]:
+            self.up[1] = False#jump
+            self.down[1] = False#block
             self.attack[1] = False
-        if key == simplegui.KEY_MAP[self.key_binds[10]]:
             self.fire[1] = False
+        else:
+            if key == simplegui.KEY_MAP[self.key_binds[9]]:
+                self.right[1] = False
+            if key == simplegui.KEY_MAP[self.key_binds[7]]:
+                self.left[1] = False
+            if key == simplegui.KEY_MAP[self.key_binds[6]]:
+                self.up[1] = False
+            if key == simplegui.KEY_MAP[self.key_binds[8]]:
+                self.down[1] = False
+            if key == simplegui.KEY_MAP[self.key_binds[11]]:
+                self.attack[1] = False
+            if key == simplegui.KEY_MAP[self.key_binds[10]]:
+                self.fire[1] = False
         self.checkIdle(0)
         self.checkIdle(1)
 

@@ -71,8 +71,11 @@ class Mouse:
         #show instructions
 
     def multiplayer(click):
-        if (click.getX() < 250):
-            Ai.level = 0
-        else:
-            Ai.level = 1
-        Mouse.multiNoSel = True
+        multi = Vector(150, 235)
+        solo = Vector(350, 235)
+        if ((abs(click.getY()-235)) < 85):
+            if abs(click.getX()-(multi.copy().getX())) < 60:
+                Ai.level = 0
+            elif abs(click.getX()-(solo.copy().getX())) < 60:
+                Ai.level = 1
+            Mouse.multiNoSel = True

@@ -65,8 +65,6 @@ def select():
 
 def draw(canvas):
     #User has option to contol main menu using keyboard
-
-
     canvas.draw_image(image, (img_size[0] // 2, img_size[1] // 2), img_size, (250, 250),
                       (500, 500))
     canvas.draw_circle((246, 74), 40, 5, "Grey", "Grey")

@@ -80,7 +80,7 @@ def draw(canvas):
     #canvas.draw_image(image, (img_size[0] // 2, img_size[1] // 2), img_size, (250, 250),
      #                 (500, 500))
     if selected and pointer == 0:
-        Ai.level = pointer +1
+        Ai.level = pointer +1#more efficient than assigning everytime loop is run, although more code
         Master.gameLoop('Base', 'Red')
     if selected and pointer == 1:
         Ai.level = pointer + 1

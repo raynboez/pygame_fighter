@@ -111,41 +111,6 @@ class InstructionsKeyboard:
 
     def key_up(self, key):
         self.next = False
-#
-# class MenuKeyboard:
-#     def __init__(self):
-#         self.playgame = False
-#         self.quit = False
-#         self.instructions = False
-#         self.key_binds = ['b', 'n', 'm', 'e', 'i', 'p','q']
-#
-#     def key_down(self, key):
-#         if ((key == simplegui.KEY_MAP[self.key_binds[0]]) or (key == simplegui.KEY_MAP[self.key_binds[3]]) or (key == simplegui.KEY_MAP[self.key_binds[6]])):
-#             self.quit = True
-#         if (key == simplegui.KEY_MAP[self.key_binds[1]] or key == simplegui.KEY_MAP[self.key_binds[4]]):
-#             self.instructions = True
-#         if (key == simplegui.KEY_MAP[self.key_binds[2]] or key == simplegui.KEY_MAP[self.key_binds[5]]):
-#             self.playgame = True
-#
-#     def key_up(self, key):
-#         if (key == simplegui.KEY_MAP[self.key_binds[0]] or key == simplegui.KEY_MAP[self.key_binds[3]] or key == simplegui.KEY_MAP[self.key_binds[6]]):
-#             self.quit = False
-#         if (key == simplegui.KEY_MAP[self.key_binds[1]] or key == simplegui.KEY_MAP[self.key_binds[4]]):
-#             self.instructions = False
-#         if (key == simplegui.KEY_MAP[self.key_binds[2]] or key == simplegui.KEY_MAP[self.key_binds[5]]):
-#             self.playgame = False
-
-class MultiKeyboard:
-    def __init__(self):
-        self.key_binds = ['p', 's']
-        self.playgame = False
-
-    def key_down(self, key):
-        if key == simplegui.KEY_MAP[self.key_binds[0]]:
-            Ai.level = 0
-        elif key == simplegui.KEY_MAP[self.key_binds[1]]:
-            Ai.level = 1
-        self.playgame = True
 
 
 class MenuKeyboard:

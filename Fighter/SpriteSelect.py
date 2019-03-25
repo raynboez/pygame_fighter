@@ -34,13 +34,14 @@ player2 = Navigation(cursor2, kbd, 1)
 
 selection = StaticSprite("https://i.ibb.co/wCnM7pP/fullscaled.png", 247, 322, [250, 255], 1)
 previewSprites = [ "https://i.ibb.co/M7Ff2wx/redsheet.png",
-    "https://i.ibb.co/K2616MG/greensheet.png",
+
     "https://i.ibb.co/2hv9qcq/bluesheet.png",
+    "https://i.ibb.co/K2616MG/greensheet.png",
     "https://i.ibb.co/CbMDdVC/yellowsheet.png"]
 
 #previewSprites = [".//Sprites//redsheet.png", ".//Sprites//bluesheet.png", ".//Sprites//greensheet.png", ".//Sprites//yellowsheet.png"]
 names = [".//Sprites//redPlaceHolder.png", ".//Sprites//bluePlaceHolder.png", ".//Sprites//greenPlaceHolder.png", ".//Sprites//yellowPlaceHolder.png"]
-finalnames = [ "Red", "Green", "Blue", "Yellow"]
+finalnames = [ "Red", "Blue", "Green", "Yellow"]
 #previewSprite1 = Sprite(sprites[cursor1.getSelection()], 210, 52, 2, 14, (50, 250), 8)
 #previewSprite2 = Sprite(sprites[cursor2.getSelection()], 210, 52, 2, 14, (450, 250), 8)
 def ready():

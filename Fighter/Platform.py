@@ -16,12 +16,4 @@ class Platform:
     def touch(self, character):
         return (character.feet >= self.edge_top)
 
-        #########################################################################
-        #Implement multiple smaller platforms above? must have hitboxes for edge#
-        #########################################################################
-        # hit_bottom = (character.head <= self.edge_bottom)
-        # if hit_top:
-        #     return True
-        # return False
-
 

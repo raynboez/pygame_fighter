@@ -7,8 +7,6 @@ except ImportError:
 class Spritelives:
     def __init__(self, pos, lives, scale = 1):
         self.image = simplegui.load_image('https://i.ibb.co/pr8MjQj/lives-sprite.png')
-        #https: // ibb.co / KhLQZLL
-        #https: // ibb.co / hxGmyw4
         self.pos = pos
         self.size = (90,30)
         self.window = (30, 30)

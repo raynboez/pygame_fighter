@@ -61,13 +61,13 @@ def drawSpriteSheet(canvas):
     #previewSprite1.draw(canvas)
     #previewSprite2.draw(canvas)
 
-    Sprite(previewSprites[cursor1.previewSelection()], 210, 52, 2, 14, (50, 250), 8, "idle", "left").updateStatic(canvas)
-    Sprite(previewSprites[cursor2.previewSelection()], 210, 52, 2, 14, (450, 250), 8, "idle", "right").updateStatic(canvas)
+    Sprite(previewSprites[cursor1.previewSelection()], 210, 52, 2, 14, (50, 250), 8, "idle", "right").updateStatic(canvas)
+    Sprite(previewSprites[cursor2.previewSelection()], 210, 52, 2, 14, (450, 250), 8, "idle", "left").updateStatic(canvas)
 
     if cursor1.getSelected():
-        Sprite(names[cursor1.previewSelection()], 400, 15, 2, 14, (50, 50), 4, "idle", "left").draw(canvas)
+        Sprite(names[cursor1.previewSelection()], 400, 15, 2, 14, (50, 50), 4, "idle", "right").draw(canvas)
     if cursor2.getSelected():
-        Sprite(names[cursor2.previewSelection()],  400,  15, 2, 14, (450, 50), 4, "idle", "right").draw(canvas)
+        Sprite(names[cursor2.previewSelection()],  400,  15, 2, 14, (450, 50), 4, "idle", "left").draw(canvas)
         
     if ready():
         Master.gameLoop(finalnames[cursor1.previewSelection()], finalnames[cursor2.previewSelection()])

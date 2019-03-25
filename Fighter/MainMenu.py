@@ -14,7 +14,7 @@ pointer = 2
 timer = 0
 
 def init():
-
+    Master.music.pause()
     Master.music.play("menu")
     Master.masterframe.setDrawHandler(draw)
     Mouse.screen = "menu"

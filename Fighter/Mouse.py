@@ -24,14 +24,16 @@ class Mouse:
             Mouse.gameMenuButtons(click)
         elif (Mouse.screen=="MultOrNo"):
             Mouse.multiplayer(click)
+        else:
+            pass
 
 #######define buttons onS-screen buttons below#####
 
     def mainMenuButtons(click):
         radius = 36
-        red = Vector(243, 74)
-        yel = Vector(243, 157)
-        gre = Vector(243, 240)
+        red = Vector(246, 74)
+        yel = Vector(246, 157)
+        gre = Vector(246, 240)
 
         cenToClick = click.copy().subtract(red.copy())  # dist between centre of ball and click
         if (cenToClick.length() <= radius):  # check click is in ball

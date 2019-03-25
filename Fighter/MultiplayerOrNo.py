@@ -34,7 +34,7 @@ def init():
     global selected
     #Ai.leve1 = 0
     Master.masterframe.setDrawHandler(draw)
-    Mouse.screen = "MultOrNo"
+    Mouse.screen = "null"
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeyupHandler(kbd)
     selected = False
@@ -58,6 +58,7 @@ def select():
     selected = True
 
 def draw(canvas):
+    canvas.draw_polygon([(0, 400), (0, 100), (500, 100), (500,400)], 5, "Grey", "Grey")
     global selected
     aisprite.updateStatic(canvas)
     pvpsprite.updateStatic(canvas)
@@ -69,5 +70,5 @@ def draw(canvas):
     if selected and pointer == 0:
         Master.spriteSelect()
     canvas.draw_polygon([[100 + (pointer *200), 350],[100 + (pointer *200), 150],[200 + (pointer *200), 150],[200 + (pointer *200), 350]], 5, "Red")
-    canvas.draw_text("PvP", (130, 300), 20, "White")
-    canvas.draw_text("StoryMode", (307, 300), 20, "White")
+    canvas.draw_text("Vs Player", (108, 300), 20, "White")
+    canvas.draw_text("Vs CPU", (315, 300), 20, "White")

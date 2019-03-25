@@ -56,11 +56,11 @@ class Ai:#More an automaton, a real ai would be too slow
                 self.keyboard.up[1] = True
         elif ((self.absDistance >= 15) and (self.absDistance <= 45)):  # if in attack range
             self.keyboard.attack[1] = True
-            if (self.decider < 4):  # attack with jump kick
+            if (self.decider < 2):  # attack with jump kick
                 self.keyboard.up[1] = True
         elif (self.keyboard.attack[0] and self.keyboard.up[0]):# attacked with jump kick
             if self.absDistance < 130:#in range
-                if (self.decider < 3):
+                if (self.decider < 2):
                     self.keyboard.up[1] = True
                     self.keyboard.attack[1] = True
                 else:
@@ -70,7 +70,7 @@ class Ai:#More an automaton, a real ai would be too slow
         elif self.distance > 45:  # to left of player
             self.keyboard.right[1] = True
             self.keyboard.fire[1] = (self.decider % 4) == 0
-            if (self.decider < 2):  # jump left
+            if (self.decider < 1):  # jump left
                 self.keyboard.up[1] = True
         elif ((self.distance < -45)):
             self.keyboard.left[1] = True
@@ -78,7 +78,7 @@ class Ai:#More an automaton, a real ai would be too slow
             if (self.decider < 1):  # jump right
                 self.keyboard.up[1] = True
         else:
-            if (self.decider < 4):  # jump left
+            if (self.decider < 7):  # jump left
                 self.keyboard.left[1] = True
             else:
                 self.keyboard.right[1] = True

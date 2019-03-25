@@ -26,13 +26,13 @@ class Background:
         canvas.draw_image(self.image, (self.img_size[0]//2, self.img_size[1]//2), self.img_size, (250,250), (500,500))
 
         #the buttons for the user so they can quit, read the instructions or restart the game during the game
-        canvas.draw_circle((30, 40), 20, 10, 'Red', 'Red')
-        canvas.draw_text("Exit", (15, 75), 13, "Black")
+        canvas.draw_circle((25, 40), 20, 10, 'Red', 'Red')
+        canvas.draw_text("Exit", (15, 40), 12, "White")
 
         canvas.draw_circle((80, 40), 20, 10, 'Orange', 'Orange')
-        canvas.draw_text("Instructions", (40, 74), 13, "Black")
+        canvas.draw_text("Controls", (60, 40), 12, "White")
 
-        canvas.draw_circle((130, 40), 20, 10, 'Green', 'Green')
-        canvas.draw_text("Main Menu", (120, 74), 13, "Black")
+        canvas.draw_circle((135, 40), 20, 10, 'Green', 'Green')
+        canvas.draw_text("Menu", (120, 40), 12, "White")
 
 

@@ -56,6 +56,7 @@ def ready():
 
 def drawSpriteSheet(canvas):
     canvas.draw_polygon([[125, 105], [125, 420], [375, 420], [375, 105]], 1, 'Grey', 'Grey')
+    canvas.draw_text("Select Sprite", (200, 50), 20, "White")
     player1.update()
     player2.update()
     selection.draw(canvas)

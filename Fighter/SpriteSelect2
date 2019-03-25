@@ -1,0 +1,37 @@
+#Jed Arno
+
+try:
+    import simplegui
+except ImportError:
+    import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
+from Fighter.Platform import Platform
+from Fighter.Sprite import Sprite
+from Fighter.Character import Character
+from Fighter.Keyboard import Keyboard
+from Fighter.Interaction import Interaction
+from Fighter.Vector import Vector
+from Fighter.Wall import Wall
+from Fighter import GameLoop
+
+HEIGHT = 500
+WIDTH = 500
+
+sprite1 = Sprite(".//Sprites//SpriteSelectPlaceHolder.png", 125, 225, 1, 1, [187, 137], 1)
+sprite2 = Sprite(".//Sprites//SpriteSelectPlaceHolder.png", 125, 225, 1, 1, [313, 137], 1)
+sprite3 = Sprite(".//Sprites//SpriteSelectPlaceHolder.png", 125, 225, 1, 1, [187, 363], 1)
+sprite4 = Sprite(".//Sprites//SpriteSelectPlaceHolder.png", 125, 225, 1, 1, [313, 363], 1)
+
+def drawSpriteSheet(canvas):
+    canvas.draw_polygon([[125, 25], [125, 475], [375, 475], [375, 25]], 1, 'Grey', 'Grey')
+    sprite1.draw(canvas)
+    sprite2.draw(canvas)
+    sprite3.draw(canvas)
+    sprite4.draw(canvas)
+
+# Create a frame and assign callbacks to event handlers
+#frame = simplegui.create_frame("ball-wall", WIDTH, HEIGHT)
+GameLoop.frame.set_draw_handler(drawSpriteSheet)
+GameLoop.frame.set_canvas_background("Navy")
+
+# Start the frame animation
+GameLoop.frame.start()

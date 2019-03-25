@@ -13,7 +13,6 @@ states = {
     "kick"  : "interruptable",
     "fire" : "non",
     "hit" : "non",
-    "hit" : "non",
     "block" : "non",
     "die" : "non"
 }
@@ -230,9 +229,7 @@ class Character:
         self.update()
         self.lifeSprite.update(self.lives.value, canvas)
         #moves sprite
-        #self.sprite.setDest(self.pos.getP())
         self.sprite.update(canvas, self.pos.getP())
-        #circle used as placeholder marker - to be removed
         self.energy.draw(canvas, self.p_number, 'Blue')
         self.health.draw(canvas, self.p_number, 'Red')
 

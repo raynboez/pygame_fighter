@@ -10,6 +10,8 @@ class Navigation:
         self.kbd = keyboard
         self.player = player
         self.timer = 0
+
+
     def update(self):
         if self.timer > 7:
             if self.kbd.right[self.player] and not self.cursor.getSelected():

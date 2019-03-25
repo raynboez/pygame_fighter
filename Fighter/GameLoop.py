@@ -17,7 +17,7 @@ from Fighter.Mouse import Mouse
 
 CANVAS_WIDTH = 500
 CANVAS_HEIGHT = 500
-
+has_ai = False
 sprites = {
     "Red" : "https://i.ibb.co/M7Ff2wx/redsheet.png",
     "Blue" : "https://i.ibb.co/2hv9qcq/bluesheet.png",
@@ -34,8 +34,10 @@ player2 = Character(player2Sprite, Vector(400, 300), 2, 'left')
 round = Rounds(player1, player2)
 
 #when GameLoop is called by a class, init starts the frame
-def init(sp1, sp2):
-    global SPRITE1, SPRITE2
+def init(sp1, sp2, ai):
+    global SPRITE1, SPRITE2, has_ai
+    has_ai = ai
+    kbd.ai = has_ai
     SPRITE1 = sp1
     SPRITE2 = sp2
     Master.masterframe.setDrawHandler(draw)
@@ -60,6 +62,11 @@ def init(sp1, sp2):
 
 #main draw handler, updates all interactions and then draws objects on frame
 def draw(canvas):
+    print(kbd.ai)
+    if kbd.ai:
+        Ai.move(Ai)
+        if round.startTimer % 20 == 0:
+            kbd.ai_keyup()
     round.startTimer +=1
     interactions.update(round)
     background.draw(canvas)
@@ -79,7 +86,7 @@ def draw(canvas):
         round.draw(canvas)
 
 #initialises a keyboard
-kbd = Keyboard()
+kbd = Keyboard(has_ai)
 
 #creates arena with background
 background = Background()

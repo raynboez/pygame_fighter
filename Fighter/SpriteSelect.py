@@ -1,5 +1,5 @@
 #Jed Arno
-
+from Fighter.Mouse import Mouse
 try:
     import simplegui
 except ImportError:
@@ -12,9 +12,10 @@ from Fighter.Cursor import Cursor
 from Fighter.Navigation import Navigation
 from Fighter import Master
 
-kbd = Keyboard()
+kbd = Keyboard(False)
 
 def init():
+    Mouse.screen = "null"
     Master.masterframe.setDrawHandler(drawSpriteSheet)
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeyupHandler(kbd)
@@ -79,4 +80,4 @@ def drawSpriteSheet(canvas):
     selectedSprite2.draw(canvas)
         
     if ready():
-        Master.gameLoop(finalnames[cursor1.previewSelection()], finalnames[cursor2.previewSelection()])
+        Master.gameLoop(finalnames[cursor1.previewSelection()], finalnames[cursor2.previewSelection()], False)

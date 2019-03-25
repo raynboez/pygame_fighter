@@ -32,7 +32,7 @@ def init():
     global selected
     #Ai.leve1 = 0
     Master.masterframe.setDrawHandler(draw)
-    Mouse.screen = "null"
+    Mouse.screen = "lvlSelect"
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeyupHandler(kbd)
     selected = False
@@ -71,6 +71,7 @@ def select():
 def draw(canvas):
     canvas.draw_polygon([(0, 400), (0, 100), (500, 100), (500,400)], 5, "Grey", "Grey")
     global selected
+    global pointer
     redsprite.updateStatic(canvas)
     greensprite.updateStatic(canvas)
     bluesprite.updateStatic(canvas)
@@ -79,6 +80,10 @@ def draw(canvas):
     interaction()
     #canvas.draw_image(image, (img_size[0] // 2, img_size[1] // 2), img_size, (250, 250),
      #                 (500, 500))
+    if (Mouse.levelSel):
+        pointer = Ai.level - 1
+        Mouse.levelSel = False
+        selected = True
     if selected and pointer == 0:
         Ai.level = pointer +1#more efficient than assigning everytime loop is run, although more code
         Master.gameLoop('Base', 'Red', True)

@@ -7,13 +7,11 @@ from Fighter.Vector import Vector
 from Fighter import Master
 from Fighter.Ai import Ai
 
-
-
-
 class Mouse:
 
     screen = "null"
     multiNoSel = False
+    levelSel = False
 
     def handler(position):
         click = Vector(position[0], position[1])
@@ -27,6 +25,8 @@ class Mouse:
             Mouse.gameMenuButtons(click)
         elif (Mouse.screen=="MultOrNo"):
             Mouse.multiplayer(click)
+        elif Mouse.screen=="lvlSelect":
+            Mouse.lvlSelect(click)
         else:
             pass
 
@@ -79,3 +79,19 @@ class Mouse:
             elif abs(click.getX()-(solo.copy().getX())) < 60:
                 Ai.level = 1
             Mouse.multiNoSel = True
+
+    def lvlSelect(click):
+        lvl1 = Vector(100, 235)
+        lvl2 = Vector(200, 235)
+        lvl3 = Vector(300, 235)
+        lvl4 = Vector(400, 235)
+        if ((abs(click.getY() - 235)) < 85):
+            if abs(click.getX() - (lvl1.copy().getX())) < 50:
+                Ai.level = 1
+            elif abs(click.getX() - (lvl2.copy().getX())) < 50:
+                Ai.level = 2
+            elif abs(click.getX() - (lvl3.copy().getX())) < 50:
+                Ai.level = 3
+            elif abs(click.getX() - (lvl4.copy().getX())) < 50:
+                Ai.level = 4
+            Mouse.levelSel = True

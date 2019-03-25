@@ -10,7 +10,7 @@ except ImportError:
 class Keyboard:
 
     #uses boolean arrays for inputs - [0] is for p1, [1] is for p2
-    def __init__(self):
+    def __init__(self, ai):
         self.right = [False,False]
         self.left = [False,False]
         self.up = [False,False]
@@ -18,7 +18,7 @@ class Keyboard:
         self.attack = [False,False]
         self.fire = [False,False]
         self.idle = [False, False]
-        self.ai = True
+        self.ai = ai
         #binds [0]-[5] are p1 bindings, [6]-[11] are p2 bindings
 
         self.key_binds = ['w','a','s','d','q','e','i','j','k','l','u','o']
@@ -49,9 +49,7 @@ class Keyboard:
         # distance between chars on x axis, positive means cpu is to right of player
         print(distance)#todo remove
         print(Ai.level)#todo remove
-        if (int(Ai.level) >= 1 ):
-            Ai.move(Ai)
-        else:
+        if not self.ai:
             ##repeated for player 2
             if key == simplegui.KEY_MAP[self.key_binds[9]]:
                 self.right[1] = True
@@ -67,6 +65,7 @@ class Keyboard:
                 self.fire[1] = True
             self.checkIdle(0)
             self.checkIdle(1)
+
 
     #key up handler, same principle as key_down
     def key_up(self, key):
@@ -84,14 +83,7 @@ class Keyboard:
         if key == simplegui.KEY_MAP[self.key_binds[4]]:
             self.fire[0] = False
 
-        if (int(Ai.level) >= 1 ):#stops ai getting stuck on a move
-            self.right[1] = False
-            self.left[1] = False
-            self.up[1] = False#jump
-            self.down[1] = False#block
-            self.attack[1] = False
-            self.fire[1] = False
-        else:
+        if not self.ai:
             if key == simplegui.KEY_MAP[self.key_binds[9]]:
                 self.right[1] = False
             if key == simplegui.KEY_MAP[self.key_binds[7]]:
@@ -106,6 +98,14 @@ class Keyboard:
                 self.fire[1] = False
         self.checkIdle(0)
         self.checkIdle(1)
+
+    def ai_keyup(self):
+        self.right[1] = False
+        self.left[1] = False
+        self.up[1] = False  # jump
+        self.down[1] = False  # block
+        self.attack[1] = False
+        self.fire[1] = False
 
     def checkIdle(self,b):
         if any([self.right[b], self.left[b], self.up[b], self.down[b], self.attack[b], self.fire[b]]):

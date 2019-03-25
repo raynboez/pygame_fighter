@@ -81,16 +81,16 @@ def draw(canvas):
      #                 (500, 500))
     if selected and pointer == 0:
         Ai.level = pointer +1#more efficient than assigning everytime loop is run, although more code
-        Master.gameLoop('Base', 'Red')
+        Master.gameLoop('Base', 'Red', True)
     if selected and pointer == 1:
         Ai.level = pointer + 1
-        Master.gameLoop('Base', 'Green')
+        Master.gameLoop('Base', 'Green', True)
     if selected and pointer == 2:
         Ai.level = pointer + 1
-        Master.gameLoop('Base', 'Yellow')
+        Master.gameLoop('Base', 'Yellow', True)
     if selected and pointer == 3:
         Ai.level = pointer + 1
-        Master.gameLoop('Base', 'Blue')
+        Master.gameLoop('Base', 'Blue', True)
     canvas.draw_polygon([[50 + (pointer *100), 315],[50 + (pointer *100), 150],[150 + (pointer *100), 150],[150 + (pointer *100), 315]], 5, "Red")
     canvas.draw_text("Level 1", (75, 300), 20, "White")
     canvas.draw_text("Level 2", (175, 300), 20, "White")

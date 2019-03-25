@@ -41,5 +41,5 @@ def spriteSelect():
     SpriteSelect.init()
 
 
-def gameLoop(sprite1, sprite2):
-    GameLoop.init(sprite1, sprite2)
+def gameLoop(sprite1, sprite2, ai):
+    GameLoop.init(sprite1, sprite2, ai)

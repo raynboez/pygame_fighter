@@ -12,7 +12,7 @@ from Fighter import MultiplayerOrNo
 from Fighter import SpriteSelect
 from Fighter.Music import Music
 #frame used throughout Game
-masterframe = Frame("Name", 500, 500)#encapsulates simplegui.create_frame
+masterframe = Frame("Road Wars", 500, 500)#encapsulates simplegui.create_frame
 
 music = Music()
 

@@ -1,3 +1,4 @@
+#from Fighter import MultiplayerOrNo
 try:
     import simplegui
 except ImportError:
@@ -8,9 +9,11 @@ from Fighter.Ai import Ai
 
 
 
+
 class Mouse:
 
     screen = "null"
+    multiNoSel = False
 
     def handler(position):
         click = Vector(position[0], position[1])
@@ -68,8 +71,8 @@ class Mouse:
         #show instructions
 
     def multiplayer(click):
-        if (click.getX()<250):
-            Ai.leve1 = 0
+        if (click.getX() < 250):
+            Ai.level = 0
         else:
             Ai.level = 1
-        Master.gameLoop('Yellow', 'Red')
+        Mouse.multiNoSel = True

@@ -36,7 +36,7 @@ def init():
     global selected
     #Ai.leve1 = 0
     Master.masterframe.setDrawHandler(draw)
-    Mouse.screen = "null"
+    Mouse.screen = "MultOrNo"
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeyupHandler(kbd)
     selected = False
@@ -62,6 +62,7 @@ def select():
 def draw(canvas):
     canvas.draw_polygon([(0, 400), (0, 100), (500, 100), (500,400)], 5, "Grey", "Grey")
     global selected
+    global pointer
     aisprite.updateStatic(canvas)
 
     redsprite.updateStatic(canvas)
@@ -72,6 +73,11 @@ def draw(canvas):
     interaction()
     #canvas.draw_image(image, (img_size[0] // 2, img_size[1] // 2), img_size, (250, 250),
      #                 (500, 500))
+
+    if (Mouse.multiNoSel):
+        pointer = Ai.level
+        Mouse.multiNoSel = False
+        selected = True
     if selected and pointer == 1:
         Master.levelSelect()
     if selected and pointer == 0:

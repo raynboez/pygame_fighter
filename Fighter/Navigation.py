@@ -11,7 +11,7 @@ class Navigation:
         self.player = player
         self.timer = 0
     def update(self):
-        if self.timer > 4:
+        if self.timer > 7:
             if self.kbd.right[self.player] and not self.cursor.getSelected():
                 self.timer = 0
                 self.cursor.nextColumn()

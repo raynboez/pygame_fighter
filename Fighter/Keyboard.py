@@ -50,7 +50,7 @@ class Keyboard:
         print(distance)#todo remove
         print(Ai.level)#todo remove
         if (int(Ai.level) >= 1 ):
-            Ai.move(Ai, self)
+            Ai.move(Ai)
         else:
             ##repeated for player 2
             if key == simplegui.KEY_MAP[self.key_binds[9]]:

@@ -11,28 +11,20 @@ class Ai:#More an automaton, a real ai would be too slow
     #put keys down at random to make moves?
 
     level = 1
-    distance = -300
-    absDistance = abs(distance)#otherwise distance is abs'd in ints
-    decider = 5
+    opponent = []
 
-    def move(self, keyboard):#Runs as soon as opponant moves
+    def __init__(self, keyboard):
+        self.keyboard = keyboard
+        Ai.opponent = [self.testIng, self.jumpyJermain, self.lazyOpo,
+                self.fanCFighter]#todo change testing to fisty, also runs this won init
+
+    def move(self):#Runs as soon as opponant moves
         self.distance = Character.distance(Interaction.characters[0], Interaction.characters[1])
+        # distance between chars on x axis, positive means player is to right of cpu
         self.absDistance = abs(self.distance)
         self.decider = randint(0,9)
-        #distance between chars on x axis, positive means player is to right of cpu
-        print(self.distance)
-        self.levelSelect(self, keyboard)
+        self.opponent[self.level-1]()
 
-
-    def levelSelect(self, keyboard):
-         switcher = {
-            1: self.testIng(self, keyboard),
-            2: "interruptable",
-            3: self.lazyOpo(self, keyboard),
-            4: "interruptable",
-            5: "interruptable",
-         }
-         return switcher.get(self.level, "Invalid level")
 
 ###Actions list#########
 
@@ -45,53 +37,57 @@ class Ai:#More an automaton, a real ai would be too slow
 
 ###opponants sorted by difficulty(best to worst)####
 
-    def testIng(self, keyboard):#fiesty fred#need to do things when player not moving
+    def testIng(self):#fiesty fred#need to do things when player not moving
         print("test")
         print(self.distance)
         if ((self.absDistance>= 15) and (self.absDistance<=45)):#if in attack range
-            keyboard.attack[1] = True
+            self.keyboard.attack[1] = True
             if (self.decider <4):#attack with jump kick
-                keyboard.up[1] = True
+                self.keyboard.up[1] = True
         elif self.distance > 45:#to left of player
-            keyboard.right[1] = True
+            self.keyboard.right[1] = True
             if (self.decider <2):#jump left
-                keyboard.up[1] = True
+                self.keyboard.up[1] = True
             pass#go left, run or jump
         elif((self.distance < -45)):
-            keyboard.left[1] = True
+            self.keyboard.left[1] = True
             if (self.decider <1):#jump right
-                keyboard.up[1] = True
-        #else:
-            #pass#go left or right jump and attack
-        # if (keyboard.up[0]):  # need to makes things false again
-        #     keyboard.fire[1] = True
-        # elif (keyboard.down[0]):
-        #     keyboard.fire[1] = True
-        # elif (keyboard.attack[0] and keyboard.up[0]):  # flying kick
-        #     keyboard.down[1] = True
-        # elif (keyboard.attack[0]):
-        #     keyboard.down[1] = True
-        # elif (keyboard.fire[0]):
-        #     keyboard.up[1] = True
-        # else:
-        #     keyboard.attack[1] = True
+                self.keyboard.up[1] = True
+        else:
+            if (self.decider < 4):  # jump left
+                self.keyboard.left[1] = True
+            else:
+                self.keyboard.right[1] = True
+            self.keyboard.up[1] = (self.decider % 3)==0
 
 
-    def fanCFighter(self, keyboard):#does all the things well
-        pass
+    def fanCFighter(self):#does all the things well
+        print("fanc")
 
-    def lazyOpo(self, keyboard):#kills only by shooting no movement
+    def lazyOpo(self):#kills only by shooting no movement
         print("opo")
         #difficulty 6.5/10
-        if (keyboard.up[0]):#need to makes things false again
-            keyboard.fire[1] = True
-        elif (keyboard.down[0]):
-            keyboard.fire[1] = True
-        elif (keyboard.attack[0] and keyboard.up[0]):
-            keyboard.down[1] = True
+        if (self.keyboard.up[0]):#need to makes things false again
+            self.keyboard.fire[1] = True
+        elif (self.keyboard.down[0]):
+            self.keyboard.fire[1] = True
+        elif (self.keyboard.attack[0] and self.keyboard.up[0]):
+            self.keyboard.down[1] = True
 
-    def jumpyJermain(self, keyboard):#moves to much
-        pass
+    def jumpyJermain(self):#moves to much
+        print("jermain")
+    # if (keyboard.up[0]):  # need to makes things false again
+    #     keyboard.fire[1] = True
+    # elif (keyboard.down[0]):
+    #     keyboard.fire[1] = True
+    # elif (keyboard.attack[0] and keyboard.up[0]):  # flying kick
+    #     keyboard.down[1] = True
+    # elif (keyboard.attack[0]):
+    #     keyboard.down[1] = True
+    # elif (keyboard.fire[0]):
+    #     keyboard.up[1] = True
+    # else:
+    #     keyboard.attack[1] = True
 
-    def fistyFred(self, keyboard):#doesn't use ranged attacks
-        pass
+    def fistyFred(self):#doesn't use ranged attacks
+        print("fred")

@@ -1,3 +1,4 @@
+#from Fighter import MultiplayerOrNo
 try:
     import simplegui
 except ImportError:
@@ -8,9 +9,11 @@ from Fighter.Ai import Ai
 
 
 
+
 class Mouse:
 
     screen = "null"
+    multiNoSel = False
 
     def handler(position):
         click = Vector(position[0], position[1])
@@ -24,14 +27,16 @@ class Mouse:
             Mouse.gameMenuButtons(click)
         elif (Mouse.screen=="MultOrNo"):
             Mouse.multiplayer(click)
+        else:
+            pass
 
 #######define buttons onS-screen buttons below#####
 
     def mainMenuButtons(click):
         radius = 36
-        red = Vector(243, 74)
-        yel = Vector(243, 157)
-        gre = Vector(243, 240)
+        red = Vector(246, 74)
+        yel = Vector(246, 157)
+        gre = Vector(246, 240)
 
         cenToClick = click.copy().subtract(red.copy())  # dist between centre of ball and click
         if (cenToClick.length() <= radius):  # check click is in ball
@@ -66,8 +71,8 @@ class Mouse:
         #show instructions
 
     def multiplayer(click):
-        if (click.getX()<250):
-            Ai.leve1 = 0
+        if (click.getX() < 250):
+            Ai.level = 0
         else:
             Ai.level = 1
-        Master.gameLoop('Yellow', 'Red')
+        Mouse.multiNoSel = True

@@ -2,15 +2,6 @@ try:
     import simplegui
 except ImportError:
     import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
-from Fighter.Platform import Platform
-from Fighter.Sprite import Sprite
-from Fighter.Character import Character
-from Fighter.Keyboard import Keyboard
-from Fighter.Interaction import Interaction
-from Fighter.Vector import Vector
-from Fighter.Wall import Wall
-from Fighter import GameLoop
-from Fighter.Cursor import Cursor
 
 class Navigation:
 
@@ -20,7 +11,7 @@ class Navigation:
         self.player = player
         self.timer = 0
     def update(self):
-        if self.timer > 4:
+        if self.timer > 7:
             if self.kbd.right[self.player] and not self.cursor.getSelected():
                 self.timer = 0
                 self.cursor.nextColumn()

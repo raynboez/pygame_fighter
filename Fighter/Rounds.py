@@ -13,7 +13,6 @@ class Rounds:
         self.player1 = player1
         self.player2 = player2
         self.setEnd = False
-        #self.maxrounds = maxrounds
         self.gameEnded = False
         self.startTimer = 0
 

@@ -2,14 +2,7 @@ try:
     import simplegui
 except ImportError:
     import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
-from Fighter.Platform import Platform
-from Fighter.Sprite import Sprite
-from Fighter.Character import Character
-from Fighter.Keyboard import Keyboard
-from Fighter.Interaction import Interaction
-from Fighter.Vector import Vector
-from Fighter.Wall import Wall
-from Fighter import GameLoop
+
 
 class Cursor:
 

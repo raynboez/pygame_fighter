@@ -111,7 +111,7 @@ class Character:
             self.dead = True
 
     def distance(self, other):
-        return abs(self.pos.getX() - other.pos.getX())
+        return (self.pos.getX() - other.pos.getX())
 
     def newLife(self):
         self.energy = Resource(0, 100)#TODO

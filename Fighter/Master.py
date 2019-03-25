@@ -11,8 +11,9 @@ from Fighter import MainMenu
 from Fighter import MultiplayerOrNo
 from Fighter import SpriteSelect
 from Fighter.Music import Music
+from Fighter import LevelSelect
 #frame used throughout Game
-masterframe = Frame("Name", 500, 500)#encapsulates simplegui.create_frame
+masterframe = Frame("Road Wars", 500, 500)#encapsulates simplegui.create_frame
 
 music = Music()
 
@@ -29,6 +30,9 @@ def menu():
 
 def modeSelect():
     MultiplayerOrNo.init()
+
+def levelSelect():
+    LevelSelect.init()
 
 def instructions():
     Instructions.init()

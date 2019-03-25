@@ -14,7 +14,9 @@ states = {
         "fire"  : [6, 2],
         "block" : [10, 1],
         "die"   : [8, 2],
-        "fireball" : [0, 4]
+        "fireball" : [0, 4],
+        "off" : [0, 1],
+        "on"    : [1, 1]
     }
 
 

@@ -60,10 +60,15 @@ def drawSpriteSheet(canvas):
     player1.update()
     player2.update()
     selection.draw(canvas)
-    if Mouse.spriteSel:
+    if Mouse.spriteSel1:
         cursor1.selected = True
-        cursor1.position = Mouse.spriteSelection
-        Mouse.spriteSel = False
+        if not Mouse.spriteSel2:
+            cursor1.position = Mouse.spriteSelection
+    if Mouse.spriteSel2:
+        Mouse.spriteSel1 = False
+        cursor2.selected = True
+        cursor2.position = Mouse.spriteSelection
+        Mouse.spriteSel2 = False
     if cursor1.getSelected():
         selectedSprite1.changeState("on")
         selectedSprite1.nextSprite()

@@ -12,7 +12,8 @@ class Mouse:
     screen = "null"
     multiNoSel = False
     levelSel = False
-    spriteSel = False
+    spriteSel1 = False
+    spriteSel2 = False
     spriteSelection = [0,0]
 
     def handler(position):
@@ -111,15 +112,19 @@ class Mouse:
         yell = Vector(313, 260)
         if (abs(click.getY() - 180)) < 80:
             if abs(click.getX() - (red.copy().getX())) < 62:
-                Mouse.spriteSel = True
+                Mouse.spriteSel2 = Mouse.spriteSel1
+                Mouse.spriteSel1 = True
                 Mouse.spriteSelection = [0,0]
             elif abs(click.getX() - (green.copy().getX())) < 62:
-                Mouse.spriteSel = True
+                Mouse.spriteSel2 = Mouse.spriteSel1
+                Mouse.spriteSel1 = True
                 Mouse.spriteSelection = [1, 0]
         elif(abs(click.getY() - 260)) < 80:
             if abs(click.getX() - (blue.copy().getX())) < 62:
-                Mouse.spriteSel = True
+                Mouse.spriteSel2 = Mouse.spriteSel1
+                Mouse.spriteSel1 = True
                 Mouse.spriteSelection = [0, 1]
             elif abs(click.getX() - (yell.copy().getX())) < 62:
-                Mouse.spriteSel = True
+                Mouse.spriteSel2 = Mouse.spriteSel1
+                Mouse.spriteSel1 = True
                 Mouse.spriteSelection = [1, 1]

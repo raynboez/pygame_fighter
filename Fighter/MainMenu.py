@@ -65,8 +65,6 @@ def select():
 
 def draw(canvas):
     #User has option to contol main menu using keyboard
-
-
     canvas.draw_image(image, (img_size[0] // 2, img_size[1] // 2), img_size, (250, 250),
                       (500, 500))
     canvas.draw_circle((246, 74), 40, 5, "Grey", "Grey")
@@ -80,7 +78,7 @@ def draw(canvas):
     else:
         canvas.draw_circle((246, 74), 40, 1, "Red", "Red")
     interaction(canvas)
-    canvas.draw_text("Exit(b)", (363, 74), 20, "White")
-    canvas.draw_text("Instructions(n)", (363, 157), 20, "White")
-    canvas.draw_text("Play(m)", (363, 240), 20, "White")
+    canvas.draw_text("Exit", (363, 74), 20, "White")
+    canvas.draw_text("Instructions", (363, 157), 20, "White")
+    canvas.draw_text("Play", (363, 240), 20, "White")
 

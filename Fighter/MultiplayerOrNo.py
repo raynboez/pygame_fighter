@@ -62,7 +62,6 @@ def select():
 def draw(canvas):
     canvas.draw_polygon([(0, 400), (0, 100), (500, 100), (500,400)], 5, "Grey", "Grey")
     global selected
-    global pointer
     aisprite.updateStatic(canvas)
 
     redsprite.updateStatic(canvas)
@@ -71,9 +70,6 @@ def draw(canvas):
     yellowsprite.updateStatic(canvas)
 
     interaction()
-    #canvas.draw_image(image, (img_size[0] // 2, img_size[1] // 2), img_size, (250, 250),
-     #                 (500, 500))
-
     if (Mouse.multiNoSel):
         pointer = Ai.level
         Mouse.multiNoSel = False

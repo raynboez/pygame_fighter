@@ -18,5 +18,7 @@ class Music:
     elif music == "fight":
       self.fight.play()
       self.currentSound = self.fight
+
   def pause(self):
     self.currentSound.pause()
+

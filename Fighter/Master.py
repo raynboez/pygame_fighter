@@ -14,6 +14,8 @@ from Fighter import SpriteSelect
 #frame used throughout Game
 masterframe = Frame("Name", 500, 500)#encapsulates simplegui.create_frame
 
+music = Music()
+
 def runGame():
     splashScreen()
 

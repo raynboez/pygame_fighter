@@ -62,7 +62,6 @@ def init(sp1, sp2, ai):
 
 #main draw handler, updates all interactions and then draws objects on frame
 def draw(canvas):
-    print(kbd.ai)
     if kbd.ai:
         Ai.move(Ai)
         if round.startTimer % 20 == 0:
@@ -103,11 +102,6 @@ interactions.addWall(walla)
 interactions.addWall(wallb)
 ai = Ai(kbd)
 
-#TODO list
-#
-#player collisions
-#   players not drawn over each other?
-#
 #SPRITESHEET URLS
 #
 #https://i.ibb.co/vB3Q4QG/fullsheet.png

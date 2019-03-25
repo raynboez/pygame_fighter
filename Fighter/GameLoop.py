@@ -21,7 +21,8 @@ sprites = {
     "Red" : "https://i.ibb.co/M7Ff2wx/redsheet.png",
     "Blue" : "https://i.ibb.co/2hv9qcq/bluesheet.png",
     "Green" : "https://i.ibb.co/K2616MG/greensheet.png",
-    "Yellow" : "https://i.ibb.co/CbMDdVC/yellowsheet.png"
+    "Yellow" : "https://i.ibb.co/CbMDdVC/yellowsheet.png",
+    "Base" : "https://i.ibb.co/6m5sd2h/fullsheet.png"
 }
 SPRITE1 = "Red"
 SPRITE2 = "Blue"

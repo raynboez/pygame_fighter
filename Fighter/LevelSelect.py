@@ -83,12 +83,16 @@ def draw(canvas):
     #canvas.draw_image(image, (img_size[0] // 2, img_size[1] // 2), img_size, (250, 250),
      #                 (500, 500))
     if selected and pointer == 0:
+        Ai.level = pointer +1
         Master.gameLoop('Base', 'Red')
     if selected and pointer == 1:
+        Ai.level = pointer + 1
         Master.gameLoop('Base', 'Green')
     if selected and pointer == 2:
+        Ai.level = pointer + 1
         Master.gameLoop('Base', 'Yellow')
     if selected and pointer == 3:
+        Ai.level = pointer + 1
         Master.gameLoop('Base', 'Blue')
     canvas.draw_polygon([[50 + (pointer *100), 315],[50 + (pointer *100), 150],[150 + (pointer *100), 150],[150 + (pointer *100), 315]], 5, "Red")
     canvas.draw_text("Level 1", (75, 300), 20, "White")

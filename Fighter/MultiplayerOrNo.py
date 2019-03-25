@@ -65,7 +65,7 @@ def draw(canvas):
     if selected and pointer == 1:
         Master.gameLoop('Base', 'Red')
     if selected and pointer == 0:
-        Master.gameLoop('Green', 'Blue')
+        Master.spriteSelect()
     canvas.draw_polygon([[100 + (pointer *200), 350],[100 + (pointer *200), 150],[200 + (pointer *200), 150],[200 + (pointer *200), 350]], 5, "Red")
     canvas.draw_text("PvP", (130, 300), 20, "White")
     canvas.draw_text("StoryMode", (307, 300), 20, "White")

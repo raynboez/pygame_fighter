@@ -20,6 +20,9 @@ class Frame:
     def setMouseHandler(self, handler):
         self.frame.set_mouseclick_handler(handler)
 
+    def setCanvasBackground(self, colour):
+        self.frame.set_canvas_background(colour)
+
     def start(self):
         self.frame.start()
 

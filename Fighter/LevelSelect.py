@@ -71,8 +71,6 @@ def draw(canvas):
     yellowsprite.updateStatic(canvas)
 
     interaction()
-    #canvas.draw_image(image, (img_size[0] // 2, img_size[1] // 2), img_size, (250, 250),
-     #                 (500, 500))
     if (Mouse.levelSel):
         pointer = Ai.level - 1
         Mouse.levelSel = False

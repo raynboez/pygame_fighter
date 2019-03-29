@@ -1,9 +1,3 @@
-try:
-    import simplegui
-except ImportError:
-    import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
-
-
 class Cursor:
 
     def __init__(self, coord1, coord2, coord3, coord4, colour):

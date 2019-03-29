@@ -1,10 +1,5 @@
 #Jed Arno
 from Fighter.Mouse import Mouse
-try:
-    import simplegui
-except ImportError:
-    import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
-
 from Fighter.Sprite import Sprite
 from Fighter.Sprite import StaticSprite
 from Fighter.Keyboard import Keyboard

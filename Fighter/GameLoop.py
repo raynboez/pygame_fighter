@@ -1,8 +1,4 @@
 from Fighter.Ai import Ai
-try:
-    import simplegui
-except ImportError:
-    import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
 from Fighter.Platform import Platform
 from Fighter.Sprite import Sprite
 from Fighter.Character import Character
@@ -63,7 +59,7 @@ def init(sp1, sp2, ai):
 #main draw handler, updates all interactions and then draws objects on frame
 def draw(canvas):
     if kbd.ai:
-        Ai.move(Ai)
+        Ai.move(Ai)#todo slow down
         if round.startTimer % 20 == 0:
             kbd.ai_keyup()
     round.startTimer +=1

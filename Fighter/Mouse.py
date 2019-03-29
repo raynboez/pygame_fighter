@@ -1,8 +1,3 @@
-#from Fighter import MultiplayerOrNo
-try:
-    import simplegui
-except ImportError:
-    import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
 from Fighter.Vector import Vector
 from Fighter import Master
 from Fighter.Ai import Ai
@@ -70,7 +65,7 @@ class Mouse:
             cenToClick = click.copy().subtract(gre.copy())  # dist between centre of ball and click
             if (cenToClick.length() <= radius):  # check click is in ball
                 # Master.gameLoop()
-                Master.menu()  # todo change colors based on selection
+                Master.menu()
         #exit to menu
         #pause
         #show instructions

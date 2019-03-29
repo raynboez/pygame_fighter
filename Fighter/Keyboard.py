@@ -1,4 +1,3 @@
-from Fighter.Ai import Ai
 try:
     import simplegui
 except ImportError:

@@ -4,13 +4,6 @@ from Fighter.Mouse import Mouse
 from Fighter.Ai import Ai
 from Fighter.Sprite import Sprite
 
-try:
-    import simplegui
-except ImportError:
-    import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
-
-
-
 sprites = {
     "Red" : "https://i.ibb.co/M7Ff2wx/redsheet.png",
     "Blue" : "https://i.ibb.co/2hv9qcq/bluesheet.png",

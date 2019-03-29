@@ -1,8 +1,3 @@
-try:
-    import simplegui
-except ImportError:
-    import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
-
 from Fighter import GameLoop
 from Fighter import Instructions
 from Fighter.Frame import Frame

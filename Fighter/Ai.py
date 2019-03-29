@@ -1,10 +1,6 @@
 from Fighter.Interaction import Interaction
 from Fighter.Character import Character
 from random import randint
-try:
-    import simplegui
-except ImportError:
-    import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
 
 class Ai:#More an automaton, a real ai would be too slow
     #ai only works when player is pressing keyboard

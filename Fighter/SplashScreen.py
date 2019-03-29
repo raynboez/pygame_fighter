@@ -1,8 +1,3 @@
-try:
-    import simplegui
-except:
-    import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
-
 from Fighter import Master
 from Fighter.Keyboard import InstructionsKeyboard
 from Fighter.Sprite import StaticSprite

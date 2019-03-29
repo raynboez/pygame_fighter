@@ -1,8 +1,3 @@
-#from Fighter import MultiplayerOrNo
-try:
-    import simplegui
-except ImportError:
-    import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
 from Fighter.Vector import Vector
 from Fighter import Master
 from Fighter.Ai import Ai
@@ -35,7 +30,7 @@ class Mouse:
         else:
             pass
 
-#######define buttons onS-screen buttons below#####
+#######define on-screen buttons below#####
 
     def mainMenuButtons(click):
         radius = 36
@@ -70,61 +65,70 @@ class Mouse:
             cenToClick = click.copy().subtract(gre.copy())  # dist between centre of ball and click
             if (cenToClick.length() <= radius):  # check click is in ball
                 # Master.gameLoop()
-                Master.menu()  # todo change colors based on selection
+                Master.menu()
         #exit to menu
         #pause
         #show instructions
 
     def multiplayer(click):
-        multi = Vector(150, 235)
-        solo = Vector(350, 235)
-        if ((abs(click.getY()-235)) < 85):
-            if abs(click.getX()-(multi.copy().getX())) < 60:
+        centerY = 235
+        buttonWidth = 120
+        multi = Vector(150, centerY)
+        solo = Vector(350, centerY)
+        if ((abs(click.getY()-centerY)) < 85):
+            if abs(click.getX()-(multi.copy().getX())) < buttonWidth/2:
                 Ai.level = 0
                 Mouse.multiNoSel = True
-            elif abs(click.getX()-(solo.copy().getX())) < 60:
+            elif abs(click.getX()-(solo.copy().getX())) < buttonWidth/2:
                 Ai.level = 1
                 Mouse.multiNoSel = True
 
     def lvlSelect(click):
-        lvl1 = Vector(100, 235)
-        lvl2 = Vector(200, 235)
-        lvl3 = Vector(300, 235)
-        lvl4 = Vector(400, 235)
-        if ((abs(click.getY() - 235)) < 85):
-            if abs(click.getX() - (lvl1.copy().getX())) < 50:
+        spriteWidth = 100
+        spriteHeight = 170
+        centerY = 235
+        lvl1 = Vector(1 * spriteWidth, centerY)
+        lvl2 = Vector(2 * spriteWidth, centerY)
+        lvl3 = Vector(3 * spriteWidth, centerY)
+        lvl4 = Vector(4 * spriteWidth, centerY)
+        if ((abs(click.getY() - centerY)) < spriteHeight/2):
+            if abs(click.getX() - (lvl1.copy().getX())) < spriteWidth/2:
                 Ai.level = 1
                 Mouse.levelSel = True
-            elif abs(click.getX() - (lvl2.copy().getX())) < 50:
+            elif abs(click.getX() - (lvl2.copy().getX())) < spriteWidth/2:
                 Ai.level = 2
                 Mouse.levelSel = True
-            elif abs(click.getX() - (lvl3.copy().getX())) < 50:
+            elif abs(click.getX() - (lvl3.copy().getX())) < spriteWidth/2:
                 Ai.level = 3
                 Mouse.levelSel = True
-            elif abs(click.getX() - (lvl4.copy().getX())) < 50:
+            elif abs(click.getX() - (lvl4.copy().getX())) < spriteWidth/2:
                 Ai.level = 4
                 Mouse.levelSel = True
 
-    def spriSel(click):#ran our of time
-        red = Vector(187, 180)
-        green = Vector(313, 180)
-        blue = Vector(187, 260)
-        yell = Vector(313, 260)
-        if (abs(click.getY() - 180)) < 80:
-            if abs(click.getX() - (red.copy().getX())) < 62:
+    def spriSel(click):
+        rows = (180, 260)
+        columns = (187.5, 312.5)
+        red = Vector(columns[0], rows[0])
+        green = Vector(columns[1], rows[0])
+        blue = Vector(columns[0], rows[1])
+        yell = Vector(columns[1], rows[1])
+        imgWidth = 125
+        imgHeight = 160
+        if (abs(click.getY() - rows[0])) < imgHeight/2:
+            if abs(click.getX() - (red.copy().getX())) < imgWidth/2:
                 Mouse.spriteSel2 = Mouse.spriteSel1
                 Mouse.spriteSel1 = True
                 Mouse.spriteSelection = [0,0]
-            elif abs(click.getX() - (green.copy().getX())) < 62:
+            elif abs(click.getX() - (green.copy().getX())) < imgWidth/2:
                 Mouse.spriteSel2 = Mouse.spriteSel1
                 Mouse.spriteSel1 = True
                 Mouse.spriteSelection = [1, 0]
-        elif(abs(click.getY() - 260)) < 80:
-            if abs(click.getX() - (blue.copy().getX())) < 62:
+        elif(abs(click.getY() - rows[1])) < imgHeight/2:
+            if abs(click.getX() - (blue.copy().getX())) < imgWidth/2:
                 Mouse.spriteSel2 = Mouse.spriteSel1
                 Mouse.spriteSel1 = True
                 Mouse.spriteSelection = [0, 1]
-            elif abs(click.getX() - (yell.copy().getX())) < 62:
+            elif abs(click.getX() - (yell.copy().getX())) < imgWidth/2:
                 Mouse.spriteSel2 = Mouse.spriteSel1
                 Mouse.spriteSel1 = True
                 Mouse.spriteSelection = [1, 1]

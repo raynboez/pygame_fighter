@@ -1,9 +1,7 @@
-from Fighter.Ai import Ai
 try:
     import simplegui
 except ImportError:
     import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
-
 
 class Keyboard:
 

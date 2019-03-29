@@ -4,13 +4,6 @@ from Fighter.Mouse import Mouse
 from Fighter.Ai import Ai
 from Fighter.Sprite import Sprite
 
-try:
-    import simplegui
-except ImportError:
-    import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
-
-
-
 sprites = {
     "Red" : "https://i.ibb.co/M7Ff2wx/redsheet.png",
     "Blue" : "https://i.ibb.co/2hv9qcq/bluesheet.png",
@@ -20,14 +13,11 @@ sprites = {
 }
 
 selected = False
-#Todo add image for 1v1 and you vs cpu
-#image = simplegui.load_image("https://i.ibb.co/TqyhqKk/IMG-20190322-WA0000.jpg")
-#img_size = (500, 500)
-aisprite = Sprite(sprites["Base"], 210, 52, 2, 14, (350, 225), 4, "idle", "left")
-redsprite = Sprite(sprites["Red"], 210, 52, 2, 14, (135, 253), 2, "idle", "right")
-greensprite = Sprite(sprites["Green"], 210, 52, 2, 14, (135, 199), 2, "idle", "right")
-bluesprite = Sprite(sprites["Blue"], 210, 52, 2, 14, (165, 253), 2, "idle", "left")
-yellowsprite = Sprite(sprites["Yellow"], 210, 52, 2, 14, (165, 199), 2, "idle", "left")
+aisprite = Sprite(sprites["Base"], 2, 14, (350, 225), 4, "idle", "left")
+redsprite = Sprite(sprites["Red"], 2, 14, (135, 253), 2, "idle", "right")
+greensprite = Sprite(sprites["Green"], 2, 14, (135, 199), 2, "idle", "right")
+bluesprite = Sprite(sprites["Blue"], 2, 14, (165, 253), 2, "idle", "left")
+yellowsprite = Sprite(sprites["Yellow"], 2, 14, (165, 199), 2, "idle", "left")
 kbd = MenuKeyboard()
 pointer = 0
 timer = 0

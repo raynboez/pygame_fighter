@@ -1,8 +1,3 @@
-try:
-    import simplegui
-except ImportError:
-        import SimpleGUICS2Pygame as simplegui
-
 timer = 0
 delay = 60
 

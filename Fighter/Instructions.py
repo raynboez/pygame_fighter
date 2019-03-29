@@ -1,11 +1,6 @@
 from Fighter import Master
 from Fighter.Keyboard import InstructionsKeyboard
 from Fighter.Mouse import Mouse
-try:
-    import simplegui
-except ImportError:
-    import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
-
 
 def init():
     Master.masterframe.setDrawHandler(draw)

@@ -1,14 +1,13 @@
-from Fighter import Master
-from Fighter.Keyboard import MenuKeyboard
-from Fighter.Mouse import Mouse
-
 try:
     import simplegui
 except ImportError:
     import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
+from Fighter import Master
+from Fighter.Keyboard import MenuKeyboard
+from Fighter.Mouse import Mouse
 
 image = simplegui.load_image("https://i.ibb.co/wR6DF4M/IMG-20190325-WA0000.jpg")
-img_size = (500, 500)
+img_size = (image.get_width(), image.get_height())
 kbd = MenuKeyboard()
 pointer = 2
 timer = 0
@@ -21,7 +20,6 @@ def init():
     Master.masterframe.setKeydownHandler(kbd)
     Master.masterframe.setKeyupHandler(kbd)
     Master.masterframe.setCanvasBackground("Navy")
-
 
 def playgame():
     kbd.key_up(next)

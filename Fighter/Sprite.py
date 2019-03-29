@@ -23,9 +23,9 @@ states = {
 class Sprite:
 
     #initialises sprite from local path, with spritesheet height and width, number of rows and columns, destination and size
-    def __init__(self, path, width, height, rows, columns, destination, scale, state, facing):
+    def __init__(self, path, rows, columns, destination, scale, state, facing):
         self.img = simplegui.load_image(path)
-        self.spriteDim = [(width / columns), height / rows]
+        self.spriteDim = [(self.img.get_width() / columns), self.img.get_height() / rows]
         self.dest = destination
         self.scaling = scale
         self.scale = (self.spriteDim[0] * scale, self.spriteDim[1] * scale)
@@ -86,9 +86,9 @@ class Sprite:
 
 class StaticSprite:
 
-    def __init__(self, path, width, height,destination, scale):
+    def __init__(self, path, destination, scale):
         self.img = simplegui.load_image(path)
-        self.spriteDim = [width, height]
+        self.spriteDim = [self.img.get_width(), self.img.get_height()]
         self.dest = destination
         self.scaling = scale
         self.scale = (self.spriteDim[0] * scale, self.spriteDim[1] * scale)

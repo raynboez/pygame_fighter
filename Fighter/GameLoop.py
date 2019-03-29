@@ -23,8 +23,8 @@ sprites = {
 }
 SPRITE1 = "Red"
 SPRITE2 = "Blue"
-player1Sprite = Sprite(sprites[SPRITE1], 210, 52, 2, 14, (100, 300), 4, "idle", "left")  ##TODO
-player2Sprite = Sprite(sprites[SPRITE2], 210, 52, 2, 14, (400, 300), 4, "idle", "right")  ##Get Sprite sheets
+player1Sprite = Sprite(sprites[SPRITE1], 2, 14, (100, 300), 4, "idle", "left")  ##TODO
+player2Sprite = Sprite(sprites[SPRITE2], 2, 14, (400, 300), 4, "idle", "right")  ##Get Sprite sheets
 player1 = Character(player1Sprite, Vector(100, 300), 1, 'right')
 player2 = Character(player2Sprite, Vector(400, 300), 2, 'left')
 round = Rounds(player1, player2)
@@ -45,8 +45,8 @@ def init(sp1, sp2, ai):
     Master.music.pause()
     Master.music.play("fight")
 
-    player1Sprite = Sprite(sprites[SPRITE1], 210, 52, 2, 14, (100, 300), 4, "idle", "left")  ##TODO
-    player2Sprite = Sprite(sprites[SPRITE2], 210, 52, 2, 14, (400, 300), 4, "idle", "right")
+    player1Sprite = Sprite(sprites[SPRITE1], 2, 14, (100, 300), 4, "idle", "left")  ##TODO
+    player2Sprite = Sprite(sprites[SPRITE2], 2, 14, (400, 300), 4, "idle", "right")
     player1.setSprite(player1Sprite, SPRITE1)
     player2.setSprite(player2Sprite, SPRITE2)
     #display main menu

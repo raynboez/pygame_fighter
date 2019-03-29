@@ -28,15 +28,15 @@ cursor2.addPos([250, 255], [250, 420], [375, 420], [375, 255], 1)
 player1 = Navigation(cursor1, kbd, 0)
 player2 = Navigation(cursor2, kbd, 1)
 
-selection = StaticSprite("https://i.ibb.co/wCnM7pP/fullscaled.png", 247, 322, [250, 255], 1)
+selection = StaticSprite("https://i.ibb.co/wCnM7pP/fullscaled.png", [250, 255], 1)
 previewSprites = [ "https://i.ibb.co/M7Ff2wx/redsheet.png",
 
     "https://i.ibb.co/2hv9qcq/bluesheet.png",
     "https://i.ibb.co/K2616MG/greensheet.png",
     "https://i.ibb.co/CbMDdVC/yellowsheet.png"]
 
-selectedSprite1 = Sprite("https://i.ibb.co/p0QcQJg/lights.png", 30, 27, 1, 2, [100, 100], 2, "on", "left")
-selectedSprite2 = Sprite("https://i.ibb.co/p0QcQJg/lights.png", 30, 27, 1, 2, [400, 100], 2, "off", "left")
+selectedSprite1 = Sprite("https://i.ibb.co/p0QcQJg/lights.png", 1, 2, [100, 100], 2, "on", "left")
+selectedSprite2 = Sprite("https://i.ibb.co/p0QcQJg/lights.png", 1, 2, [400, 100], 2, "off", "left")
 
 finalnames = [ "Red", "Blue", "Green", "Yellow"]
 
@@ -78,8 +78,8 @@ def drawSpriteSheet(canvas):
         selectedSprite2.nextSprite()
     cursor1.draw(canvas)
     cursor2.draw(canvas)
-    Sprite(previewSprites[cursor1.previewSelection()], 210, 52, 2, 14, (50, 250), 8, "idle", "right").updateStatic(canvas)
-    Sprite(previewSprites[cursor2.previewSelection()], 210, 52, 2, 14, (450, 250), 8, "idle", "left").updateStatic(canvas)
+    Sprite(previewSprites[cursor1.previewSelection()], 2, 14, (50, 250), 8, "idle", "right").updateStatic(canvas)
+    Sprite(previewSprites[cursor2.previewSelection()], 2, 14, (450, 250), 8, "idle", "left").updateStatic(canvas)
     selectedSprite1.draw(canvas)
     selectedSprite2.draw(canvas)
         

@@ -51,7 +51,7 @@ class Fireball:
 
     #sets fireball sprite
     def set_sprite(self, colour):
-        self.sprite = Sprite(sprites[colour], 120, 40, 2, 4, self.pos, 1, "fireball", self.direction)
+        self.sprite = Sprite(sprites[colour], 2, 4, self.pos, 1, "fireball", self.direction)
 
     def setFacing(self, facing):
         self.direction = facing

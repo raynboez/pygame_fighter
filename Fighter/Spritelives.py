@@ -8,7 +8,7 @@ class Spritelives:
     def __init__(self, pos, lives, scale = 1):
         self.image = simplegui.load_image('https://i.ibb.co/pr8MjQj/lives-sprite.png')
         self.pos = pos
-        self.size = (90,30)
+        self.size = (self.image.get_width(),self.image.get_height())
         self.window = (30, 30)
         self.current = [0,0]
         self.center = [self.window[0]/2, self.window[1]/2]

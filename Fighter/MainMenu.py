@@ -8,7 +8,7 @@ except ImportError:
     import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
 
 image = simplegui.load_image("https://i.ibb.co/wR6DF4M/IMG-20190325-WA0000.jpg")
-img_size = (500, 500)
+img_size = (image.get_width(), image.get_height())
 kbd = MenuKeyboard()
 pointer = 2
 timer = 0

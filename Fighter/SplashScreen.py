@@ -48,8 +48,8 @@ warsURL = "https://i.ibb.co/VCdSVvJ/wars.png"
 yellowURL = "https://i.ibb.co/dLN96Fd/yellow.png"
 
 
-red = StaticSprite(redURL, 100, 100, (140,350), 1)
-green = StaticSprite(greenURL, 100, 100, (360, 350), 1)
-yellow = StaticSprite(yellowURL, 100, 100, (250, 350), 1)
-road = StaticSprite(roadURL, 237, 69, (-100, 180), 1)
-wars = StaticSprite(warsURL, 253, 67, (960, 250), 1)
+red = StaticSprite(redURL, (140,350), 1)
+green = StaticSprite(greenURL, (360, 350), 1)
+yellow = StaticSprite(yellowURL, (250, 350), 1)
+road = StaticSprite(roadURL, (-100, 180), 1)
+wars = StaticSprite(warsURL, (960, 250), 1)

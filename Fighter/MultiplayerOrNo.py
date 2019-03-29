@@ -13,11 +13,11 @@ sprites = {
 }
 
 selected = False
-aisprite = Sprite(sprites["Base"], 210, 52, 2, 14, (350, 225), 4, "idle", "left")
-redsprite = Sprite(sprites["Red"], 210, 52, 2, 14, (135, 253), 2, "idle", "right")
-greensprite = Sprite(sprites["Green"], 210, 52, 2, 14, (135, 199), 2, "idle", "right")
-bluesprite = Sprite(sprites["Blue"], 210, 52, 2, 14, (165, 253), 2, "idle", "left")
-yellowsprite = Sprite(sprites["Yellow"], 210, 52, 2, 14, (165, 199), 2, "idle", "left")
+aisprite = Sprite(sprites["Base"], 2, 14, (350, 225), 4, "idle", "left")
+redsprite = Sprite(sprites["Red"], 2, 14, (135, 253), 2, "idle", "right")
+greensprite = Sprite(sprites["Green"], 2, 14, (135, 199), 2, "idle", "right")
+bluesprite = Sprite(sprites["Blue"], 2, 14, (165, 253), 2, "idle", "left")
+yellowsprite = Sprite(sprites["Yellow"], 2, 14, (165, 199), 2, "idle", "left")
 kbd = MenuKeyboard()
 pointer = 0
 timer = 0

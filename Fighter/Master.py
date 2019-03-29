@@ -12,6 +12,7 @@ from Fighter import MultiplayerOrNo
 from Fighter import SpriteSelect
 from Fighter.Music import Music
 from Fighter import LevelSelect
+from Fighter import StorySplash
 #frame used throughout Game
 masterframe = Frame("Road Wars", 500, 500)#encapsulates simplegui.create_frame
 
@@ -40,6 +41,8 @@ def instructions():
 def spriteSelect():
     SpriteSelect.init()
 
+def storySplash():
+    StorySplash.init()
 
 def gameLoop(sprite1, sprite2, ai):
     GameLoop.init(sprite1, sprite2, ai)

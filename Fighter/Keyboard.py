@@ -3,7 +3,6 @@ try:
 except ImportError:
     import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
 
-
 class Keyboard:
 
     #uses boolean arrays for inputs - [0] is for p1, [1] is for p2

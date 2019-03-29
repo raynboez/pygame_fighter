@@ -3,7 +3,6 @@ try:
 except ImportError:
     import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
 
-
 states = {
         "idle"  : [0, 2],
         "walk"  : [2, 2],

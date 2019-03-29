@@ -1,7 +1,7 @@
 try:
-   import simplegui
+    import simplegui
 except ImportError:
-   import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
+    import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
 
 class Frame:
 

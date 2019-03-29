@@ -23,7 +23,7 @@ sprites = {
 }
 SPRITE1 = "Red"
 SPRITE2 = "Blue"
-player1Sprite = Sprite(sprites[SPRITE1], 2, 14, (100, 300), 4, "idle", "left")  ##TODO
+player1Sprite = Sprite(sprites[SPRITE1], 2, 14, (100, 300), 4, "idle", "left")
 player2Sprite = Sprite(sprites[SPRITE2], 2, 14, (400, 300), 4, "idle", "right")  ##Get Sprite sheets
 player1 = Character(player1Sprite, Vector(100, 300), 1, 'right')
 player2 = Character(player2Sprite, Vector(400, 300), 2, 'left')
@@ -45,7 +45,7 @@ def init(sp1, sp2, ai):
     Master.music.pause()
     Master.music.play("fight")
 
-    player1Sprite = Sprite(sprites[SPRITE1], 2, 14, (100, 300), 4, "idle", "left")  ##TODO
+    player1Sprite = Sprite(sprites[SPRITE1], 2, 14, (100, 300), 4, "idle", "left")
     player2Sprite = Sprite(sprites[SPRITE2], 2, 14, (400, 300), 4, "idle", "right")
     player1.setSprite(player1Sprite, SPRITE1)
     player2.setSprite(player2Sprite, SPRITE2)
@@ -58,7 +58,7 @@ def init(sp1, sp2, ai):
 
 #main draw handler, updates all interactions and then draws objects on frame
 def draw(canvas):
-    if kbd.ai and round.startTimer % 5 == 0:##allows the ai to select a move once every 5 cycles of the gameloop
+    if kbd.ai and round.startTimer % ai.loopsPerGo == 0:##allows the ai to select a move once every x cycles of the gameloop
         Ai.move(Ai)
         if round.startTimer % 20 == 0:#stops moves lasting more than 20 cycles
             kbd.ai_keyup()

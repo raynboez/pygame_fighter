@@ -51,7 +51,7 @@ class Ai:#More an automaton, a real ai would be too slow
                 self.keyboard.right[1] = not self.keyboard.left[1]
             else:#jumping will dodge fine
                 self.keyboard.up[1] = True
-        elif ((self.absDistance >= self.punchRange[0]) and (self.absDistance <= self.punchRange[1])):  # if in attack range
+        elif self.attackInRange():  # if in attack range
             self.keyboard.attack[1] = True
             if (self.decider < 2):  # attack with jump kick
                 self.keyboard.up[1] = True
@@ -64,13 +64,8 @@ class Ai:#More an automaton, a real ai would be too slow
                     self.keyboard.down[1] = True
             else:
                 self.keyboard.fire[1] = True
-        elif self.distance > self.punchRange[1]:  # to left of player
-            self.keyboard.right[1] = True
-            self.keyboard.fire[1] = (self.decider % 4) == 0
-            if (self.decider < 1):  # jump left
-                self.keyboard.up[1] = True
-        elif self.distance < -self.punchRange[1]:
-            self.keyboard.left[1] = True
+        elif self.AbsDistance > self.punchRange[1]:  # to left of player
+            self.goTowardsPlayer()
             self.keyboard.fire[1] = (self.decider % 4) == 0
             if self.decider < 1:  # jump right
                 self.keyboard.up[1] = True
@@ -81,24 +76,19 @@ class Ai:#More an automaton, a real ai would be too slow
                 self.keyboard.right[1] = True
             self.keyboard.up[1] = (self.decider % 3) == 0
 
-    def jumpyJermain(self):#moves to much
+    def jumpyJermain(self):#jumps too much
         if (self.keyboard.fire[0]):
             self.keyboard.up[1] = True
-        elif ((self.absDistance >= self.punchRange[0]) and (self.absDistance <= self.punchRange[1])):  # if in attack range
+        elif self.attackInRange():
             self.keyboard.attack[1] = True
             if (self.decider < 4):  # attack with jump kick
                 self.keyboard.up[1] = True
         elif (self.keyboard.attack[0] and self.keyboard.up[0]):
             self.keyboard.down[1] = True
-        elif self.distance > self.punchRange[1]:  # to left of player
-            self.keyboard.right[1] = True
+        elif self.AbsDistance > 45:  # if player is far away outside of punch range
+            self.goTowardsPlayer()
             self.keyboard.fire[1] = (self.decider % 4) == 0
-            if (self.decider < 2):  # jump left
-                self.keyboard.up[1] = True
-        elif ((self.distance < -self.punchRange[1])):
-            self.keyboard.left[1] = True
-            self.keyboard.fire[1] = (self.decider % 4) == 0
-            if (self.decider < 1):  # jump right
+            if (self.decider < 1):  # jump towards
                 self.keyboard.up[1] = True
         else:
             if (self.decider < 4):  # jump left
@@ -107,30 +97,22 @@ class Ai:#More an automaton, a real ai would be too slow
                 self.keyboard.right[1] = True
             self.keyboard.up[1] = (self.decider % 3) == 0
 
-    def fistyFred(self):#doesn't use ranged attacks
-        if ((self.absDistance >= self.punchRange[0]) and (self.absDistance <= self.punchRange[1])):  # if in attack range
+    def fistyFred(self):#doesn't use fireballs
+        if self.attackInRange(-10, -5):#gets closer than needs to and tries attacking too close
             self.keyboard.attack[1] = True
             if (self.decider < 4):  # attack with jump kick
                 self.keyboard.up[1] = True
-        elif self.distance > 45:  # to left of player
-            self.keyboard.right[1] = True
-            if (self.decider < 2):  # jump left
-                self.keyboard.up[1] = True
-        elif ((self.distance < -45)):
-            self.keyboard.left[1] = True
+        else:
+            self.goTowardsPlayer()
             if (self.decider < 1):  # jump right
                 self.keyboard.up[1] = True
-        else:
-            if (self.decider < 4):  # jump left
-                self.keyboard.left[1] = True
-            else:
-                self.keyboard.right[1] = True
-            self.keyboard.up[1] = (self.decider % 3) == 0
 
     def lazyOpo(self):#kills only by shooting no movement
-        if ((self.absDistance >= self.punchRange[0]) and (self.absDistance <= self.punchRange[1])):  # if in attack range
+        if self.attackInRange():
             self.keyboard.attack[1] = True
-        elif (self.keyboard.up[0]):#need to makes things false again
+        elif self.keyboard.fire[0]:
+            self.keyboard.down[1] = True
+        elif (self.keyboard.up[0]):
             self.keyboard.fire[1] = True
         elif (self.keyboard.down[0]):
             self.keyboard.fire[1] = True
@@ -138,3 +120,13 @@ class Ai:#More an automaton, a real ai would be too slow
             self.keyboard.down[1] = True
         else:
             self.keyboard.fire[1] = True
+
+    def attackInRange(self, minMod=0, maxMod=0):
+        inRange = (self.absDistance >= self.punchRange[0] + minMod) and (self.absDistance <= self.punchRange[1]+ maxMod)
+        return inRange
+
+    def goTowardsPlayer(self):
+        if self.distance > 0:  # to left of player
+            self.keyboard.right[1] = True
+        else:
+            self.keyboard.left[1] = True

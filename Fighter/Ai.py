@@ -8,6 +8,8 @@ class Ai:#More an automaton, a real ai would be too slow
 
     level = 1
     opponent = []
+    aiCharNum = 1#same as keyboard number
+    playerCharNum = 0
 
     def __init__(self, keyboard):
         self.keyboard = keyboard
@@ -17,119 +19,147 @@ class Ai:#More an automaton, a real ai would be too slow
                 self.fanCFighter]#Order here deturmines level
 
     def move(self):
-        self.distance = Character.distance(Interaction.characters[0], Interaction.characters[1])
+        self.distance = Character.distance(Interaction.characters[Ai.playerCharNum], Interaction.characters[Ai.aiCharNum])
         # distance between chars on x axis, positive means player is to right of cpu
         self.absDistance = abs(self.distance)
         self.opponent[self.level-1]()
 
-
-###Actions list#########
-
-        # keyboard.right[1] = True
-        # keyboard.left[1] = True #
-        # keyboard.up[1] = True#jump # jumps take ~ 36 frames
-        # keyboard.down[1] = True#block
-        # keyboard.attack[1] = True
-        # keyboard.fire[1] = True
-
 ###opponants sorted by difficulty(best to worst)####
 
     def fanCFighter(self):#does all the things well
-        if (self.keyboard.fire[0]):# avoids being hit umless impossible not-to
-            if (self.absDistance < 60):#can't dodge
-                if (self.moveChance(40)):  #instantanious so jump percent not used
-                    self.keyboard.attack[1] = True
-                    self.keyboard.up[1] = True
-                    self.keyboard.left[1] = (self.distance > 0)
-                    self.keyboard.right[1] = not self.keyboard.left[1]#else jump kick
-                else:
-                    self.keyboard.fire[1] = True
-                    self.keyboard.up[1] = self.moveChance(30)
-            else:
-                self.dodgeFireball()
+        if self.beingFireballed():# avoids being hit umless impossible not-to
+            self.fireballHandler()
         elif self.attackInRange():  # if in attack range
-            self.keyboard.attack[1] = True
-            if self.movePercent(50):
-                self.keyboard.up[1] = True
-        elif (self.keyboard.attack[0] and self.keyboard.up[0]):# attacked with jump kick
-            if self.absDistance < 130:#in range
-                if self.movePercent(70):
-                    self.keyboard.up[1] = True
-                    self.keyboard.attack[1] = True
-                else:
-                    self.keyboard.down[1] = True
-            else:
-                self.keyboard.fire[1] = True
+            self.attackHandler()
+        elif self.beingJumpKicked():
+            self.jumpKickHandler()
         elif self.storkOrShoot():
-            pass
+            self.storkOrShootHandler()
         else:#if player too close to punch
-            self.tooCloseToHit()
+            self.tooCloseToHitHandler()
 
     def jumpyJermain(self):#jumps too much
-        if (self.keyboard.fire[0]):
-            self.keyboard.up[1] = True
+        if self.beingFireballed():
+            self.jump()
         elif self.attackInRange():
-            self.keyboard.attack[1] = True
-            if self.movePercent():  # attack with jump kick
-                self.keyboard.up[1] = True
-        elif (self.keyboard.attack[0] and self.keyboard.up[0]):
-            self.keyboard.down[1] = True
-        elif self.storkOrShoot(50,120):#if not close enought to punch
-            pass
+            self.attackHandler(140)
+        elif self.beingJumpKicked():
+            self.jumpKickHandler(130, 0)
+        elif self.storkOrShoot():#if not close enought to punch
+            self.storkOrShootHandler(50,120)
         else:#if player too close to punch
-            self.tooCloseToHit(300)
+            self.tooCloseToHitHandler(300)
 
     def fistyFred(self):#doesn't use fireballs
         if self.attackInRange(-10, -5):#gets closer than needs to and tries attacking too close
-            self.keyboard.attack[1] = True
-            if self.movePercent(140):  # attack with jump kick
-                self.keyboard.up[1] = True
+            self.attackHandler(80)
         else:
-            self.goTowardsPlayer()
-            if self.movePercent(80):  # jump right
-                self.keyboard.up[1] = True
+            self.followPlayerHandler(80)
 
     def lazyOpo(self):#kills only by shooting no movement
         if self.attackInRange(0, -10):#doesn't reach far to attack
-            self.keyboard.attack[1] = True
-        elif self.keyboard.fire[0] or (self.keyboard.attack[0] and self.keyboard.up[0]):
-            self.keyboard.down[1] = True#defend
+            self.attackHandler(0)
+        elif (self.beingFireballed() or self.beingJumpKicked()):
+            self.defend()
         else:
-            self.keyboard.fire[1] = True
+            self.fireball()
 
-########## Moves / move testers ###########
+################################# Moves #######################################
+    
+    def attack(self):
+        self.keyboard.attack[Ai.aiCharNum] = True
+    
+    def defend(self):
+        self.keyboard.down[Ai.aiCharNum] = True
+        
+    def fireball(self):
+        self.keyboard.fire[Ai.aiCharNum] = True
+        
+    def jump(self):
+        self.keyboard.up[Ai.aiCharNum] = True
+        
+    def moveLeft(self):
+        self.keyboard.left[Ai.aiCharNum] = True
+        
+    def moveRight(self):
+        self.keyboard.right[Ai.aiCharNum] = True
 
-    def goTowardsPlayer(self):
-        if self.distance > 0:  # to left of player
-            self.keyboard.right[1] = True
-        else:
-            self.keyboard.left[1] = True
-
-    def dodgeFireball(self):
-        if (self.absDistance > 280):  #moving jump required to dodge
-            self.keyboard.left[1] = (self.distance > 0)
-            self.keyboard.right[1] = not self.keyboard.left[1]
-        self.keyboard.up[1] = True
-
-    def storkOrShoot(self, firePer = 50, jumpPer  = 70):
-        if self.absDistance > self.punchRange[1]:  # Too far away to attack with a punch
-            self.goTowardsPlayer()
-            self.keyboard.fire[1] = self.movePercent(firePer)
-            if self.movePercent(jumpPer):
-                self.keyboard.up[1] = True
-            return True
-        return False
-
-    def tooCloseToHit(self, jumPer = 80):
-        self.keyboard.left[1] = self.movePercent()
-        self.keyboard.right[1] = not self.keyboard.left[1]
-        if self.movePercent(jumPer):
-            self.keyboard.up[1] = True
-            self.keyboard.attack[1] = True
+########## Move testers(decided if an action should be done or not) ###########
 
     def attackInRange(self, minMod=0, maxMod=0):
-        inRange = (self.absDistance >= self.punchRange[0] + minMod) and (self.absDistance <= self.punchRange[1]+ maxMod)
+        inRange = (self.absDistance >= self.punchRange[0] + minMod) and (
+                    self.absDistance <= self.punchRange[1] + maxMod)
         return inRange
+
+    def beingFireballed(self):
+        return self.keyboard.fire[Ai.playerCharNum]
+
+    def beingJumpKicked(self):
+        return (self.keyboard.attack[Ai.playerCharNum] and self.keyboard.up[Ai.playerCharNum])  # attacked with jump kick
+
+    def storkOrShoot(self):
+        return self.absDistance > self.punchRange[1]  # Too far away to attack with a punch
+
+
+########## Moves series (carry out moves for events based on chance) ###########
+
+    def attackHandler(self, jumPer = 50):
+        self.attack()
+        if self.movePercent(jumPer):
+            self.jump()
+
+    def jumpKickHandler(self, range=130, counterAtt = 50):
+        if self.absDistance < range:  # in range
+            if self.moveChance(counterAtt):
+                self.jump()
+                self.attack()
+            else:
+                self.defend()
+        else:
+            self.fireball()
+
+    def followPlayerHandler(self, jumPer = 0):
+        if self.distance > 0:  # to left of player
+            self.moveRight()
+        else:
+            self.moveLeft()
+        if self.movePercent(jumPer):
+            self.jump()
+
+    def storkOrShootHandler(self, firePer=50, jumpPer=70):
+            self.followPlayerHandler(jumpPer)
+            if self.movePercent(firePer):
+                self.fireball()
+
+    def fireballHandler(self, attackInRChance = 40):
+        tooCloseToDodge = 60
+        if(self.absDistance < tooCloseToDodge):  # can't dodge
+            if (self.moveChance(attackInRChance)):  # instantanious so jump percent not used
+                self.attack()
+                self.followPlayerHandler(100)
+            else:
+                self.fireball()
+                if self.moveChance(30):
+                    self.jump()
+        else:
+            self.fireballDodgeHandler()
+
+    def fireballDodgeHandler(self):
+        distaceToLand = 280
+        if (self.absDistance > distaceToLand):  #moving jump required to dodge
+            self.followPlayerHandler()
+        self.jump()
+
+    def tooCloseToHitHandler(self, jumPer = 80):
+        if self.movePercent():
+            self.moveRight()
+        else:
+            self.moveLeft()
+        if self.movePercent(jumPer):
+            self.jump()
+            self.attack()
+
+    ########## Randoms, (introduce randomness into choosen move ##########
 
     def movePercent(self, percent = 100):#use for events like tracking player not in reaction to player moves
         #percent chance of doing a move if trying for 1 second

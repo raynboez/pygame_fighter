@@ -58,9 +58,9 @@ def init(sp1, sp2, ai):
 
 #main draw handler, updates all interactions and then draws objects on frame
 def draw(canvas):
-    if kbd.ai:
-        Ai.move(Ai)#todo slow down
-        if round.startTimer % 20 == 0:
+    if kbd.ai and round.startTimer % 5 == 0:##allows the ai to select a move once every 5 cycles of the gameloop
+        Ai.move(Ai)
+        if round.startTimer % 20 == 0:#stops moves lasting more than 20 cycles
             kbd.ai_keyup()
     round.startTimer +=1
     interactions.update(round)
